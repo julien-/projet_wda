@@ -6,12 +6,13 @@ import java.util.Date;
 public class Personne {
 	//Données membres
 	private String _nom, _prenom;
-	Date _datenaiss;
-	File _photo;
+	String _datenaiss;
+	String _photo;
+	int _id;
 	
 	
 	//Constructeur sans photo
-	public Personne(String nom, String prenom, Date datenaiss) {
+	public Personne(String nom, String prenom, String datenaiss) {
 		try{
 			//tests
 			if(nom.isEmpty())
@@ -31,15 +32,13 @@ public class Personne {
 	}
 
 	//Constructeur avec photo
-	public Personne(String nom, String prenom, Date datenaiss, File photo) {
+	public Personne(String nom, String prenom, String datenaiss, String photo) {
 		//Appel du constructeur sans photo
 		this(nom, prenom, datenaiss);
 		try{
 			//tests
 			if(photo != null)
 				this._photo = photo;
-			if(!photo.isFile())
-				throw new Exception("Erreur dans la photo");
 		}
 		catch(Exception e)
 		{
@@ -49,6 +48,12 @@ public class Personne {
 	}
 	
 	//Getter/Setter
+	public int get_id() {
+		return _id;
+	}
+	public void set_id(int _id) {
+		this._id = _id;
+	}
 	public String get_nom() {
 		return _nom;
 	}
@@ -61,16 +66,16 @@ public class Personne {
 	public void set_prenom(String _prenom) {
 		this._prenom = _prenom;
 	}
-	public Date get_date() {
+	public String get_datenaiss() {
 		return _datenaiss;
 	}
-	public void set_date(Date _date) {
+	public void set_datenaiss(String _date) {
 		this._datenaiss = _date;
 	}
-	public File get_photo() {
+	public String get_photo() {
 		return _photo;
 	}
-	public void set_photo(File _photo) {
+	public void set_photo(String _photo) {
 		this._photo = _photo;
 	}
 	

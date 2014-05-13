@@ -11,8 +11,7 @@
 <body>
 	<h3><bean:message key="bienvenue.titre" /></h3>
 	<p><bean:message key="bienvenue.message" /></p>
-	<a href="http://localhost:8080/tp3/personnes.do">Afficher toutes les personnes</a>
-	<a href="http://localhost:8080/tp3/recherche_personne.do">Rechercher une personne</a>
+	<a href="http://localhost:8080/projet_adw/films.do">Afficher tous les films</a>
 </body>
 
 </html:html>
