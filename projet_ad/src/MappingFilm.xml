@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+							
+<hibernate-mapping>
+	<class name="metier.Film" table="film" lazy="false">
+		<id name="_id" type="int" column="id_film">
+			<generator class="increment"/>
+		</id>
+		<property name="_titre" column="titre_film" type="string" not-null="true"/>
+		<property name="_anneesortie" column="annee_film" type="int" not-null="true"/>
+		<property name="_cout" column="cout_film" type="double" not-null="true"/>
+		<property name="_photoaffiche" column="photo_film" type="string" not-null="false"/>
+	</class>
+</hibernate-mapping>

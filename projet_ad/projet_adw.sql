@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 13 Mai 2014 à 18:03
+-- Généré le :  Mar 13 Mai 2014 à 19:01
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -42,10 +42,18 @@ CREATE TABLE IF NOT EXISTS `acteur` (
 CREATE TABLE IF NOT EXISTS `film` (
   `id_film` int(11) NOT NULL AUTO_INCREMENT,
   `titre_film` varchar(200) NOT NULL,
-  `annee_film` date NOT NULL,
-  `note_film` int(11) NOT NULL,
+  `annee_film` year(4) NOT NULL,
+  `cout_film` double NOT NULL,
+  `photo_film` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_film`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Contenu de la table `film`
+--
+
+INSERT INTO `film` (`id_film`, `titre_film`, `annee_film`, `cout_film`, `photo_film`) VALUES
+(1, 'Star Wars', 1978, 200000.1, NULL);
 
 -- --------------------------------------------------------
 
@@ -60,14 +68,22 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `date_pers` date NOT NULL,
   `photo_pers` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_pers`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Contenu de la table `personne`
 --
 
 INSERT INTO `personne` (`id_pers`, `nom_pers`, `prenom_pers`, `date_pers`, `photo_pers`) VALUES
-(1, 'nicolas', 'galmiche', '1991-06-07', NULL);
+(1, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(2, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(3, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(4, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(5, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(6, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(7, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(8, 'nicolas', 'galmiche', '1991-06-07', NULL),
+(9, 'nicolas', 'galmiche', '1991-06-07', NULL);
 
 -- --------------------------------------------------------
 
