@@ -41,9 +41,6 @@
 		<forward name="AfficherPersonnes" path="/vues/AfficherPersonnes.jsp"></forward>
 		</action>
 	
-			<action path="/recherche_personne" type="struts.action.ActionRechercherPersonne" name="toto">
-		<forward name="Formulaire" path="/vues/Formulaire.jsp"></forward>
-		</action>
 	</action-mappings>
 
 

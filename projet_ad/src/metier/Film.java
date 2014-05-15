@@ -49,6 +49,10 @@ public class Film {
 			System.out.println("Une exception s'est produite lors de la création d'un Film avec photo : " + e);
 		}
 	}
+	
+	public Film()
+	{;}
+	
 	//Getter/Setter
 	public int get_id() {
 		return _id;

@@ -45,13 +45,9 @@ public class DAOPersonneHBM extends DAOHBM implements DAOPersonne {
 	public ArrayList<Personne> load(String string) throws Exception {
 		Session	session = connect();
 		
-		
 		@SuppressWarnings("unchecked")
 		ArrayList<Personne>	tabCodePers = (ArrayList<Personne>) session.createQuery("FROM Personne").list();
 		close(session);
-
-		System.out.println("Coucou");
-		System.out.println(tabCodePers);
 
 		return tabCodePers;
 	}

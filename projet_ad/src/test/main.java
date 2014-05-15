@@ -15,8 +15,11 @@ public class main {
 		DAOFilm daoFilm = new DAOFilmHBM();
 		
 		try {
-			//daoPersonne.save(new Personne("nicolas", "galmiche", "1991-06-07"));
-			daoFilm.save(new Film("Star Wars", 1978, 200000.1));
+			
+			daoFilm.save(new Film("les boules Wars", 1978, 200000.1));
+			daoPersonne.save(new Personne("fils", "depute", "1991-06-07"));
+			
+			System.out.println(daoPersonne.load("osef").toString());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

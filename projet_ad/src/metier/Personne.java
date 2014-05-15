@@ -47,6 +47,8 @@ public class Personne {
 		
 	}
 	
+	public Personne()
+	{;}
 	//Getter/Setter
 	public int get_id() {
 		return _id;
