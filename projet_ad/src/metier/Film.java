@@ -2,6 +2,8 @@ package metier;
 
 import java.io.File;
 import java.util.Calendar;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Film {
 	String _titre;
@@ -9,7 +11,10 @@ public class Film {
 	double _cout;
 	String _photoaffiche;
 	int _id;
-	
+	int _confirme;
+	//private Set<Acteur> acteurs = new HashSet<Acteur>();
+	private Set<Realisateur> realisateurs = new HashSet<Realisateur>();
+
 	//Constructeur sans photo
 	public Film(String titre, int anneesortie, double cout) throws Exception {
 		try{
@@ -22,7 +27,7 @@ public class Film {
 			//construction
 			this._titre = titre;
 			this._anneesortie = anneesortie;
-
+			_confirme = 0;
 			this._cout = cout;
 			
 		}
@@ -37,7 +42,7 @@ public class Film {
 	{
 		//Appel du constructeur sans photo
 		this(titre, anneesortie, cout);
-		
+		_confirme = 0;
 		try
 		{
 			//tests
@@ -53,6 +58,12 @@ public class Film {
 	public Film()
 	{;}
 	
+	public int get_confirme() {
+		return _confirme;
+	}
+	public void set_confirme(int confirme) {
+		this._confirme = confirme;
+	}
 	//Getter/Setter
 	public int get_id() {
 		return _id;
@@ -89,6 +100,13 @@ public class Film {
 		return "Film [_titre=" + _titre + ", _anneesortie=" + _anneesortie
 				+ ", _cout="
 				+ _cout + ", _photoaffiche=" + _photoaffiche + "]";
+	}
+
+	public Set<Realisateur> getRealisateurs() {
+		return realisateurs;
+	}
+	public void setRealisateurs(Set<Realisateur> realisateurs) {
+		this.realisateurs = realisateurs;
 	}
 	
 	//Méthodes

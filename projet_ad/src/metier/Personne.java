@@ -9,7 +9,7 @@ public class Personne {
 	String _datenaiss;
 	String _photo;
 	int _id;
-	
+	int _confirme;
 	
 	//Constructeur sans photo
 	public Personne(String nom, String prenom, String datenaiss) {
@@ -24,6 +24,7 @@ public class Personne {
 			this._prenom = prenom;
 			this._datenaiss = datenaiss;
 			this._photo = null;
+			_confirme = 0;
 		}
 		catch(Exception e)
 		{
@@ -35,6 +36,7 @@ public class Personne {
 	public Personne(String nom, String prenom, String datenaiss, String photo) {
 		//Appel du constructeur sans photo
 		this(nom, prenom, datenaiss);
+		_confirme = 0;
 		try{
 			//tests
 			if(photo != null)
@@ -47,10 +49,20 @@ public class Personne {
 		
 	}
 	
+
+
 	public Personne()
 	{;}
 	//Getter/Setter
+
+	public int get_confirme() {
+		return _confirme;
+	}
+	public void set_confirme(int _confirme) {
+		this._confirme = _confirme;
+	}
 	public int get_id() {
+		System.out.println(_nom);
 		return _id;
 	}
 	public void set_id(int _id) {

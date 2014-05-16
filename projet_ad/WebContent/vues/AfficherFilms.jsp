@@ -9,12 +9,9 @@
 </head>
 
 <body>
-	<html:form action="/AfficherFilms.jsp">
-		<h2>Recherche de films</h2>
-		<label for="nom">Titre</label>
-		<html:text property="titre"></html:text>
-		<html:submit>Rechercher</html:submit>
-	</html:form>
+	<h3><bean:message key="bienvenue.titre" /></h3>
+	<p><bean:message key="bienvenue.message" /></p>
+	<a href="http://localhost:8080/projet_adw/FormRechercheFilms.do">Afficher tous les films</a>
 </body>
 
 </html:html>

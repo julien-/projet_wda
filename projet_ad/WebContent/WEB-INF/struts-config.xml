@@ -12,10 +12,8 @@
 
 	<!-- ================================================ Form Bean Definitions -->
 
-	<form-beans> 
-		<form-bean name="toto" type="struts.actionForm.ActionRechercheForm"></form-bean>
-
-
+	<form-beans type="org.apache.struts.action.ActionFormBean">
+		<form-bean name="filmsForm" type="struts.action.ActionFormAfficherFilms" />
 	</form-beans>
 
 
@@ -37,8 +35,8 @@
 
 	<action-mappings>
 		
-		<action path="/personnes" type="struts.action.ActionAfficherPersonne">
-		<forward name="AfficherPersonnes" path="/vues/AfficherPersonnes.jsp"></forward>
+		<action path="/action_recherche_films" parameter="" input="/index.jsp" scope="request" name="loginForm" type="struts.action.ActionRechercheFilms">
+			<forward name="afficherfilms" path="AfficherFilms.jsp" redirect="false" />
 		</action>
 	
 	</action-mappings>

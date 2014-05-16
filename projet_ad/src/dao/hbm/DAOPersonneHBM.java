@@ -22,7 +22,7 @@ public class DAOPersonneHBM extends DAOHBM implements DAOPersonne {
 		return pers;
 		
 	}
-
+	
 	@Override
 	public void save(Personne personne) throws Exception {
 		// TODO Auto-generated method stub

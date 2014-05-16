@@ -11,7 +11,7 @@
 		<property name="connection.password"></property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="show_sql">true</property>
-	
+ 		
 		<mapping resource="MappingPersonne.xml"/>
 		<mapping resource="MappingFilm.xml"/>
 	</session-factory>
