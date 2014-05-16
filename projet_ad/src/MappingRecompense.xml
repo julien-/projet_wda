@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+							
+<hibernate-mapping>
+	<class name="metier.Recompense" table="recompense" lazy="false">
+		<id name="_id" type="int" column="id_rec">
+			<generator class="increment"/>
+		</id>
+		<property name="_titre" column="titre_rec" type="string" not-null="true"/>
+		<property name="_raison" column="raison_rec" type="string" not-null="true"/>
+		<property name="_annee" column="annee_rec" type="string" not-null="true"/>
+		
+		 <many-to-one name="_personne" class="metier.Personne" fetch="select">
+            <column name="id_pers" not-null="true" />
+        </many-to-one>
+     	<many-to-one name="_film" class="metier.Film" fetch="select">
+            <column name="id_film" not-null="true" />
+        </many-to-one>
+	</class>
+</hibernate-mapping>

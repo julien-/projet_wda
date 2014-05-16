@@ -2,6 +2,7 @@ package metier;
 
 import java.io.File;
 import java.util.Date;
+import java.util.Set;
 
 public class Personne {
 	//Données membres
@@ -10,7 +11,7 @@ public class Personne {
 	String _photo;
 	int _id;
 	int _confirme;
-	
+	private Set<Recompense> recompenses;
 	//Constructeur sans photo
 	public Personne(String nom, String prenom, String datenaiss) {
 		try{
@@ -55,6 +56,15 @@ public class Personne {
 	{;}
 	//Getter/Setter
 
+	
+	
+	public Set<Recompense> getRecompenses() {
+		return recompenses;
+	}
+
+	public void setRecompenses(Set<Recompense> recompenses) {
+		this.recompenses = recompenses;
+	}
 	public int get_confirme() {
 		return _confirme;
 	}

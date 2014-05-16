@@ -14,5 +14,6 @@
  		
 		<mapping resource="MappingPersonne.xml"/>
 		<mapping resource="MappingFilm.xml"/>
+		<mapping resource="MappingRecompense.xml"/>
 	</session-factory>
 </hibernate-configuration>
