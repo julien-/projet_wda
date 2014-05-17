@@ -5,6 +5,7 @@ import metier.Film;
 import metier.Personne;
 import metier.Realisateur;
 import metier.Recompense;
+import metier.RecompenseFilm;
 import metier.RecompensePersonne;
 import dao.DAOFilm;
 import dao.DAOPersonne;
@@ -25,6 +26,9 @@ public class main {
 			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
 			Film F1 = new Film("Titanic", 1997, 200000.1);
 			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
+			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "MeilleurE musique", "2001");
+
+			
 			/*
 			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
 			
@@ -39,6 +43,9 @@ public class main {
 			
 			REC1.set_personne(R1);
 			daoRecompense.save(REC1);
+			
+			REC2.set_film(F1);
+			daoRecompense.save(REC2);
 			
 
 			System.out.println("fini");

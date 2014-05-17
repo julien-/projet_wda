@@ -14,7 +14,11 @@
 	    <joined-subclass name="metier.RecompensePersonne" table="recompense_personne">
         	<key column="id_recompense_recpers"/>
     	    <many-to-one name="_personne" class="metier.Personne" column="id_personne_recpers" cascade="all" not-null="true" />
-        	
     	</joined-subclass>
+    	
+  		<joined-subclass name="metier.RecompenseFilm" table="recompense_film">
+	       	<key column="id_recompense_recfilm"/>
+	   	    <many-to-one name="_film" class="metier.Film" column="id_film_recfilm" cascade="all" not-null="true" />
+	   	</joined-subclass>
 	</class>
 </hibernate-mapping>
