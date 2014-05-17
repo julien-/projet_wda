@@ -12,19 +12,13 @@
 		<property name="_datenaiss" column="date_pers" type="string" not-null="true"/>
 		<property name="_photo" column="photo_pers" type="string" not-null="false"/>
 		<property name="_confirme" column="confirme" type="int" not-null="false"/>
-		<set name="recompenses" table="recompense"
-                inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="id_pers" not-null="true" />
-            </key>
-            <one-to-many class="metier.Recompense" />
-        </set>
+
 	    <joined-subclass name="metier.Acteur" table="acteur">
         	<key column="id_acteur"/>
     	</joined-subclass>
 		<joined-subclass name="metier.Realisateur" table="realisateur">
         	<key column="id_realisateur"/>
-    		<set name="films" table="realisateur_film" inverse="false" lazy="false" fetch="select" cascade="save-update">
+    		<set name="films" table="realisateur_film" inverse="false" lazy="false" fetch="select" cascade="all">
 	            <key column="id_film_film" />
 	            <many-to-many column="id_realisateur_film" class="metier.Personne" />
         	</set>

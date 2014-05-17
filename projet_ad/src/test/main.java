@@ -5,6 +5,7 @@ import metier.Film;
 import metier.Personne;
 import metier.Realisateur;
 import metier.Recompense;
+import metier.RecompensePersonne;
 import dao.DAOFilm;
 import dao.DAOPersonne;
 import dao.DAORecompense;
@@ -23,21 +24,23 @@ public class main {
 		{
 			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
 			Film F1 = new Film("Titanic", 1997, 200000.1);
-			Recompense REC1 = new Recompense("Oscar", "Meilleur acteur", "2001");
+			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
+			/*
+			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
 			
+			daoRecompense.save(REC2);
+			*/
+
+			/*
 			R1.getFilms().add(F1);
 			System.out.println("HERE" + R1.get_id());
 			daoPersonne.save(R1);
-		 	
+*/
 			
-			/*
-			daoFilm.save(F1);
-			daoPersonne.save(R1);
 			REC1.set_personne(R1);
-			REC1.set_film(F1);
 			daoRecompense.save(REC1);
-			*/
 			
+
 			System.out.println("fini");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
