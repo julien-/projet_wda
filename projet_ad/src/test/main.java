@@ -32,6 +32,7 @@ public class main {
 		try 
 		{
 			Realisateur R1 = new Realisateur("Matt", "Damon", "1991-06-07");
+			Acteur A1 = new Acteur("George", "Clooney", "1966-06-02");
 			Film F1 = new Film("Soldat Ryan", 1997, 200000.1);
 			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
 			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "2001");
@@ -57,9 +58,11 @@ public class main {
 			System.out.println("HERE" + R1.get_id());
 			daoPersonne.save(R1);
 			
+			
 			Film film = daoFilm.get(84);
 			System.out.println(film.getRealisateurs().toString());
-			
+			A1.getFilms().add(film);
+			daoPersonne.save(A1);
 			
 			//daoUtilisateur.save(U1);
 			/*

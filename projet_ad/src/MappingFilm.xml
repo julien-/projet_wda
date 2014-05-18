@@ -22,5 +22,10 @@
             <key column="id_film_film" />
             <many-to-many column="id_realisateur_film" class="metier.Realisateur" />
         </set>
+      	<set name="acteurs" table="acteur_film"
+            inverse="true" lazy="false" fetch="select" cascade="all">
+            <key column="id_film_film" />
+            <many-to-many column="id_acteur_film" class="metier.Acteur" />
+        </set>
 	</class>
 </hibernate-mapping>

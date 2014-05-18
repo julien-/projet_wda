@@ -12,12 +12,18 @@ public class Film {
 	String _photoaffiche;
 	int _id;
 	int _confirme;
-	//private Set<Acteur> acteurs = new HashSet<Acteur>();
+	private Set<Acteur> acteurs = new HashSet<Acteur>();
 	private Set<Realisateur> realisateurs = new HashSet<Realisateur>();
 	private Set<Note> _notes = new HashSet<Note>();
 
 	public Set<Note> get_notes() {
 		return _notes;
+	}
+	public Set<Acteur> getActeurs() {
+		return acteurs;
+	}
+	public void setActeurs(Set<Acteur> acteurs) {
+		this.acteurs = acteurs;
 	}
 	public void set_notes(Set<Note> _notes) {
 		this._notes = _notes;
