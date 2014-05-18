@@ -14,7 +14,14 @@ public class Film {
 	int _confirme;
 	//private Set<Acteur> acteurs = new HashSet<Acteur>();
 	private Set<Realisateur> realisateurs = new HashSet<Realisateur>();
+	private Set<Note> _notes = new HashSet<Note>();
 
+	public Set<Note> get_notes() {
+		return _notes;
+	}
+	public void set_notes(Set<Note> _notes) {
+		this._notes = _notes;
+	}
 	//Constructeur sans photo
 	public Film(String titre, int anneesortie, double cout) throws Exception {
 		try{

@@ -5,7 +5,7 @@
 <hibernate-mapping>
 	<class name="metier.Personne" table="personne" lazy="false">
 		<id name="_id" type="int" column="id_pers">
-			<generator class="increment"/>
+			<generator class="native"/>
 		</id>
 		<property name="_nom" column="nom_pers" type="string" not-null="true"/>
 		<property name="_prenom" column="prenom_pers" type="string" not-null="true"/>
@@ -18,9 +18,9 @@
     	</joined-subclass>
 		<joined-subclass name="metier.Realisateur" table="realisateur">
         	<key column="id_realisateur"/>
-    		<set name="films" table="realisateur_film" inverse="false" lazy="false" fetch="select">
-	            <key column="id_film_film" />
-	            <many-to-many column="id_realisateur_film" class="metier.Personne" />
+    		<set name="films" table="realisateur_film" inverse="false" lazy="true" fetch="select">
+	            <key column="id_realisateur_film" />
+	            <many-to-many column="id_film_film" class="metier.Film" />
         	</set>
     	</joined-subclass>
 	</class>
