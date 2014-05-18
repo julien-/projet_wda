@@ -57,6 +57,9 @@ public class main {
 			System.out.println("HERE" + R1.get_id());
 			daoPersonne.save(R1);
 			
+			Film film = daoFilm.get(84);
+			System.out.println(film.getRealisateurs().toString());
+			
 			
 			//daoUtilisateur.save(U1);
 			/*

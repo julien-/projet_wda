@@ -18,7 +18,7 @@
 		<property name="_photoaffiche" column="photo_film" type="string" not-null="false"/>
 		<property name="_confirme" column="confirme" type="int" not-null="false"/>
 		<set name="realisateurs" table="realisateur_film"
-            inverse="true" lazy="true" fetch="select" cascade="all">
+            inverse="true" lazy="false" fetch="select" cascade="all">
             <key column="id_film_film" />
             <many-to-many column="id_realisateur_film" class="metier.Realisateur" />
         </set>

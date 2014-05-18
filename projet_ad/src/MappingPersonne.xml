@@ -18,7 +18,7 @@
     	</joined-subclass>
 		<joined-subclass name="metier.Realisateur" table="realisateur">
         	<key column="id_realisateur"/>
-    		<set name="films" table="realisateur_film" inverse="false" lazy="true" fetch="select">
+    		<set name="films" table="realisateur_film" inverse="false" lazy="false" fetch="select">
 	            <key column="id_realisateur_film" />
 	            <many-to-many column="id_film_film" class="metier.Film" />
         	</set>
