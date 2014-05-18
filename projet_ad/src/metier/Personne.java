@@ -1,7 +1,5 @@
 package metier;
 
-import java.io.File;
-import java.util.Date;
 import java.util.Set;
 
 public class Personne {

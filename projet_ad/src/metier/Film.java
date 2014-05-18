@@ -1,7 +1,5 @@
 package metier;
 
-import java.io.File;
-import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Set;
 

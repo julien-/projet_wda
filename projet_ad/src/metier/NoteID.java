@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class NoteID implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int _filmID;
 	private int _utilisateuIDr;
 	

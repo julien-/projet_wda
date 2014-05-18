@@ -1,8 +1,6 @@
 package dao;
-import java.util.ArrayList;
-import java.util.Collection;
 
-import metier.Film;
+import java.util.ArrayList;
 import metier.Utilisateur;
 
 public interface DAOUtilisateur 

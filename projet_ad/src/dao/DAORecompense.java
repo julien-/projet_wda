@@ -1,6 +1,5 @@
 package dao;
 import java.util.ArrayList;
-import java.util.Collection;
 
 import metier.Recompense;
 

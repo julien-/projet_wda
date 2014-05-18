@@ -1,10 +1,7 @@
 package dao.hbm;
 
 import java.util.ArrayList;
-import java.util.Collection;
-
 import org.hibernate.Session;
-
 import metier.Recompense;
 import dao.DAORecompense;
 

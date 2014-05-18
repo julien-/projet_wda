@@ -1,14 +1,9 @@
 package dao.hbm;
 
 import java.util.ArrayList;
-import java.util.Collection;
-
 import org.hibernate.Session;
-
 import metier.Film;
-import metier.Personne;
 import dao.DAOFilm;
-import dao.DAOPersonne;
 
 public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 

@@ -7,6 +7,7 @@ import org.hibernate.cfg.Configuration;
 public class DAOHBM {
 	private static SessionFactory sessionFactory = null;
 
+	@SuppressWarnings("deprecation")
 	public Session connect() throws Exception {
 		if (sessionFactory == null)
 			sessionFactory = new Configuration().configure().buildSessionFactory();
