@@ -14,8 +14,15 @@ public class Film {
 	int _confirme;
 	private Set<Acteur> acteurs = new HashSet<Acteur>();
 	private Set<Realisateur> realisateurs = new HashSet<Realisateur>();
+	private Set<Producteur> producteurs = new HashSet<Producteur>();
 	private Set<Note> _notes = new HashSet<Note>();
 
+	public Set<Producteur> getProducteurs() {
+		return producteurs;
+	}
+	public void setProducteurs(Set<Producteur> producteurs) {
+		this.producteurs = producteurs;
+	}
 	public Set<Note> get_notes() {
 		return _notes;
 	}

@@ -4,6 +4,7 @@ import metier.Acteur;
 import metier.Film;
 import metier.Note;
 import metier.Personne;
+import metier.Producteur;
 import metier.Realisateur;
 import metier.Recompense;
 import metier.RecompenseFilm;
@@ -34,6 +35,7 @@ public class main {
 			Realisateur R1 = new Realisateur("Matt", "Damon", "1991-06-07");
 			Acteur A1 = new Acteur("George", "Clooney", "1966-06-02");
 			Film F1 = new Film("Soldat Ryan", 1997, 200000.1);
+			Producteur P1 = new Producteur("Luc", "Besson", "1968-8-2");
 			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
 			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "2001");
 			Utilisateur U1 = new Utilisateur("test", "test", 0);
@@ -58,11 +60,14 @@ public class main {
 			System.out.println("HERE" + R1.get_id());
 			daoPersonne.save(R1);
 			
-			
 			Film film = daoFilm.get(84);
 			System.out.println(film.getRealisateurs().toString());
 			A1.getFilms().add(film);
 			daoPersonne.save(A1);
+			
+			System.out.println(film.getRealisateurs().toString());
+			P1.getFilms().add(film);
+			daoPersonne.save(P1);
 			
 			//daoUtilisateur.save(U1);
 			/*

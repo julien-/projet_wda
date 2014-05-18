@@ -17,6 +17,11 @@
 		<property name="_cout" column="cout_film" type="double" not-null="true"/>
 		<property name="_photoaffiche" column="photo_film" type="string" not-null="false"/>
 		<property name="_confirme" column="confirme" type="int" not-null="false"/>
+		<set name="producteurs" table="producteur_film"
+            inverse="true" lazy="false" fetch="select" cascade="all">
+            <key column="id_film_film" />
+            <many-to-many column="id_producteur_film" class="metier.Producteur" />
+        </set>
 		<set name="realisateurs" table="realisateur_film"
             inverse="true" lazy="false" fetch="select" cascade="all">
             <key column="id_film_film" />
