@@ -7,10 +7,9 @@
 		<id name="_id" type="int" column="id_film">
 			<generator class="native"/>
 		</id>
-	    <set name="_notes" table="notes_film" inverse="true"
-			lazy="true" fetch="select" cascade="all">
+	    <set name="_notes" inverse="true" lazy="false"  >
     		<key column="id_film_note" not-null="true" />
-        	<one-to-many class="metier.Note" />
+        	<one-to-many class="metier.Note"/>
     	</set>
 		<property name="_titre" column="titre_film" type="string" not-null="true"/>
 		<property name="_anneesortie" column="annee_film" type="int" not-null="true"/>

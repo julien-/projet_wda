@@ -32,28 +32,21 @@ public class main {
 		DAONote daoNote = new DAONoteHBM();
 		try 
 		{
-			Realisateur R1 = new Realisateur("Matt", "Damon", "1991-06-07");
-			Acteur A1 = new Acteur("George", "Clooney", "1966-06-02");
-			Film F1 = new Film("Soldat Ryan", 1997, 200000.1);
-			Producteur P1 = new Producteur("Luc", "Besson", "1968-8-2");
-			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
-			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "2001");
+			Realisateur R1 = new Realisateur("George", "Lucas", "1991-06-07");
+			Acteur A1 = new Acteur("Ewan", "McGregor", "1966-06-02");
+			Film F1 = new Film("Star Wars: La Menace Fantôme", 1997, 200000.1);
+			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
+			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
+			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
 			Utilisateur U1 = new Utilisateur("test", "test", 0);
-			Note note = new Note(12);
+			Note note = new Note(17);
 			
-			/*
+			
 			daoUtilisateur.save(U1);
 			daoFilm.save(F1);
 			note.set_film(F1);
 			note.set_utilisateur(U1);
-			*/
-			//daoNote.save(note);
-			/*
-			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
-			
-			daoRecompense.save(REC2);
-			*/
-
+			daoNote.save(note);
 			
 			daoFilm.save(F1);
 			R1.getFilms().add(F1);
@@ -69,7 +62,8 @@ public class main {
 			P1.getFilms().add(film);
 			daoPersonne.save(P1);
 			
-			//daoUtilisateur.save(U1);
+			
+			daoUtilisateur.save(U1);
 			/*
 			REC1.set_personne(R1);
 			daoRecompense.save(REC1);

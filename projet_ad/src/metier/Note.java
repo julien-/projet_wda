@@ -1,8 +1,9 @@
 package metier;
 
-public class Note {
+import java.io.Serializable;
 
-	NoteID _noteID = new NoteID();
+public class Note implements Serializable{
+
 	int _note;
 	private Utilisateur _utilisateur;
 	private Film _film;
@@ -29,14 +30,6 @@ public class Note {
 	
 	public Note(int note) {
 		_note = note;
-	}
-
-	public NoteID get_noteID() {
-		return _noteID;
-	}
-
-	public void set_noteID(NoteID _noteID) {
-		this._noteID = _noteID;
 	}
 
 	public int get_note() {

@@ -7,8 +7,7 @@
 		<id name="_id" type="int" column="id_util">
 			<generator class="increment"/>
 		</id>
-	    <set name="_notes" table="notes_film" inverse="true"
-			lazy="true" fetch="select" cascade="all">
+	    <set name="_notes" inverse="true" lazy="false" cascade="all">
     		<key column="id_util_note" not-null="true" />
         	<one-to-many class="metier.Note" />
     	</set>

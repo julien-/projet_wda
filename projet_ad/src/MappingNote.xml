@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
-							
+
 <hibernate-mapping>
 	<class name="metier.Note" table="notes_film" lazy="false">
-    <composite-id name="_noteID"
-        class="metier.NoteID">
-        <key-property name="_filmID" type="int" column="id_film_note" />
-        <key-property name="_utilisateuIDr" type="int" column="id_util_note" />
-    </composite-id>
-		<property name="_note" column="note" type="int" not-null="true"/>
-		   <many-to-one name="_utilisateur" column="id_util_note"
-	        class="metier.Utilisateur"
-	        insert="false" update="false" />
-		    <many-to-one name="_film" column="id_film_note"
-		        class="metier.Film"
-		        insert="false" update="false" />
+		<composite-id>
+			<key-many-to-one name="_film" column="id_film_note" />
+			<key-many-to-one name="_utilisateur" column="id_util_note" />
+		</composite-id>
+		<property name="_note" column="note" type="int" not-null="true" />
 	</class>
 </hibernate-mapping>
