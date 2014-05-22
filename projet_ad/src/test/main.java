@@ -41,7 +41,7 @@ public class main {
 			Utilisateur U1 = new Utilisateur("test", "test", 0);
 			Note note = new Note(17);
 			
-			
+			/*
 			daoUtilisateur.save(U1);
 			daoFilm.save(F1);
 			note.set_film(F1);
@@ -61,9 +61,9 @@ public class main {
 			System.out.println(film.getRealisateurs().toString());
 			P1.getFilms().add(film);
 			daoPersonne.save(P1);
+			*/
 			
-			
-			daoUtilisateur.save(U1);
+			//daoUtilisateur.save(U1);
 			/*
 			REC1.set_personne(R1);
 			daoRecompense.save(REC1);

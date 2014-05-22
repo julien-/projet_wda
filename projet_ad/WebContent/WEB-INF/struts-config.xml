@@ -12,9 +12,10 @@
 
 	<!-- ================================================ Form Bean Definitions -->
 
-	<form-beans type="org.apache.struts.action.ActionFormBean">
-		<form-bean name="filmsForm" type="struts.action.ActionFormAfficherFilms" />
+	<form-beans>
+		<form-bean name="beanRechercheFilms" type="struts.actionform.ActionFormAfficherFilms"/>
 	</form-beans>
+
 
 
 	<!-- ========================================= Global Exception Definitions -->
@@ -35,12 +36,15 @@
 
 	<action-mappings>
 		
-		<action path="/action_recherche_films" parameter="" input="/index.jsp" scope="request" name="loginForm" type="struts.action.ActionRechercheFilms">
-			<forward name="afficherfilms" path="AfficherFilms.jsp" redirect="false" />
+
+		<action path="/recherche_films" 
+				type="struts.action.ActionAfficherFilms"
+			name="beanRechercheFilms">
+			<forward name="AfficherFilms" path="/vues/AfficherFilms.jsp"></forward>
 		</action>
+		
 	
 	</action-mappings>
-
 
 	<!-- ======================================== Message Resources Definitions -->
 

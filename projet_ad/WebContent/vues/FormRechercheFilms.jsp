@@ -9,9 +9,9 @@
 </head>
 
 <body>
-	<html:form action="/AfficherFilms.jsp">
+	<html:form action="/recherche_films.do">
 		<h2>Recherche de films</h2>
-		<label for="nom">Titre</label>
+		<label for="titre">Titre</label>
 		<html:text property="titre"></html:text>
 		<html:submit>Rechercher</html:submit>
 	</html:form>

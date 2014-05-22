@@ -5,14 +5,35 @@
 <html:html>
 
 <head>
-	<title><bean:message key="bienvenue.title"/></title>
+	<title><bean:message key="afficherfilms.title"/></title>
 </head>
 
 <body>
-	<h3><bean:message key="bienvenue.titre" /></h3>
-	<p><bean:message key="bienvenue.message" /></p>
-	<a href="http://localhost:8080/projet_adw/FormRechercheFilms.do">Afficher tous les films</a>
+
+<center>
+<h1>Resulats recherche</h1>
+<p />
+<table border="1">
+	<thead>
+		<tr>
+			<th>Titre</th>
+			<th>Annee</th>
+			<th>Cout</th>
+		</tr>
+	</thead>
+	<logic:iterate id="film" name="FILMS">
+		<tr>
+			<td><bean:write name="film" property="_titre" /></td>
+			<td><bean:write name="film" property="_anneesortie" /></td>
+			<td><bean:write name="film" property="_cout" /></td>
+		</tr>
+	</logic:iterate>
+</table>
+<p />
+</center>
+
 </body>
+
 
 </html:html>
 

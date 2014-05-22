@@ -11,7 +11,7 @@
 <body>
 	<h3><bean:message key="bienvenue.titre" /></h3>
 	<p><bean:message key="bienvenue.message" /></p>
-	<a href="http://localhost:8080/projet_adw/films.do">Afficher tous les films</a>
+	<a href="http://localhost:8080/projet_adw/vues/FormRechercheFilms.jsp">Rechercher un film</a>
 </body>
 
 </html:html>

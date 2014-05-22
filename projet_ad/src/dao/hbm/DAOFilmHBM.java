@@ -43,7 +43,7 @@ public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Film>	tabIdFilm = (ArrayList<Film>) session.createQuery("FROM Film").list();
+		ArrayList<Film>	tabIdFilm = (ArrayList<Film>) session.createQuery("FROM Film WHERE titre_film LIKE :search").setParameter("search", "%"+string+"%").list();
 		close(session);
 
 		System.out.println("Coucou");
