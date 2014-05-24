@@ -17,14 +17,14 @@ import dao.hbm.DAOPersonneHBM;
 /**
  * Servlet implementation class maServlet
  */
-@WebServlet("/maServlet")
-public class maServlet extends HttpServlet {
+@WebServlet("/DetailsFilm")
+public class DetailsFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public maServlet() {
+    public DetailsFilm() {
         super();
         // TODO Auto-generated constructor stub
     }
