@@ -27,19 +27,6 @@
 			<html:option value="producteur">Producteur</html:option>
 			<html:option value="realisateur">Realisateur</html:option>
 		</html:select>
-			<html:select property="film">
-   <%
-   DAOFilm films = new DAOFilmHBM();
-   ArrayList<Film> listeFilms = films.load("");
-   
-   for (Film f : listeFilms) 
-   {
-     %>
-      <html:option value="<%=Integer.toString(f.get_id())%>"><%=f.get_titre()%></html:option>  
-      <%
- 	}
-     %>
-     </html:select>
 		<html:submit>Ajouter</html:submit>
 	</html:form>
 </body>
