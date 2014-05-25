@@ -2,6 +2,7 @@ package test;
 
 import metier.Acteur;
 import metier.Film;
+import metier.IUtilisateur;
 import metier.Note;
 import metier.Producteur;
 import metier.Realisateur;
@@ -11,9 +12,11 @@ import metier.Utilisateur;
 import dao.DAOFilm;
 import dao.DAOPersonne;
 import dao.DAORecompense;
+import dao.DAOUtilisateur;
 import dao.hbm.DAOFilmHBM;
 import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAORecompenseHBM;
+import dao.hbm.DAOUtilisateurHBM;
 
 public class main {
 
@@ -22,6 +25,7 @@ public class main {
 		DAOPersonne daoPersonne = new DAOPersonneHBM();
 		DAOFilm daoFilm = new DAOFilmHBM();
 		DAORecompense daoRecompense = new DAORecompenseHBM();
+		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
 		try 
 		{
 			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
@@ -31,7 +35,7 @@ public class main {
 			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
 			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
 			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
-			Utilisateur U1 = new Utilisateur("test2", "test2");
+			IUtilisateur U1 = new Utilisateur("zerock", "zerock");
 			Note note = new Note(17);
 
 			/*
@@ -50,14 +54,20 @@ public class main {
 			System.out.println("HERE" + R1.get_id());
 			daoPersonne.save(R1);
 */
-			
+			if (daoUtilisateur.get("zerock", "zerock"))
+			{
+				System.out.println("trouve");
+			}
+			else
+				System.out.println("pas trouve");
+			/*
 			REC1.set_personne(R1);
 			daoRecompense.save(REC1);
 			
 			REC2.set_film(F1);
 			daoRecompense.save(REC2);
+			*/
 			
-
 			System.out.println("fini");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Acteur;
+import metier.IUtilisateur;
 import metier.Producteur;
 import metier.Realisateur;
 import metier.Utilisateur;
@@ -23,7 +24,7 @@ public class  ActionInscriptionUtilisateur extends Action
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception
 	{
-		Utilisateur utilisateur = null;
+		IUtilisateur utilisateur = null;
 		daoUtilisateur = new DAOUtilisateurHBM();
 		ActionFormInscriptionUtilisateur formInscription = (ActionFormInscriptionUtilisateur)form;
 		
