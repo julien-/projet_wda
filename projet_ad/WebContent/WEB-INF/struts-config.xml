@@ -13,9 +13,13 @@
 	<!-- ================================================ Form Bean Definitions -->
 
 	<form-beans>
-		<form-bean name="beanRechercheFilms" type="struts.actionform.ActionFormAfficherFilms"/>
-		<form-bean name="beanAjoutFilms" type="struts.actionform.ActionFormAjoutFilm"/>
-		<form-bean name="beanAjoutPersonne" type="struts.actionform.ActionFormAjoutPersonne"/>
+		<form-bean name="beanRechercheFilms" type="struts.actionform.ActionFormAfficherFilms" />
+		<form-bean name="beanAjoutFilms" type="struts.actionform.ActionFormAjoutFilm" />
+		<form-bean name="beanAjoutPersonne" type="struts.actionform.ActionFormAjoutPersonne" />
+		<form-bean name="beanInscriptionUtilisateur"
+			type="struts.actionform.ActionFormInscriptionUtilisateur" />
+		<form-bean name="beanConnexionUtilisateur"
+			type="struts.actionform.ActionFormConnexionUtilisateur" />
 	</form-beans>
 
 
@@ -37,27 +41,34 @@
 	<!-- =========================================== Action Mapping Definitions -->
 
 	<action-mappings>
-		
 
-		<action path="/recherche_films" 
-				type="struts.action.ActionAfficherFilms"
+
+		<action path="/recherche_films" type="struts.action.ActionAfficherFilms"
 			name="beanRechercheFilms">
 			<forward name="AfficherFilms" path="/vues/AfficherFilms.jsp"></forward>
 		</action>
-		
-		<action path="/ajout_films" 
-				type="struts.action.ActionAjoutFilm"
+
+		<action path="/ajout_films" type="struts.action.ActionAjoutFilm"
 			name="beanAjoutFilms">
 			<forward name="success" path="/vues/Success.jsp"></forward>
 		</action>
-		
-		<action path="/ajout_personne" 
-				type="struts.action.ActionAjoutPersonne"
+
+		<action path="/ajout_personne" type="struts.action.ActionAjoutPersonne"
 			name="beanAjoutPersonne">
 			<forward name="success" path="/vues/Success.jsp"></forward>
 		</action>
-		
-	
+
+		<!-- INDEX -->
+		<action path="/inscription_utilisateur" type="struts.action.ActionInscriptionUtilisateur"
+			name="beanInscriptionUtilisateur">
+			<forward name="success" path="/vues/Success.jsp"></forward>
+		</action>
+		<action path="/connexion_utilisateur" type="struts.action.ActionConnexionUtilisateur"
+			name="beanConnexionUtilisateur">
+			<forward name="success" path="/vues/Success.jsp"></forward>
+		</action>
+
+
 	</action-mappings>
 
 	<!-- ======================================== Message Resources Definitions -->

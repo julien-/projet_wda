@@ -495,7 +495,6 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id_util` int(11) NOT NULL AUTO_INCREMENT,
   `login_util` varchar(200) NOT NULL,
   `pass_util` varchar(200) NOT NULL,
-  `pro` int(11) NOT NULL,
   PRIMARY KEY (`id_util`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -504,13 +503,13 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id_util`, `login_util`, `pass_util`, `pro`) VALUES
-(1, 'test', 'test', 0),
-(2, 'test', 'test', 0),
-(3, 'test', 'test', 0),
-(4, 'test', 'test', 0),
-(5, 'test', 'test', 0),
-(6, 'test', 'test', 0),
-(7, 'test', 'test', 0);
+(1, 'test', 'test'),
+(2, 'test', 'test'),
+(3, 'test', 'test'),
+(4, 'test', 'test'),
+(5, 'test', 'test'),
+(6, 'test', 'test'),
+(7, 'test', 'test');
 
 --
 -- Contraintes pour les tables exportées

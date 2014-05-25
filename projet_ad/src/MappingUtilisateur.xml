@@ -13,6 +13,5 @@
     	</set>
 		<property name="_pseudo" column="login_util" type="string" not-null="true"/>
 		<property name="_mdp" column="pass_util" type="string" not-null="true"/>
-		<property name="_pro" column="pro" type="int" not-null="true"/>
 	</class>
 </hibernate-mapping>

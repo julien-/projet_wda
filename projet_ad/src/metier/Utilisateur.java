@@ -8,17 +8,16 @@ public class Utilisateur {
 	int _id;
 	String _pseudo;
 	String _mdp;
-	int _pro;
+	
 	private Set<Note> _notes = new HashSet<Note>();
 	public Utilisateur() {
 
 	}
 
 	
-	public Utilisateur(String _pseudo, String _mdp, int _pro) {
+	public Utilisateur(String _pseudo, String _mdp) {
 		this._pseudo = _pseudo;
 		this._mdp = _mdp;
-		this._pro = _pro;
 	}
 	
 	
@@ -58,13 +57,6 @@ public class Utilisateur {
 		this._mdp = _mdp;
 	}
 
-	public int get_pro() {
-		return _pro;
-	}
-
-	public void set_pro(int _pro) {
-		this._pro = _pro;
-	}
 
 
 

@@ -1,9 +1,14 @@
 package dao.hbm;
 
 import java.util.ArrayList;
+import java.util.Collection;
+
 import org.hibernate.Session;
+
 import metier.Film;
+import metier.Personne;
 import dao.DAOFilm;
+import dao.DAOPersonne;
 
 public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 
@@ -43,12 +48,12 @@ public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Film>	tabIdFilm = (ArrayList<Film>) session.createQuery("FROM Film WHERE titre_film LIKE :search").setParameter("search", "%"+string+"%").list();
+		ArrayList<Film>	tabIdFilm = (ArrayList<Film>) session.createQuery("FROM Film").list();
 		close(session);
 
 		System.out.println("Coucou");
 		System.out.println(tabIdFilm);
-
+		
 		return tabIdFilm;
 	}
 
