@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Dim 18 Mai 2014 à 14:33
+-- Généré le :  Dim 25 Mai 2014 à 23:49
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -37,7 +37,13 @@ CREATE TABLE IF NOT EXISTS `acteur` (
 
 INSERT INTO `acteur` (`id_acteur`) VALUES
 (86),
-(88);
+(88),
+(91),
+(94),
+(97),
+(100),
+(102),
+(104);
 
 -- --------------------------------------------------------
 
@@ -58,7 +64,11 @@ CREATE TABLE IF NOT EXISTS `acteur_film` (
 
 INSERT INTO `acteur_film` (`id_acteur_film`, `id_film_film`) VALUES
 (86, 84),
-(88, 84);
+(88, 84),
+(91, 84),
+(94, 84),
+(97, 84),
+(100, 84);
 
 -- --------------------------------------------------------
 
@@ -74,7 +84,7 @@ CREATE TABLE IF NOT EXISTS `film` (
   `photo_film` varchar(200) DEFAULT NULL,
   `confirme` int(11) NOT NULL,
   PRIMARY KEY (`id_film`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=92 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=104 ;
 
 --
 -- Contenu de la table `film`
@@ -171,7 +181,19 @@ INSERT INTO `film` (`id_film`, `titre_film`, `annee_film`, `cout_film`, `photo_f
 (88, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
 (89, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
 (90, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
-(91, 'Soldat Ryan', 1997, 200000.1, NULL, 0);
+(91, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(92, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(93, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(94, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(95, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(96, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(97, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(98, 'Soldat Ryan', 1997, 200000.1, NULL, 0),
+(99, 'Star Wars: La Menace Fantôme', 1997, 200000.1, NULL, 0),
+(100, 'Star Wars: La Menace Fantôme', 1997, 200000.1, NULL, 0),
+(101, 'soldat', 1996, 14555, NULL, 0),
+(102, 'Titanic', 1997, 200000.1, NULL, 0),
+(103, 'Titanic', 1997, 200000.1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -183,9 +205,19 @@ CREATE TABLE IF NOT EXISTS `notes_film` (
   `id_util_note` int(11) NOT NULL,
   `id_film_note` int(11) NOT NULL,
   `note` int(11) NOT NULL,
+  `confirme` int(11) NOT NULL,
   PRIMARY KEY (`id_util_note`,`id_film_note`),
   KEY `id_film_note` (`id_film_note`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `notes_film`
+--
+
+INSERT INTO `notes_film` (`id_util_note`, `id_film_note`, `note`, `confirme`) VALUES
+(12, 97, 12, 0),
+(14, 99, 17, 0),
+(17, 102, 17, 0);
 
 -- --------------------------------------------------------
 
@@ -201,7 +233,7 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `photo_pers` varchar(200) DEFAULT NULL,
   `confirme` int(11) NOT NULL,
   PRIMARY KEY (`id_pers`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=90 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=105 ;
 
 --
 -- Contenu de la table `personne`
@@ -279,7 +311,22 @@ INSERT INTO `personne` (`id_pers`, `nom_pers`, `prenom_pers`, `date_pers`, `phot
 (86, 'George', 'Clooney', '1966-06-02', NULL, 0),
 (87, 'Matt', 'Damon', '1991-06-07', NULL, 0),
 (88, 'George', 'Clooney', '1966-06-02', NULL, 0),
-(89, 'Luc', 'Besson', '1968-8-2', NULL, 0);
+(89, 'Luc', 'Besson', '1968-8-2', NULL, 0),
+(90, 'Matt', 'Damon', '1991-06-07', NULL, 0),
+(91, 'George', 'Clooney', '1966-06-02', NULL, 0),
+(92, 'Luc', 'Besson', '1968-8-2', NULL, 0),
+(93, 'Matt', 'Damon', '1991-06-07', NULL, 0),
+(94, 'George', 'Clooney', '1966-06-02', NULL, 0),
+(95, 'Luc', 'Besson', '1968-8-2', NULL, 0),
+(96, 'Matt', 'Damon', '1991-06-07', NULL, 0),
+(97, 'George', 'Clooney', '1966-06-02', NULL, 0),
+(98, 'Luc', 'Besson', '1968-8-2', NULL, 0),
+(99, 'George', 'Lucas', '1991-06-07', NULL, 0),
+(100, 'Ewan', 'McGregor', '1966-06-02', NULL, 0),
+(101, 'George', 'Lucas', '1968-8-2', NULL, 0),
+(102, 'lol', 'lol', '1225', NULL, 0),
+(103, 'hhhh', 'uuuu', '01-85-1669', NULL, 0),
+(104, 'Ewan', 'McGregor', '1966-06-02', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -297,7 +344,11 @@ CREATE TABLE IF NOT EXISTS `producteur` (
 --
 
 INSERT INTO `producteur` (`id_producteur`) VALUES
-(89);
+(89),
+(92),
+(95),
+(98),
+(101);
 
 -- --------------------------------------------------------
 
@@ -317,7 +368,11 @@ CREATE TABLE IF NOT EXISTS `producteur_film` (
 --
 
 INSERT INTO `producteur_film` (`id_producteur_film`, `id_film_film`) VALUES
-(89, 84);
+(89, 84),
+(92, 84),
+(95, 84),
+(98, 84),
+(101, 84);
 
 -- --------------------------------------------------------
 
@@ -381,7 +436,12 @@ INSERT INTO `realisateur` (`id_realisateur`) VALUES
 (83),
 (84),
 (85),
-(87);
+(87),
+(90),
+(93),
+(96),
+(99),
+(103);
 
 -- --------------------------------------------------------
 
@@ -411,7 +471,11 @@ INSERT INTO `realisateur_film` (`id_realisateur_film`, `id_film_film`) VALUES
 (83, 88),
 (84, 89),
 (85, 90),
-(87, 91);
+(87, 91),
+(90, 92),
+(93, 96),
+(96, 98),
+(99, 100);
 
 -- --------------------------------------------------------
 
@@ -425,7 +489,7 @@ CREATE TABLE IF NOT EXISTS `recompense` (
   `raison_rec` varchar(200) NOT NULL,
   `annee_rec` varchar(4) NOT NULL,
   PRIMARY KEY (`id_rec`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `recompense`
@@ -439,7 +503,9 @@ INSERT INTO `recompense` (`id_rec`, `titre_rec`, `raison_rec`, `annee_rec`) VALU
 (5, 'Oscar', 'Meilleur acteur', '2001'),
 (6, 'Oscar', 'MeilleurE musique', '2001'),
 (7, 'Oscar', 'Meilleur acteur', '2001'),
-(8, 'Oscar', 'Meilleure musique', '2001');
+(8, 'Oscar', 'Meilleure musique', '2001'),
+(9, 'Oscar', 'Meilleur acteur', '1999'),
+(10, 'Oscar', 'Meilleure musique', '1999');
 
 -- --------------------------------------------------------
 
@@ -450,6 +516,7 @@ INSERT INTO `recompense` (`id_rec`, `titre_rec`, `raison_rec`, `annee_rec`) VALU
 CREATE TABLE IF NOT EXISTS `recompense_film` (
   `id_recompense_recfilm` int(11) NOT NULL,
   `id_film_recfilm` int(11) NOT NULL,
+  `confirme` int(11) NOT NULL,
   PRIMARY KEY (`id_recompense_recfilm`,`id_film_recfilm`),
   KEY `id_film_recfilm` (`id_film_recfilm`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -458,9 +525,10 @@ CREATE TABLE IF NOT EXISTS `recompense_film` (
 -- Contenu de la table `recompense_film`
 --
 
-INSERT INTO `recompense_film` (`id_recompense_recfilm`, `id_film_recfilm`) VALUES
-(6, 69),
-(8, 74);
+INSERT INTO `recompense_film` (`id_recompense_recfilm`, `id_film_recfilm`, `confirme`) VALUES
+(6, 69, 0),
+(8, 74, 0),
+(10, 103, 0);
 
 -- --------------------------------------------------------
 
@@ -471,6 +539,7 @@ INSERT INTO `recompense_film` (`id_recompense_recfilm`, `id_film_recfilm`) VALUE
 CREATE TABLE IF NOT EXISTS `recompense_personne` (
   `id_personne_recpers` int(11) NOT NULL,
   `id_recompense_recpers` int(11) NOT NULL,
+  `confirme` int(11) NOT NULL,
   PRIMARY KEY (`id_personne_recpers`,`id_recompense_recpers`),
   KEY `id_recompense_recpers` (`id_recompense_recpers`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -479,11 +548,12 @@ CREATE TABLE IF NOT EXISTS `recompense_personne` (
 -- Contenu de la table `recompense_personne`
 --
 
-INSERT INTO `recompense_personne` (`id_personne_recpers`, `id_recompense_recpers`) VALUES
-(66, 3),
-(67, 4),
-(68, 5),
-(74, 7);
+INSERT INTO `recompense_personne` (`id_personne_recpers`, `id_recompense_recpers`, `confirme`) VALUES
+(66, 3, 0),
+(67, 4, 0),
+(68, 5, 0),
+(74, 7, 0),
+(104, 9, 0);
 
 -- --------------------------------------------------------
 
@@ -496,20 +566,30 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `login_util` varchar(200) NOT NULL,
   `pass_util` varchar(200) NOT NULL,
   PRIMARY KEY (`id_util`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Contenu de la table `utilisateur`
 --
 
-INSERT INTO `utilisateur` (`id_util`, `login_util`, `pass_util`, `pro`) VALUES
+INSERT INTO `utilisateur` (`id_util`, `login_util`, `pass_util`) VALUES
 (1, 'test', 'test'),
 (2, 'test', 'test'),
 (3, 'test', 'test'),
 (4, 'test', 'test'),
 (5, 'test', 'test'),
 (6, 'test', 'test'),
-(7, 'test', 'test');
+(7, 'test', 'test'),
+(8, 'test', 'test'),
+(9, 'test', 'test'),
+(10, 'test', 'test'),
+(11, 'test', 'test'),
+(12, 'test', 'test'),
+(13, 'test', 'test'),
+(14, 'test', 'test'),
+(15, 'test', 'test'),
+(16, 'zerock', 'zerock'),
+(17, 'zerock', 'zerock');
 
 --
 -- Contraintes pour les tables exportées
@@ -525,8 +605,8 @@ ALTER TABLE `acteur`
 -- Contraintes pour la table `acteur_film`
 --
 ALTER TABLE `acteur_film`
-  ADD CONSTRAINT `acteur_film_ibfk_2` FOREIGN KEY (`id_film_film`) REFERENCES `film` (`id_film`),
-  ADD CONSTRAINT `acteur_film_ibfk_1` FOREIGN KEY (`id_acteur_film`) REFERENCES `acteur` (`id_acteur`);
+  ADD CONSTRAINT `acteur_film_ibfk_1` FOREIGN KEY (`id_acteur_film`) REFERENCES `acteur` (`id_acteur`),
+  ADD CONSTRAINT `acteur_film_ibfk_2` FOREIGN KEY (`id_film_film`) REFERENCES `film` (`id_film`);
 
 --
 -- Contraintes pour la table `notes_film`
@@ -545,8 +625,8 @@ ALTER TABLE `producteur`
 -- Contraintes pour la table `producteur_film`
 --
 ALTER TABLE `producteur_film`
-  ADD CONSTRAINT `producteur_film_ibfk_2` FOREIGN KEY (`id_film_film`) REFERENCES `film` (`id_film`),
-  ADD CONSTRAINT `producteur_film_ibfk_1` FOREIGN KEY (`id_producteur_film`) REFERENCES `producteur` (`id_producteur`);
+  ADD CONSTRAINT `producteur_film_ibfk_1` FOREIGN KEY (`id_producteur_film`) REFERENCES `producteur` (`id_producteur`),
+  ADD CONSTRAINT `producteur_film_ibfk_2` FOREIGN KEY (`id_film_film`) REFERENCES `film` (`id_film`);
 
 --
 -- Contraintes pour la table `realisateur`
