@@ -60,8 +60,10 @@ public class DetailsFilm extends HttpServlet {
 			Set<Realisateur> tabRealisateurs= film.getRealisateurs();
 			Set<Producteur> tabProducteurs= film.getProducteurs();
 			
-			out.println("<HTML><BODY><CENTER><H3>Fiche Film : "+ film.get_titre() +"</H3>");
-			
+			out.println("<HTML><BODY><CENTER>");
+			out.println("<H1>Fiche Film : "+ film.get_titre() +"</H1>");
+			out.println("<H3>Cout : "+ film.get_cout() +"</H3>");
+			out.println("<H3>Date sortie : "+ film.get_anneesortie() +"</H3>");
 			
 			if(!tabActeurs.isEmpty())
 			{
@@ -73,7 +75,7 @@ public class DetailsFilm extends HttpServlet {
 			}
 			else
 			{
-				out.println("Aucun Acteur<BR/>");
+				out.println("Aucun Acteur<BR/><BR/>");
 			}
 			
 			
@@ -83,11 +85,11 @@ public class DetailsFilm extends HttpServlet {
 				for (Personne p : tabRealisateurs){
 					HTMLLigneTableauP(out,p);
 				}
-				out.println("</TABLE><BR/>");
+				out.println("</TABLE><BR/><BR/>");
 			}
 			else
 			{
-				out.println("Aucun Réalisateur<BR/>");
+				out.println("Aucun Réalisateur<BR/><BR/>");
 			}
 			
 			if(!tabProducteurs.isEmpty())
@@ -96,11 +98,11 @@ public class DetailsFilm extends HttpServlet {
 				for (Personne p : tabProducteurs){
 					HTMLLigneTableauP(out,p);
 				}
-				out.println("</TABLE><BR/>");
+				out.println("</TABLE><BR/><BR/>");
 			}
 			else
 			{
-				out.println("Aucun Producteur<BR/>");
+				out.println("Aucun Producteur<BR/><BR/>");
 			}
 			
 			if(!tabRecompense.isEmpty())
@@ -109,7 +111,7 @@ public class DetailsFilm extends HttpServlet {
 				for (Recompense r : tabRecompense){
 					HTMLLigneTableauR(out,r);
 				}
-				out.println("</TABLE><BR/>");
+				out.println("</TABLE>");
 			}
 			else
 			{
@@ -137,6 +139,6 @@ public class DetailsFilm extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauP(PrintWriter out,Personne p){
-		out.println("<TR><TD>"+p.get_nom()+"</TD><TD>"+p.get_prenom()+"</TD><TD>"+p.get_datenaiss()+"</TD><TD><A HREF=/projet_adw/DetailActeur?id="+p.get_id()+">Detail</A></TD></TR>");
+		out.println("<TR><TD>"+p.get_nom()+"</TD><TD>"+p.get_prenom()+"</TD><TD>"+p.get_datenaiss()+"</TD><TD><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">Detail</A></TD></TR>");
 	}
 }

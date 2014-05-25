@@ -27,14 +27,14 @@ import dao.hbm.DAORecompenseHBM;
 /**
  * Servlet implementation class DetailActeur
  */
-@WebServlet("/DetailActeur")
-public class DetailActeur extends HttpServlet {
+@WebServlet("/DetailPersonne")
+public class DetailPersonne extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DetailActeur() {
+    public DetailPersonne() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -57,36 +57,30 @@ public class DetailActeur extends HttpServlet {
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecpersonne(id);
 			Set<Film> tabFilm = null;
 			
-			if(personne.equals(Acteur.class))
+			String typepersonne = "";
+			
+			if(personne.getClass().equals(Acteur.class))
 			{
 				Acteur acteur = (Acteur) personne;
 				tabFilm = acteur.getFilms();
+				typepersonne="Acteur";
 			}
-			else if(personne.equals(Realisateur.class))
+			else if(personne.getClass().equals(Realisateur.class))
 			{
 				Realisateur realisateur = (Realisateur) personne;
 				tabFilm = realisateur.getFilms();
+				typepersonne="Realisateur";
 			}
-			else if(personne.equals(Producteur.class))
+			else if(personne.getClass().equals(Producteur.class))
 			{
 				Producteur producteur = (Producteur) personne;
 				tabFilm = producteur.getFilms();
+				typepersonne="Producteur";
 			}
 			
-			out.println("<HTML><BODY><CENTER><H3>Fiche "+ personne.get_nom() +" "+ personne.get_prenom() +"</H3>");
-			
-			if(!tabRecompense.isEmpty())
-			{
-				out.println("<TABLE border=\"1\"><CAPTION> Recompenses </CAPTION><TR><TH>Titre</TH><TH>Raison</TH><TH>Date</TH></TR");
-				for (Recompense r : tabRecompense){
-					HTMLLigneTableauR(out,r);
-				}
-				out.println("</TABLE><BR/>");
-			}
-			else
-			{
-				out.println("Aucune récompense");
-			}
+			out.println("<HTML><BODY><CENTER>");
+			out.println("<H1>Fiche "+ typepersonne +" : "+ personne.get_nom() +" "+ personne.get_prenom() +"</H1>");
+			out.println("<H3>Date naissance : "+ personne.get_datenaiss() +"</H3>");
 			
 			if(!tabFilm.isEmpty())
 			{
@@ -94,11 +88,24 @@ public class DetailActeur extends HttpServlet {
 				for (Film f : tabFilm){
 					HTMLLigneTableauF(out,f);
 				}
-				out.println("</TABLE><BR/>");
+				out.println("</TABLE><BR/><BR/>");
 			}
 			else
 			{
-				out.println("Aucun Film");
+				out.println("Aucun Film<BR/><BR/>");
+			}
+			
+			if(!tabRecompense.isEmpty())
+			{
+				out.println("<TABLE border=\"1\"><CAPTION> Recompenses </CAPTION><TR><TH>Titre</TH><TH>Raison</TH><TH>Date</TH></TR");
+				for (Recompense r : tabRecompense){
+					HTMLLigneTableauR(out,r);
+				}
+				out.println("</TABLE>");
+			}
+			else
+			{
+				out.println("Aucune récompense");
 			}
 			
 			out.println("</CENTER></BODY></HTML>");
@@ -121,7 +128,7 @@ public class DetailActeur extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauF(PrintWriter out,Film f){
-		out.println("<TR><TD>"+f.get_titre()+"</TD><TD>"+f.get_cout()+"</TD><TD>"+f.get_anneesortie()+"</TD></TR>");
+		out.println("<TR><TD>"+f.get_titre()+"</TD><TD>"+f.get_cout()+"</TD><TD>"+f.get_anneesortie()+"</TD><TD><A HREF=/projet_adw/DetailsFilm?id="+f.get_id()+">Detail</A></TD></TR>");
 	}
 
 }
