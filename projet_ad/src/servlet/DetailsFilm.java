@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Set;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,10 +11,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import metier.Acteur;
+import metier.Film;
 import metier.Personne;
+import metier.Producteur;
+import metier.Realisateur;
 import metier.Recompense;
+import dao.DAOFilm;
 import dao.DAOPersonne;
 import dao.DAORecompense;
+import dao.hbm.DAOFilmHBM;
 import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAORecompenseHBM;
 
@@ -40,21 +47,23 @@ public class DetailsFilm extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		DAORecompense daoRecompense = new DAORecompenseHBM();
-		DAOPersonne daoPersonne = new DAOPersonneHBM();
+		DAOFilm daoFilm = new DAOFilmHBM();
 		
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
 		try {
+			
+			Film film = daoFilm.get(id);
 			ArrayList<Recompense> tabRecompense= daoRecompense.load(id);
-			//ArrayList<Personne> tabActeurs= daoPersonne.load(id, "a");
-			//ArrayList<Personne> tabRealisateurs= daoPersonne.load(id, "r");
-			//ArrayList<Personne> tabProducteurs= daoPersonne.load(id, "p");
 			
-			out.println("<HTML><BODY><CENTER>");
+			Set<Acteur> tabActeurs= film.getActeurs();
+			Set<Realisateur> tabRealisateurs= film.getRealisateurs();
+			Set<Producteur> tabProducteurs= film.getProducteurs();
+			
+			out.println("<HTML><BODY><CENTER><H3>Fiche Film : "+ film.get_titre() +"</H3>");
 			
 			
-			
-			/*if(!tabActeurs.isEmpty())
+			if(!tabActeurs.isEmpty())
 			{
 				out.println("<TABLE border=\"1\"><CAPTION> Acteurs </CAPTION><TR><TH>Nom</TH><TH>Prénom</TH><TH>Date Naissance</TH></TR");
 				for (Personne p : tabActeurs){
@@ -66,6 +75,7 @@ public class DetailsFilm extends HttpServlet {
 			{
 				out.println("Aucun Acteur<BR/>");
 			}
+			
 			
 			if(!tabRealisateurs.isEmpty())
 			{
@@ -91,7 +101,7 @@ public class DetailsFilm extends HttpServlet {
 			else
 			{
 				out.println("Aucun Producteur<BR/>");
-			}*/
+			}
 			
 			if(!tabRecompense.isEmpty())
 			{
