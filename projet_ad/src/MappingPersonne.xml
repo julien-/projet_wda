@@ -12,6 +12,7 @@
 		<property name="_datenaiss" column="date_pers" type="string" not-null="true"/>
 		<property name="_photo" column="photo_pers" type="string" not-null="false"/>
 		<property name="_confirme" column="confirme" type="int" not-null="false"/>
+		
 	    <joined-subclass name="metier.Producteur" table="producteur">
         	<key column="id_producteur"/>
       	    <set name="films" table="producteur_film" inverse="false" lazy="false" fetch="select">
@@ -19,6 +20,7 @@
 	            <many-to-many column="id_film_film" class="metier.Film" />
         	</set>
     	</joined-subclass>
+    	
 	    <joined-subclass name="metier.Acteur" table="acteur">
         	<key column="id_acteur"/>
       	    <set name="films" table="acteur_film" inverse="false" lazy="false" fetch="select">
@@ -26,6 +28,7 @@
 	            <many-to-many column="id_film_film" class="metier.Film" />
         	</set>
     	</joined-subclass>
+    	
 		<joined-subclass name="metier.Realisateur" table="realisateur">
         	<key column="id_realisateur"/>
     		<set name="films" table="realisateur_film" inverse="false" lazy="false" fetch="select">
@@ -33,5 +36,6 @@
 	            <many-to-many column="id_film_film" class="metier.Film" />
         	</set>
     	</joined-subclass>
+    	
 	</class>
 </hibernate-mapping>

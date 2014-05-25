@@ -1,7 +1,9 @@
 package dao.hbm;
 
 import java.util.ArrayList;
+
 import org.hibernate.Session;
+
 import metier.Recompense;
 import dao.DAORecompense;
 
@@ -39,14 +41,14 @@ public class DAORecompenseHBM extends DAOHBM implements DAORecompense {
 	}
 	
 
-	public ArrayList<Recompense> load(String string) throws Exception {
-		Session	session = connect();
+	public ArrayList<Recompense> load(int code) throws Exception {
+		Session	session = connect();		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Recompense>	tabCodePers = (ArrayList<Recompense>) session.createQuery("FROM Recompense").list();
+		ArrayList<Recompense>	tabCodeRec = (ArrayList<Recompense>) session.createQuery("FROM Recompense WHERE id_film_recfilm LIKE :search").setParameter("search", "%"+code+"%").list();
 		close(session);
 
-		return tabCodePers;
+		return tabCodeRec;
 	}
 
 

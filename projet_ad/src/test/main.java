@@ -2,11 +2,12 @@ package test;
 
 import metier.Acteur;
 import metier.Film;
-import metier.Personne;
+import metier.Note;
+import metier.Producteur;
 import metier.Realisateur;
-import metier.Recompense;
 import metier.RecompenseFilm;
 import metier.RecompensePersonne;
+import metier.Utilisateur;
 import dao.DAOFilm;
 import dao.DAOPersonne;
 import dao.DAORecompense;
@@ -25,11 +26,21 @@ public class main {
 		{
 			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
 			Film F1 = new Film("Titanic", 1997, 200000.1);
-			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
-			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "MeilleurErzerzetzetrze musique", "2001");
+			Acteur A1 = new Acteur("Ewan", "McGregor", "1966-06-02");
 			
+			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
+			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
+			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
+			Utilisateur U1 = new Utilisateur("test2", "test2");
+			Note note = new Note(17);
+
 			/*
 			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
+			daoUtilisateur.save(U1);
+			daoFilm.save(F1);
+			note.set_film(F1);
+			note.set_utilisateur(U1);
+			daoNote.save(note);
 			
 			daoRecompense.save(REC2);
 			*/

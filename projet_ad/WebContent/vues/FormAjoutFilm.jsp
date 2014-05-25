@@ -10,7 +10,7 @@
 
 <body>
 	<html:form action="/ajout_films.do">
-		<h2>Recherche de films</h2>
+		<h2>Ajouter un film</h2>
 		<label for="titre">Titre</label>
 		<html:text property="titre"></html:text>
 		<label for="cout">Cout</label>
