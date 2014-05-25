@@ -26,7 +26,6 @@ public class ActionAfficherFilms extends Action
 		daoFilms = new DAOFilmHBM();
 		ActionFormAfficherFilms formRecherche = (ActionFormAfficherFilms)form;
 		
-
 		ArrayList<Film> tabFilms = getDaoFilms().load(formRecherche.getTitre());
 		
 		request.getSession().setAttribute("FILMS", tabFilms);

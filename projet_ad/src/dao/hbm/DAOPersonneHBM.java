@@ -1,8 +1,12 @@
 package dao.hbm;
 
 import java.util.ArrayList;
+
 import org.hibernate.Session;
+
+import metier.Acteur;
 import metier.Personne;
+import metier.Recompense;
 import dao.DAOPersonne;
 
 public class DAOPersonneHBM extends DAOHBM implements DAOPersonne {
@@ -48,7 +52,31 @@ public class DAOPersonneHBM extends DAOHBM implements DAOPersonne {
 
 		return tabCodePers;
 	}
+	
+	public ArrayList<Personne> load(int code, String type) throws Exception {
+		Session	session = connect();
+		
+		String req = "";
+		
+		if(type.equals("a"))
+		{
+			req = "id_acteur_film";
+		}
+		else if(type.equals("p"))
+		{
+			req = "id_producteur_film";
+		}
+		else if(type.equals("r"))
+		{
+			req = "id_realisateur_film";
+		}
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Personne>	tabCodePers = (ArrayList<Personne>) session.createQuery("FROM Personne WHERE "+ req +" LIKE :search").setParameter("search", "%"+code+"%").list();
+		close(session);
 
+		return tabCodePers;
+	}
 
 	@Override
 	public void saveOrUpdate(Personne personne) throws Exception {

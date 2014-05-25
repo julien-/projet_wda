@@ -38,11 +38,11 @@ public class main {
 			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
 			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
 			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
-			Utilisateur U1 = new Utilisateur("test", "test", 0);
+			Utilisateur U1 = new Utilisateur("test2", "test2", 0);
 			Note note = new Note(17);
 			
-			/*
-			daoUtilisateur.save(U1);
+			
+			/*daoUtilisateur.save(U1);
 			daoFilm.save(F1);
 			note.set_film(F1);
 			note.set_utilisateur(U1);

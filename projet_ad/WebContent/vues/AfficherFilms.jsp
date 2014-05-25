@@ -26,9 +26,19 @@
 			<td><bean:write name="film" property="_titre" /></td>
 			<td><bean:write name="film" property="_anneesortie" /></td>
 			<td><bean:write name="film" property="_cout" /></td>
+			<td>
+				<bean:define id="id" name="film" property="_id" /><br>
+				<html:link  page ="/DetailsFilm?id=${id}">
+    				Detail
+				</html:link>
+			</td>
+			<%-- <td>
+				<html:submit property="id">Afficher</html:submit>
+			</td>--%>
 		</tr>
 	</logic:iterate>
 </table>
+</FORM>
 <p />
 </center>
 
