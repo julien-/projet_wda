@@ -54,7 +54,7 @@ public class DetailsFilm extends HttpServlet {
 		try {
 			
 			Film film = daoFilm.get(id);
-			ArrayList<Recompense> tabRecompense= daoRecompense.load(id);
+			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecfilm(id);
 			
 			Set<Acteur> tabActeurs= film.getActeurs();
 			Set<Realisateur> tabRealisateurs= film.getRealisateurs();
@@ -137,6 +137,6 @@ public class DetailsFilm extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauP(PrintWriter out,Personne p){
-		out.println("<TR><TD>"+p.get_nom()+"</TD><TD>"+p.get_prenom()+"</TD><TD>"+p.get_datenaiss()+"</TD></TR>");
+		out.println("<TR><TD>"+p.get_nom()+"</TD><TD>"+p.get_prenom()+"</TD><TD>"+p.get_datenaiss()+"</TD><TD><A HREF=/projet_adw/DetailActeur?id="+p.get_id()+">Detail</A></TD></TR>");
 	}
 }

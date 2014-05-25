@@ -10,6 +10,7 @@ public class Film {
 	String _photoaffiche;
 	int _id;
 	int _confirme;
+	
 	private Set<Acteur> acteurs = new HashSet<Acteur>();
 	private Set<Realisateur> realisateurs = new HashSet<Realisateur>();
 	private Set<Producteur> producteurs = new HashSet<Producteur>();

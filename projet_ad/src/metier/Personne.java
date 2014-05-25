@@ -63,6 +63,7 @@ public class Personne {
 	public void setRecompenses(Set<Recompense> recompenses) {
 		this.recompenses = recompenses;
 	}
+	
 	public int get_confirme() {
 		return _confirme;
 	}
