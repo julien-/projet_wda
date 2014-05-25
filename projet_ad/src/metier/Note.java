@@ -7,6 +7,7 @@ public class Note implements Serializable{
 	int _note;
 	private Utilisateur _utilisateur;
 	private Film _film;
+	private int _confirme = 0;
 	
 	public Utilisateur get_utilisateur() {
 		return _utilisateur;
@@ -38,6 +39,14 @@ public class Note implements Serializable{
 
 	public void set_note(int _note) {
 		this._note = _note;
+	}
+
+	public int get_confirme() {
+		return _confirme;
+	}
+
+	public void set_confirme(int _confirme) {
+		this._confirme = _confirme;
 	}
 
 	

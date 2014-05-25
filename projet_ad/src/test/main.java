@@ -10,10 +10,12 @@ import metier.RecompenseFilm;
 import metier.RecompensePersonne;
 import metier.Utilisateur;
 import dao.DAOFilm;
+import dao.DAONote;
 import dao.DAOPersonne;
 import dao.DAORecompense;
 import dao.DAOUtilisateur;
 import dao.hbm.DAOFilmHBM;
+import dao.hbm.DAONoteHBM;
 import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAORecompenseHBM;
 import dao.hbm.DAOUtilisateurHBM;
@@ -26,6 +28,7 @@ public class main {
 		DAOFilm daoFilm = new DAOFilmHBM();
 		DAORecompense daoRecompense = new DAORecompenseHBM();
 		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
+		DAONote daoNote = new DAONoteHBM();
 		try 
 		{
 			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
@@ -35,9 +38,9 @@ public class main {
 			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
 			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
 			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
-			IUtilisateur U1 = new Utilisateur("zerock", "zerock");
+			Utilisateur U1 = new Utilisateur("zerock", "zerock");
 			Note note = new Note(17);
-
+			daoFilm.save(F1);
 			/*
 			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
 			daoUtilisateur.save(U1);
@@ -60,14 +63,20 @@ public class main {
 			}
 			else
 				System.out.println("pas trouve");
-			/*
-			REC1.set_personne(R1);
+			
+			REC1.set_personne(A1);
 			daoRecompense.save(REC1);
 			
 			REC2.set_film(F1);
 			daoRecompense.save(REC2);
-			*/
 			
+			/*
+			daoUtilisateur.save(U1);
+			daoFilm.save(F1);
+			note.set_film(F1);
+			note.set_utilisateur(U1);
+			daoNote.save(note);
+			*/
 			System.out.println("fini");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
