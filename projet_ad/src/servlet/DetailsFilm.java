@@ -3,6 +3,7 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -12,10 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Acteur;
+import metier.ActeurFilm;
 import metier.Film;
 import metier.Personne;
 import metier.Producteur;
+import metier.ProducteurFilm;
 import metier.Realisateur;
+import metier.RealisateurFilm;
 import metier.Recompense;
 import dao.DAOFilm;
 import dao.DAOPersonne;
@@ -56,9 +60,38 @@ public class DetailsFilm extends HttpServlet {
 			Film film = daoFilm.get(id);
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecfilm(id);
 			
-			Set<Acteur> tabActeurs= film.getActeurs();
-			Set<Realisateur> tabRealisateurs= film.getRealisateurs();
-			Set<Producteur> tabProducteurs= film.getProducteurs();
+			ArrayList<Acteur> tabActeurs = new ArrayList<Acteur>();
+			ArrayList<Realisateur> tabRealisateurs = new ArrayList<Realisateur>();
+			ArrayList<Producteur> tabProducteurs = new ArrayList<Producteur>();
+			
+			Iterator ia=film.getActeurs().iterator(); // on crée un Iterator pour parcourir notre HashSet
+			while(ia.hasNext()) // tant qu'on a un suivant
+			{
+				Object obj = ia.next();
+				ActeurFilm AF = (ActeurFilm)obj;
+				System.out.println(AF.get_acteur().get_nom());
+				tabActeurs.add(AF.get_acteur());
+			}
+
+			
+			Iterator ip=film.getProducteurs().iterator(); // on crée un Iterator pour parcourir notre HashSet
+			while(ip.hasNext()) // tant qu'on a un suivant
+			{
+				Object objP = ip.next();
+				ProducteurFilm PF = (ProducteurFilm)objP;
+				System.out.println(PF.get_producteur().get_nom());
+				tabProducteurs.add(PF.get_producteur());
+			}
+			
+			
+			Iterator ir=film.getRealisateurs().iterator(); // on crée un Iterator pour parcourir notre HashSet
+			while(ir.hasNext()) // tant qu'on a un suivant
+			{
+				Object objR = ir.next();
+				RealisateurFilm RF = (RealisateurFilm)objR;
+				System.out.println(RF.get_realisateur().get_nom());
+				tabRealisateurs.add(RF.get_realisateur());
+			}
 			
 			out.println("<HTML><BODY><CENTER>");
 			out.println("<H1>Fiche Film : "+ film.get_titre() +"</H1>");

@@ -23,5 +23,9 @@
 		<mapping resource="MappingRecompense.xml"/>
 		<mapping resource="MappingUtilisateur.xml"/>
 		<mapping resource="MappingNote.xml"/>
+		<mapping resource="MappingActeurFilm.xml"/>
+		<mapping resource="MappingRealisateurFilm.xml"/>
+		<mapping resource="MappingProducteurFilm.xml"/>
+		<mapping resource="MappingProducteur.xml"/>
 	</session-factory>
 </hibernate-configuration>

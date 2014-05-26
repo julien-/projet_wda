@@ -56,7 +56,7 @@ public class  ActionConnexionUtilisateur extends Action
 			{
 			}
 		}
-		
+		Naming.unbind("UTILISATEUR");
 		return mapping.findForward(pageDestination);
 	}
 

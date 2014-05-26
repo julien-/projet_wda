@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -12,10 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import metier.Acteur;
+import metier.ActeurFilm;
 import metier.Film;
 import metier.Personne;
 import metier.Producteur;
+import metier.ProducteurFilm;
 import metier.Realisateur;
+import metier.RealisateurFilm;
 import metier.Recompense;
 import dao.DAOFilm;
 import dao.DAOPersonne;
@@ -55,26 +60,48 @@ public class DetailPersonne extends HttpServlet {
 			
 			Personne personne = daoPersonne.get(id);
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecpersonne(id);
-			Set<Film> tabFilm = null;
+			Set<Film> tabFilm = new HashSet<Film>();
 			
 			String typepersonne = "";
+			Object obj;
+			ActeurFilm AF;
+			ProducteurFilm PF;
+			RealisateurFilm RF;
 			
 			if(personne.getClass().equals(Acteur.class))
 			{
 				Acteur acteur = (Acteur) personne;
-				tabFilm = acteur.getFilms();
+				Iterator i=acteur.getFilms().iterator(); // on crée un Iterator pour parcourir notre HashSet
+				while(i.hasNext()) // tant qu'on a un suivant
+				{
+					obj = i.next();
+					AF = (ActeurFilm)obj;
+					tabFilm.add(AF.get_film());
+				}
 				typepersonne="Acteur";
 			}
 			else if(personne.getClass().equals(Realisateur.class))
 			{
 				Realisateur realisateur = (Realisateur) personne;
-				tabFilm = realisateur.getFilms();
+				Iterator i=realisateur.getFilms().iterator(); // on crée un Iterator pour parcourir notre HashSet
+				while(i.hasNext()) // tant qu'on a un suivant
+				{
+					obj = i.next();
+					RF = (RealisateurFilm)obj;
+					tabFilm.add(RF.get_film());
+				}
 				typepersonne="Realisateur";
 			}
 			else if(personne.getClass().equals(Producteur.class))
 			{
 				Producteur producteur = (Producteur) personne;
-				tabFilm = producteur.getFilms();
+				Iterator i=producteur.getFilms().iterator(); // on crée un Iterator pour parcourir notre HashSet
+				while(i.hasNext()) // tant qu'on a un suivant
+				{
+					obj = i.next();
+					PF = (ProducteurFilm)obj;
+					tabFilm.add(PF.get_film());
+				}
 				typepersonne="Producteur";
 			}
 			

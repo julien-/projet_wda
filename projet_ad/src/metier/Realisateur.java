@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Realisateur extends Personne {
 
-	private Set<Film> films = new HashSet<Film>();
+	private Set<RealisateurFilm> films = new HashSet<RealisateurFilm>();
 
 
 	public Realisateur(String nom, String prenom, String datenaiss) {
@@ -22,11 +22,11 @@ public class Realisateur extends Personne {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Set<Film> getFilms() {
+	public Set<RealisateurFilm> getFilms() {
 		return films;
 	}
 
-	public void setFilms(Set<Film> films) {
+	public void setFilms(Set<RealisateurFilm> films) {
 		this.films = films;
 	}
 }

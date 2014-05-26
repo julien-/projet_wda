@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+							"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="metier.ProducteurFilm" table="producteur_film" lazy="false">
+		<composite-id>
+			<key-many-to-one name="_film" column="id_film_film" />
+			<key-many-to-one name="_producteur" column="id_producteur_film" />
+		</composite-id>
+		<property name="_confirme" column="confirme" type="int" not-null="true" />
+	</class>
+</hibernate-mapping>

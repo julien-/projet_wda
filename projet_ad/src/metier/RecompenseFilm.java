@@ -28,7 +28,4 @@ public class RecompenseFilm extends Recompense {
 	public void set_film(Film _film) {
 		this._film = _film;
 	}
-
-	
-	
 }

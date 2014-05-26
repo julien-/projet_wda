@@ -11,24 +11,24 @@ public class Film {
 	int _id;
 	int _confirme;
 	
-	private Set<Acteur> acteurs = new HashSet<Acteur>();
-	private Set<Realisateur> realisateurs = new HashSet<Realisateur>();
-	private Set<Producteur> producteurs = new HashSet<Producteur>();
+	private Set<ActeurFilm> acteurs = new HashSet<ActeurFilm>();
+	private Set<RealisateurFilm> realisateurs = new HashSet<RealisateurFilm>();
+	private Set<ProducteurFilm> producteurs = new HashSet<ProducteurFilm>();
 	private Set<Note> _notes = new HashSet<Note>();
 
-	public Set<Producteur> getProducteurs() {
+	public Set<ProducteurFilm> getProducteurs() {
 		return producteurs;
 	}
-	public void setProducteurs(Set<Producteur> producteurs) {
+	public void setProducteurs(Set<ProducteurFilm> producteurs) {
 		this.producteurs = producteurs;
 	}
 	public Set<Note> get_notes() {
 		return _notes;
 	}
-	public Set<Acteur> getActeurs() {
+	public Set<ActeurFilm> getActeurs() {
 		return acteurs;
 	}
-	public void setActeurs(Set<Acteur> acteurs) {
+	public void setActeurs(Set<ActeurFilm> acteurs) {
 		this.acteurs = acteurs;
 	}
 	public void set_notes(Set<Note> _notes) {
@@ -121,10 +121,10 @@ public class Film {
 				+ _cout + ", _photoaffiche=" + _photoaffiche + "]";
 	}
 
-	public Set<Realisateur> getRealisateurs() {
+	public Set<RealisateurFilm> getRealisateurs() {
 		return realisateurs;
 	}
-	public void setRealisateurs(Set<Realisateur> realisateurs) {
+	public void setRealisateurs(Set<RealisateurFilm> realisateurs) {
 		this.realisateurs = realisateurs;
 	}
 	

@@ -11,25 +11,24 @@
     		<key column="id_film_note" not-null="true" />
         	<one-to-many class="metier.Note"/>
     	</set>
+  		<set name="acteurs" inverse="true" lazy="false"  >
+    		<key column="id_film_film" not-null="true" />
+        	<one-to-many class="metier.ActeurFilm"/>
+    	</set>
+ 	  	<set name="realisateurs" inverse="true" lazy="false"  >
+    		<key column="id_film_film" not-null="true" />
+        	<one-to-many class="metier.RealisateurFilm"/>
+    	</set>
+ 	 	 <set name="producteurs" inverse="true" lazy="false"  >
+    		<key column="id_film_film" not-null="true" />
+        	<one-to-many class="metier.ProducteurFilm"/>
+    	</set>
+    	
 		<property name="_titre" column="titre_film" type="string" not-null="true"/>
 		<property name="_anneesortie" column="annee_film" type="int" not-null="true"/>
 		<property name="_cout" column="cout_film" type="double" not-null="true"/>
 		<property name="_photoaffiche" column="photo_film" type="string" not-null="false"/>
 		<property name="_confirme" column="confirme" type="int" not-null="false"/>
-		<set name="producteurs" table="producteur_film"
-            inverse="true" lazy="false" fetch="select" cascade="all">
-            <key column="id_film_film" />
-            <many-to-many column="id_producteur_film" class="metier.Producteur" />
-        </set>
-		<set name="realisateurs" table="realisateur_film"
-            inverse="true" lazy="false" fetch="select" cascade="all">
-            <key column="id_film_film" />
-            <many-to-many column="id_realisateur_film" class="metier.Realisateur" />
-        </set>
-      	<set name="acteurs" table="acteur_film"
-            inverse="true" lazy="false" fetch="select" cascade="all">
-            <key column="id_film_film" />
-            <many-to-many column="id_acteur_film" class="metier.Acteur" />
-        </set>
+
 	</class>
 </hibernate-mapping>

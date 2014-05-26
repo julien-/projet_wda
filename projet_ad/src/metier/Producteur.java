@@ -5,14 +5,14 @@ import java.util.Set;
 
 public class Producteur extends Personne{
 
-	private Set<Film> films = new HashSet<Film>();
+	private Set<ProducteurFilm> films = new HashSet<ProducteurFilm>();
 	public Producteur() {
 		// TODO Auto-generated constructor stub
 	}
-	public Set<Film> getFilms() {
+	public Set<ProducteurFilm> getFilms() {
 		return films;
 	}
-	public void setFilms(Set<Film> films) {
+	public void setFilms(Set<ProducteurFilm> films) {
 		this.films = films;
 	}
 	public Producteur(String nom, String prenom, String datenaiss, String photo) {
