@@ -612,8 +612,8 @@ ALTER TABLE `acteur_film`
 -- Contraintes pour la table `notes_film`
 --
 ALTER TABLE `notes_film`
-  ADD CONSTRAINT `notes_film_ibfk_1` FOREIGN KEY (`id_util_note`) REFERENCES `utilisateur` (`id_util`),
-  ADD CONSTRAINT `notes_film_ibfk_2` FOREIGN KEY (`id_film_note`) REFERENCES `film` (`id_film`);
+  ADD CONSTRAINT `notes_film_ibfk_1` FOREIGN KEY (`id_util_note`) REFERENCES `utilisateur` (`id_util`) ON DELETE CASCADE,
+  ADD CONSTRAINT `notes_film_ibfk_2` FOREIGN KEY (`id_film_note`) REFERENCES `film` (`id_film`) ON DELETE CASCADE;
 
 --
 -- Contraintes pour la table `producteur`

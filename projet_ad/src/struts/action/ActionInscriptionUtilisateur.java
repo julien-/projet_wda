@@ -3,10 +3,7 @@ package struts.action;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Acteur;
 import metier.IUtilisateur;
-import metier.Producteur;
-import metier.Realisateur;
 import metier.Utilisateur;
 
 import org.apache.struts.action.Action;
