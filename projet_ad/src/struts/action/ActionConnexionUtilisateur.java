@@ -48,7 +48,7 @@ public class  ActionConnexionUtilisateur extends Action
 		
 			answerReceived = true;
 			if (utilisateur.getVerifie() == 1)
-				pageDestination = "success";
+				pageDestination = "pro";
 			else
 				pageDestination = "fail";
 			}
@@ -56,6 +56,9 @@ public class  ActionConnexionUtilisateur extends Action
 			{
 			}
 		}
+		
+		Naming.unbind("UTILISATEUR");
+		Naming.unbind("REPONSE");
 		
 		return mapping.findForward(pageDestination);
 	}

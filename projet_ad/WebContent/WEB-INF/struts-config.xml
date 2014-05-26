@@ -39,36 +39,44 @@
 
 
 	<!-- =========================================== Action Mapping Definitions -->
-
+	
 	<action-mappings>
-
-
+		<!-- INDEX -->
+		<action path="/inscription_utilisateur" type="struts.action.ActionInscriptionUtilisateur"
+			name="beanInscriptionUtilisateur">
+			<forward name="success" path="/vues/Success.jsp"/>
+		</action>
+		<action path="/connexion_utilisateur" type="struts.action.ActionConnexionUtilisateur"
+			name="beanConnexionUtilisateur" scope="session">
+			<forward name="pro" path="/vues/AccueilPro.jsp"/>
+			<forward name="fail" path="/vues/Bienvenue.jsp"/>
+		</action>
+		
 		<action path="/recherche_films" type="struts.action.ActionAfficherFilms"
 			name="beanRechercheFilms">
-			<forward name="AfficherFilms" path="/vues/AfficherFilms.jsp"></forward>
+			<forward name="AfficherFilms" path="/vues/AfficherFilms.jsp"/>
 		</action>
 
 		<action path="/ajout_films" type="struts.action.ActionAjoutFilm"
 			name="beanAjoutFilms">
-			<forward name="success" path="/vues/Success.jsp"></forward>
+			<forward name="success" path="/vues/Success.jsp"/>
 		</action>
 
 		<action path="/ajout_personne" type="struts.action.ActionAjoutPersonne"
 			name="beanAjoutPersonne">
-			<forward name="success" path="/vues/Success.jsp"></forward>
+			<forward name="success" path="/vues/Success.jsp"/>
 		</action>
-
-		<!-- INDEX -->
-		<action path="/inscription_utilisateur" type="struts.action.ActionInscriptionUtilisateur"
-			name="beanInscriptionUtilisateur">
-			<forward name="success" path="/vues/Success.jsp"></forward>
+		
+		<action path="/ajout_personne" type="struts.action.ActionAjoutPersonne"
+			name="beanAjoutPersonne">
+			<forward name="success" path="/vues/Success.jsp"/>
 		</action>
-		<action path="/connexion_utilisateur" type="struts.action.ActionConnexionUtilisateur"
-			name="beanConnexionUtilisateur">
-			<forward name="success" path="/vues/Success.jsp"></forward>
+		
+		
+		<action path="/deconnexion_utilisateur" type="struts.action.ActionDeconnexionUtilisateur"
+			scope="session">
+			<forward name="deconnexion" path="/vues/Bienvenue.jsp"/>
 		</action>
-
-
 	</action-mappings>
 
 	<!-- ======================================== Message Resources Definitions -->
