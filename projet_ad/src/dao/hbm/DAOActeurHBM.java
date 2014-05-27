@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.hibernate.Session;
 
 import metier.Acteur;
+import metier.Film;
 import metier.Personne;
 import metier.Producteur;
 import metier.Recompense;
@@ -23,4 +24,5 @@ public class DAOActeurHBM extends DAOHBM implements DAOActeur {
 		session.save(personne);
 		close(session);
 	}
+	
 }

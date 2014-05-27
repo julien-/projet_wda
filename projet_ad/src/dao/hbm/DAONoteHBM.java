@@ -33,7 +33,7 @@ public class DAONoteHBM extends DAOHBM implements DAONote {
 		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM note_film").list();
+		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM Note").list();
 		close(session);
 
 		System.out.println("Coucou");
