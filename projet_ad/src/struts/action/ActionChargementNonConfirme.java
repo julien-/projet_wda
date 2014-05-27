@@ -35,7 +35,6 @@ import dao.hbm.DAORecompenseHBM;
 
 public class ActionChargementNonConfirme extends Action
 {
-	private DAOPersonne daoPersonne = null;
 	private DAORecompense daoRecompense = null;
 	
 	public ActionForward execute(ActionMapping mapping, ActionForm form, HttpServletRequest request, HttpServletResponse response) throws Exception
@@ -44,6 +43,7 @@ public class ActionChargementNonConfirme extends Action
 		DAOProducteurFilm daoProducteurFilm = new DAOProducteurFilmHBM();
 		DAORealisateurFilm daoRealisateurFilm = new DAORealisateurFilmHBM();
 		DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
+		daoRecompense = new DAORecompenseHBM();
 		
 		/* Chargement des recompenses */
 		System.out.println(daoRecompense.loadAll().toString());

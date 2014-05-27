@@ -19,6 +19,8 @@
 			type="struts.actionform.ActionFormInscriptionUtilisateur" />
 		<form-bean name="beanConnexionUtilisateur"
 			type="struts.actionform.ActionFormConnexionUtilisateur" />
+		<form-bean name="beanConfirmerProposition"
+			type="struts.actionform.ActionFormConfirmerProposition" />
 	</form-beans>
 
 
@@ -69,6 +71,12 @@
 		<action path="/action_confirmation" type="struts.action.ActionChargementNonConfirme">
 			<forward name="FormulaireConfirmation" path="/vues/FormConfirmerProposition.jsp"/>
 		</action>
+		
+		<action path="/confirmer_propos" type="struts.action.ActionConfirmerProposition"
+			name="beanConfirmerProposition">
+			<forward name="success" path="/vues/Success.jsp" />
+		</action>
+		
 	</action-mappings>
 
 	<!-- ======================================== Message Resources Definitions -->

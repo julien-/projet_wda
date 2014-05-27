@@ -15,14 +15,17 @@
 	<p>
 		<bean:message key="bienvenue.message" /><%=session.getAttribute("login")%>
 	</p>
-	
+
 	<a href="http://localhost:8080/projet_adw/vues/FormRechercheFilms.jsp">Rechercher
 		un film</a>
 	<a href="http://localhost:8080/projet_adw/vues/FormAjoutFilm.jsp">Ajouter
 		un film</a>
 
 	<a
-		href="http://localhost:8080/projet_adw/deconnexion_utilisateur.do">Déconnexion</a>
+		href="http://localhost:8080/projet_adw/action_confirmation.do">Confirmer
+		des propositions</a>
+		
+	<a href="http://localhost:8080/projet_adw/deconnexion_utilisateur.do">Déconnexion</a>
 
 </body>
 
