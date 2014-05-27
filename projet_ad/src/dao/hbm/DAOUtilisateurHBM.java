@@ -25,13 +25,9 @@ public class DAOUtilisateurHBM extends DAOHBM implements DAOUtilisateur {
 	public boolean get(String login, String pass) throws Exception {
 		Session	session = connect();
 		
-		
 		@SuppressWarnings("unchecked")
 		ArrayList<Utilisateur>	tabIdUser = (ArrayList<Utilisateur>) session.createQuery("FROM Utilisateur WHERE login_util ='" + login + "' AND pass_util='" + pass + "'").list();
 		close(session);
-
-		System.out.println("Coucou");
-		System.out.println(tabIdUser.toString());
 		
 		return (tabIdUser.size() > 0);
 	}
