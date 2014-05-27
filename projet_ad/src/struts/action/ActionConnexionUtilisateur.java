@@ -37,7 +37,7 @@ public class  ActionConnexionUtilisateur extends Action
 		ActionFormConnexionUtilisateur formInscription = (ActionFormConnexionUtilisateur)form;
 		
 		IUtilisateur utilisateur = new Utilisateur(formInscription.getLogin(), formInscription.getPass());
-
+		Naming.unbind("UTILISATEUR");
 		Naming.bind("UTILISATEUR", utilisateur);
 		
 		while(!answerReceived)
@@ -57,8 +57,6 @@ public class  ActionConnexionUtilisateur extends Action
 			}
 		}
 
-		Naming.unbind("UTILISATEUR");
-		Naming.unbind("REPONSE");
 		
 		return mapping.findForward(pageDestination);
 	}

@@ -45,11 +45,7 @@ public class serveurRMI
 				{
 					
 				}
-			}
-			
-
-			
-			
+			}	
 		}
 		catch (Exception e)
 		{
