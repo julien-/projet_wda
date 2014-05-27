@@ -20,8 +20,6 @@
 		un film</a>
 	<a href="http://localhost:8080/projet_adw/vues/FormAjoutFilm.jsp">Ajouter
 		un film</a>
-	<a href="http://localhost:8080/projet_adw/vues/FormAjoutPersonne.jsp">Ajouter
-		une personne</a>
 
 	<a
 		href="http://localhost:8080/projet_adw/deconnexion_utilisateur.do">Déconnexion</a>

@@ -15,7 +15,6 @@
 	<form-beans>
 		<form-bean name="beanRechercheFilms" type="struts.actionform.ActionFormAfficherFilms" />
 		<form-bean name="beanAjoutFilms" type="struts.actionform.ActionFormAjoutFilm" />
-		<form-bean name="beanAjoutPersonne" type="struts.actionform.ActionFormAjoutPersonne" />
 		<form-bean name="beanInscriptionUtilisateur"
 			type="struts.actionform.ActionFormInscriptionUtilisateur" />
 		<form-bean name="beanConnexionUtilisateur"
@@ -60,18 +59,7 @@
 		<action path="/ajout_films" type="struts.action.ActionAjoutFilm"
 			name="beanAjoutFilms">
 			<forward name="success" path="/vues/Success.jsp"/>
-		</action>
-
-		<action path="/ajout_personne" type="struts.action.ActionAjoutPersonne"
-			name="beanAjoutPersonne">
-			<forward name="success" path="/vues/Success.jsp"/>
-		</action>
-		
-		<action path="/ajout_personne" type="struts.action.ActionAjoutPersonne"
-			name="beanAjoutPersonne">
-			<forward name="success" path="/vues/Success.jsp"/>
-		</action>
-		
+		</action>		
 		
 		<action path="/deconnexion_utilisateur" type="struts.action.ActionDeconnexionUtilisateur"
 			scope="session">

@@ -19,9 +19,7 @@
 		un film</a>
 	<a href="http://localhost:8080/projet_adw/vues/FormAjoutFilm.jsp">Ajouter
 		un film</a>
-	<a href="http://localhost:8080/projet_adw/vues/FormAjoutPersonne.jsp">Ajouter
-		une personne</a>
-	
+		
 	<div style="float: left; width: 50%; background-color: yellow;">
 		<h2>S'inscrire</h2>
 		<div style="color:red">
