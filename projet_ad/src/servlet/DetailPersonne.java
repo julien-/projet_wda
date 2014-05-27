@@ -134,6 +134,7 @@ public class DetailPersonne extends HttpServlet {
 			{
 				out.println("Aucune récompense");
 			}
+			out.println("<BR/><BR/><A HREF=/projet_adw/AjouterRecompense?id="+personne.get_id()+"&type_recompense=personne>Ajouter Récompense</A><BR/><BR/>");
 			
 			out.println("</CENTER></BODY></HTML>");
 			

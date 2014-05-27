@@ -152,6 +152,7 @@ public class DetailsFilm extends HttpServlet {
 			{
 				out.println("Aucune récompense");
 			}
+			out.println("<BR/><BR/><A HREF=/projet_adw/AjouterRecompense?id="+film.get_id()+"&type_recompense=film>Ajouter Récompense</A><BR/><BR/>");
 			
 			out.println("</CENTER></BODY></HTML>");
 			
