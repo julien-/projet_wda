@@ -47,7 +47,7 @@ public class DAOPersonneHBM extends DAOHBM implements DAOPersonne {
 		Session	session = connect();
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Personne>	tabCodePers = (ArrayList<Personne>) session.createQuery("FROM Personne").list();
+		ArrayList<Personne>	tabCodePers = (ArrayList<Personne>) session.createQuery("FROM Personne WHERE nom_pers LIKE :search OR prenom_pers LIKE :search").setParameter("search", "%"+string+"%").list();
 		close(session);
 
 		return tabCodePers;

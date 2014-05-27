@@ -81,6 +81,17 @@ public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 		
 		return tabIdFilm;
 	}
+	
+	public ArrayList<Film> loadPro(String string) throws Exception {
+		Session	session = connect();
+		
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Film>	tabIdFilm = (ArrayList<Film>) session.createQuery("FROM Film WHERE titre_film LIKE :search OR cout_film LIKE :search OR annee_film LIKE :search").setParameter("search", "%"+string+"%").list();
+		close(session);
+		
+		return tabIdFilm;
+	}
 
 	@Override
 	public void saveOrUpdate(Film film) throws Exception {

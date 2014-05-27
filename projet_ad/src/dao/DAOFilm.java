@@ -13,5 +13,6 @@ public interface DAOFilm
 	ArrayList<Film> load() throws Exception;
 	ArrayList<Film> load(String nom) throws Exception;
 	ArrayList<Film> load(int id) throws Exception;
+	ArrayList<Film> loadPro(String nom) throws Exception;
 	void saveOrUpdate(Film film) throws Exception;
 }

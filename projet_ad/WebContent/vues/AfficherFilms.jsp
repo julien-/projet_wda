@@ -1,6 +1,8 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
+<%@page language="java" session="true" %>
+
 
 <html:html>
 
@@ -16,7 +18,7 @@
 <table border="1">
 	<thead>
 		<tr>
-			<th>Titre</th>
+			<th>Films</th>
 		</tr>
 	</thead>
 	<logic:iterate id="film" name="FILMS">
@@ -27,11 +29,34 @@
     				<bean:write name="film" property="_titre" />
 				</html:link>
 			</td>
-			<%-- <td>
-				<html:submit property="id">Afficher</html:submit>
-			</td>--%>
 		</tr>
 	</logic:iterate>
+	</table>
+	<%
+	 
+if(null != session.getAttribute("login"))
+{  
+	
+	%>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>
+					Personnes
+				</th>
+			</tr>
+		</thead>
+	<logic:iterate id="personnes" name="PERSONNES">
+		<tr>
+			<td>
+				<bean:define id="id" name="personnes" property="_id" /><br>
+				<html:link  page ="/DetailPersonne?id=${id}">
+    				<bean:write name="personnes" property="_prenom" /> <bean:write name="personnes" property="_nom" />
+				</html:link>
+			</td>
+		</tr>
+	</logic:iterate>
+	<%} %>
 </table>
 </FORM>
 <p />

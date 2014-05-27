@@ -40,7 +40,7 @@ public class ServletConnexionUtilisateur extends HttpServlet
 				HttpSession session = request.getSession();
 				session.setAttribute("login", login);
 				//la requete est retransmise à un autre comosant (ici l'accueil pro)
-				response.sendRedirect("http://localhost:8080/projet_adw/vues/AccueilPro.jsp");
+				getServletContext().getRequestDispatcher("http://localhost:8080/projet_adw/vues/AccueilPro.jsp");
 			}
 			else
 			{	//N'existe pas dans la BDD

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import metier.Acteur;
 import metier.Film;
@@ -56,7 +57,8 @@ public class  ActionConnexionUtilisateur extends Action
 			{
 			}
 		}
-
+		HttpSession session = request.getSession();
+		session.setAttribute("login", utilisateur.get_pseudo());
 		Naming.unbind("rmi://localhost:1099/REPONSE");
 		return mapping.findForward(pageDestination);
 	}

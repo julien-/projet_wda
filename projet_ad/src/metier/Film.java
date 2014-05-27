@@ -1,5 +1,7 @@
 package metier;
 
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -66,6 +68,7 @@ public class Film {
 		this._cout = cout;
 		try
 		{
+		
 			if (photoaffiche == "")
 				_photoaffiche = null;
 			else

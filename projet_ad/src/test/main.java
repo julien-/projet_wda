@@ -39,167 +39,168 @@ import dao.hbm.DAOUtilisateurHBM;
 
 public class main {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{
-		DAOPersonne daoPersonne = new DAOPersonneHBM();
-		DAOFilm daoFilm = new DAOFilmHBM();
-		DAORecompense daoRecompense = new DAORecompenseHBM();
-		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
-		DAONote daoNote = new DAONoteHBM();
-		DAOActeurFilm daoAF = new DAOActeurFilmHBM();
-
-		DAOProducteur daoProducteur = new DAOProducteurHBM();
-		DAOProducteurFilm daoProducteurFilm = new DAOProducteurFilmHBM();
-		DAORealisateurFilm daoRealisateurFilm = new DAORealisateurFilmHBM();
-		DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
-		try 
-		{
-			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
-			Film F1 = new Film("Titanic", 1997, 200000);
-			Acteur A1 = new Acteur("Ewan", "McGregor", "1966-06-02");
-
-			
-			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
-			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
-			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
-			Utilisateur U1 = new Utilisateur("zerock", "zerock");
-			Note note = new Note(17);
-
-			
-			/*
-			Personne Pt1 = daoPersonne.get(112);
-			toProducteur toPd = new toProducteur();
-			toPd.set_id(Pt1.get_id());
-			daoProducteur.save(toPd);
-			*/
-		
-			Personne pers = daoPersonne.get(112);
-			pers.set_nom("Connard");
-			daoPersonne.update(pers);
-			
-			
-			/* Chargement des recompenses */
-			
-			System.out.println(daoRecompense.loadAll().toString());
-			ArrayList<Recompense> tabRecompensesNonConfirmee = new ArrayList<Recompense>();
-			ArrayList<Recompense> tabRecompenses = daoRecompense.loadAll();
-			
-			
-			
-			RecompenseFilm RF;
-			RecompensePersonne RP;
-			Object obj;
-			Iterator i=tabRecompenses.iterator(); // on crée un Iterator pour parcourir notre HashSet
-			while(i.hasNext()) // tant qu'on a un suivant
-			{
-				obj = i.next();
-				if(obj.getClass().equals(RecompenseFilm.class))
-				{
-					RF = (RecompenseFilm)obj;
-					if (RF.get_confirme() == 0)
-						tabRecompensesNonConfirmee.add(RF);
-				}
-				else if (obj.getClass().equals(RecompensePersonne.class))
-				{
-					RP = (RecompensePersonne)obj;
-					if (RP.get_confirme() == 0)
-						tabRecompensesNonConfirmee.add(RP);
-				}
-			}
-			System.out.println(tabRecompensesNonConfirmee.toString());
-			
-			ProducteurFilm PF = new ProducteurFilm();
-			/* Chargement des producteurfilm */
-			ArrayList<ProducteurFilm> tabProdFilmNonConfirmes = new ArrayList<ProducteurFilm>();
-			ArrayList<ProducteurFilm> tabProdFilm = daoProducteurFilm.loadAll();
-			
-			i=tabProdFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
-			while(i.hasNext()) // tant qu'on a un suivant
-			{
-				PF = (ProducteurFilm)(i.next());
-				if (PF.get_confirme() == 0)
-					tabProdFilmNonConfirmes.add(PF);
-			}
-			System.out.println(tabProdFilmNonConfirmes.toString());
-			
-			
-			/* Chargement des acteurfilm */
-			ActeurFilm AF = new ActeurFilm();
-			ArrayList<ActeurFilm> tabActeurFilmNonConfirmes = new ArrayList<ActeurFilm>();
-			ArrayList<ActeurFilm> tabActeurFilm = daoActeurFilm.loadAll();
-			
-			i=tabActeurFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
-			while(i.hasNext()) // tant qu'on a un suivant
-			{
-				AF = (ActeurFilm)(i.next());
-				if (AF.get_confirme() == 0)
-					tabActeurFilmNonConfirmes.add(AF);
-			}
-			System.out.println(tabActeurFilmNonConfirmes.toString());
-			
-			/* Chargement des realisateurfilm */
-			RealisateurFilm REALF = new RealisateurFilm();
-			ArrayList<RealisateurFilm> tabRealFilmNonConfirmes = new ArrayList<RealisateurFilm>();
-			ArrayList<RealisateurFilm> tabRealFilm = daoRealisateurFilm.loadAll();
-			
-			i=tabRealFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
-			while(i.hasNext()) // tant qu'on a un suivant
-			{
-				REALF = (RealisateurFilm)(i.next());
-				if (REALF.get_confirme() == 0)
-					tabRealFilmNonConfirmes.add(REALF);
-			}
-			System.out.println(tabRealFilmNonConfirmes.toString());
-			
-			/*
-			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
-			daoUtilisateur.save(U1);
-			daoFilm.save(F1);
-			note.set_film(F1);
-			note.set_utilisateur(U1);
-			daoNote.save(note);
-			
-			daoRecompense.save(REC2);
-			*/
-
-			/*
-			daoPersonne.save(P1);
-			daoFilm.save(F1);
-			P1.getFilms().add(PF);
-			PF.set_producteur(P1);
-			PF.set_film(F1);
-
-			Acteur A2 = (Acteur) daoPersonne.get(112);
-			
-			System.out.println("HERE" + A1.get_id());
-			daoPF.save(PF);
-
-			if (daoUtilisateur.get("zerock", "zerock"))
-			{
-				System.out.println("trouve");
-			}
-			else
-				System.out.println("pas trouve");
-			
-			REC1.set_personne(A1);
-			daoRecompense.save(REC1);
-			
-			REC2.set_film(F1);
-			daoRecompense.save(REC2);
-			
-			/*
-			daoUtilisateur.save(U1);
-			daoFilm.save(F1);
-			note.set_film(F1);
-			note.set_utilisateur(U1);
-			daoNote.save(note);
-			*/
-			System.out.println("fini");
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Film film = new Film("lol", 1254, 146, "C:\\Users\\Nicolas\\Desktop\\Million.jpg");
+//		DAOPersonne daoPersonne = new DAOPersonneHBM();
+//		DAOFilm daoFilm = new DAOFilmHBM();
+//		DAORecompense daoRecompense = new DAORecompenseHBM();
+//		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
+//		DAONote daoNote = new DAONoteHBM();
+//		DAOActeurFilm daoAF = new DAOActeurFilmHBM();
+//
+//		DAOProducteur daoProducteur = new DAOProducteurHBM();
+//		DAOProducteurFilm daoProducteurFilm = new DAOProducteurFilmHBM();
+//		DAORealisateurFilm daoRealisateurFilm = new DAORealisateurFilmHBM();
+//		DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
+//		try 
+//		{
+//			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
+//			Film F1 = new Film("Titanic", 1997, 200000);
+//			Acteur A1 = new Acteur("Ewan", "McGregor", "1966-06-02");
+//
+//			
+//			Producteur P1 = new Producteur("George", "Lucas", "1968-8-2");
+//			RecompensePersonne REC1 = new RecompensePersonne("Oscar", "Meilleur acteur", "1999");
+//			RecompenseFilm REC2 = new RecompenseFilm("Oscar", "Meilleure musique", "1999");
+//			Utilisateur U1 = new Utilisateur("zerock", "zerock");
+//			Note note = new Note(17);
+//
+//			
+//			/*
+//			Personne Pt1 = daoPersonne.get(112);
+//			toProducteur toPd = new toProducteur();
+//			toPd.set_id(Pt1.get_id());
+//			daoProducteur.save(toPd);
+//			*/
+//		
+//			Personne pers = daoPersonne.get(112);
+//			pers.set_nom("Connard");
+//			daoPersonne.update(pers);
+//			
+//			
+//			/* Chargement des recompenses */
+//			
+//			System.out.println(daoRecompense.loadAll().toString());
+//			ArrayList<Recompense> tabRecompensesNonConfirmee = new ArrayList<Recompense>();
+//			ArrayList<Recompense> tabRecompenses = daoRecompense.loadAll();
+//			
+//			
+//			
+//			RecompenseFilm RF;
+//			RecompensePersonne RP;
+//			Object obj;
+//			Iterator i=tabRecompenses.iterator(); // on crée un Iterator pour parcourir notre HashSet
+//			while(i.hasNext()) // tant qu'on a un suivant
+//			{
+//				obj = i.next();
+//				if(obj.getClass().equals(RecompenseFilm.class))
+//				{
+//					RF = (RecompenseFilm)obj;
+//					if (RF.get_confirme() == 0)
+//						tabRecompensesNonConfirmee.add(RF);
+//				}
+//				else if (obj.getClass().equals(RecompensePersonne.class))
+//				{
+//					RP = (RecompensePersonne)obj;
+//					if (RP.get_confirme() == 0)
+//						tabRecompensesNonConfirmee.add(RP);
+//				}
+//			}
+//			System.out.println(tabRecompensesNonConfirmee.toString());
+//			
+//			ProducteurFilm PF = new ProducteurFilm();
+//			/* Chargement des producteurfilm */
+//			ArrayList<ProducteurFilm> tabProdFilmNonConfirmes = new ArrayList<ProducteurFilm>();
+//			ArrayList<ProducteurFilm> tabProdFilm = daoProducteurFilm.loadAll();
+//			
+//			i=tabProdFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
+//			while(i.hasNext()) // tant qu'on a un suivant
+//			{
+//				PF = (ProducteurFilm)(i.next());
+//				if (PF.get_confirme() == 0)
+//					tabProdFilmNonConfirmes.add(PF);
+//			}
+//			System.out.println(tabProdFilmNonConfirmes.toString());
+//			
+//			
+//			/* Chargement des acteurfilm */
+//			ActeurFilm AF = new ActeurFilm();
+//			ArrayList<ActeurFilm> tabActeurFilmNonConfirmes = new ArrayList<ActeurFilm>();
+//			ArrayList<ActeurFilm> tabActeurFilm = daoActeurFilm.loadAll();
+//			
+//			i=tabActeurFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
+//			while(i.hasNext()) // tant qu'on a un suivant
+//			{
+//				AF = (ActeurFilm)(i.next());
+//				if (AF.get_confirme() == 0)
+//					tabActeurFilmNonConfirmes.add(AF);
+//			}
+//			System.out.println(tabActeurFilmNonConfirmes.toString());
+//			
+//			/* Chargement des realisateurfilm */
+//			RealisateurFilm REALF = new RealisateurFilm();
+//			ArrayList<RealisateurFilm> tabRealFilmNonConfirmes = new ArrayList<RealisateurFilm>();
+//			ArrayList<RealisateurFilm> tabRealFilm = daoRealisateurFilm.loadAll();
+//			
+//			i=tabRealFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
+//			while(i.hasNext()) // tant qu'on a un suivant
+//			{
+//				REALF = (RealisateurFilm)(i.next());
+//				if (REALF.get_confirme() == 0)
+//					tabRealFilmNonConfirmes.add(REALF);
+//			}
+//			System.out.println(tabRealFilmNonConfirmes.toString());
+//			
+//			/*
+//			RecompensePersonne REC2 = new RecompensePersonne("Oscar", "Meilleur acteur", "2001");
+//			daoUtilisateur.save(U1);
+//			daoFilm.save(F1);
+//			note.set_film(F1);
+//			note.set_utilisateur(U1);
+//			daoNote.save(note);
+//			
+//			daoRecompense.save(REC2);
+//			*/
+//
+//			/*
+//			daoPersonne.save(P1);
+//			daoFilm.save(F1);
+//			P1.getFilms().add(PF);
+//			PF.set_producteur(P1);
+//			PF.set_film(F1);
+//
+//			Acteur A2 = (Acteur) daoPersonne.get(112);
+//			
+//			System.out.println("HERE" + A1.get_id());
+//			daoPF.save(PF);
+//
+//			if (daoUtilisateur.get("zerock", "zerock"))
+//			{
+//				System.out.println("trouve");
+//			}
+//			else
+//				System.out.println("pas trouve");
+//			
+//			REC1.set_personne(A1);
+//			daoRecompense.save(REC1);
+//			
+//			REC2.set_film(F1);
+//			daoRecompense.save(REC2);
+//			
+//			/*
+//			daoUtilisateur.save(U1);
+//			daoFilm.save(F1);
+//			note.set_film(F1);
+//			note.set_utilisateur(U1);
+//			daoNote.save(note);
+//			*/
+//			System.out.println("fini");
+//			
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 
 	}
 }
