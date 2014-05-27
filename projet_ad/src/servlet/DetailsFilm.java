@@ -65,12 +65,15 @@ public class DetailsFilm extends HttpServlet {
 			
 			ArrayList<Note> tabNotes = daoNote.load(id);
 			
-			int addition = 0;
-			for (Note n : tabNotes){
-				addition += n.get_note();
-			}
+			int moyenne = 0;
 			
-			int moyenne = addition + tabNotes.size();
+			if(!tabNotes.isEmpty())
+			{
+				int addition = 0;
+				for (Note n : tabNotes)
+					addition += n.get_note();
+				moyenne = addition / tabNotes.size();
+			}
 			
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecfilm(id);
 			
@@ -113,6 +116,7 @@ public class DetailsFilm extends HttpServlet {
 			out.println("<H3>Cout : "+ film.get_cout() +" $</H3>");
 			out.println("<H3>Date de sortie : "+ film.get_anneesortie() +"</H3>");
 			out.println("<H3>Note : "+ moyenne +"</H3>");
+			out.println("<A HREF=/projet_adw/AjouterNote?id="+film.get_id()+">Noter</A><BR/><BR/>");
 			
 			if(!tabActeurs.isEmpty())
 			{

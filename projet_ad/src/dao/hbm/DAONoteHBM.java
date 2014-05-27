@@ -47,7 +47,7 @@ public class DAONoteHBM extends DAOHBM implements DAONote {
 		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM note_film WHERE id_film_note LIKE :search").setParameter("search", "%"+id+"%").list();
+		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM Note WHERE id_film_note LIKE :search").setParameter("search", "%"+id+"%").list();
 		close(session);
 
 		System.out.println("Coucou");
