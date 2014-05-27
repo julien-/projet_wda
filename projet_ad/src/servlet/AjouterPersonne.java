@@ -67,6 +67,8 @@ public class AjouterPersonne extends HttpServlet {
 			
 			out.println("<H1>Ajouter un "+type_pers+"</H1>");
 			
+			out.println("</FORM>");	
+			
 			out.println("<FORM METHOD=POST ACTION=/projet_adw/AjouterPersonne>");
 			
 			out.println("Nom");

@@ -126,6 +126,7 @@ public class DetailPersonne extends HttpServlet {
 			{
 				out.println("Aucun Film<BR/><BR/>");
 			}
+			out.println("<A HREF=/projet_adw/LierPersonneFilm?id="+personne.get_id()+">Lier à un autre film</A><BR/><BR/>");
 			
 			if(!tabRecompense.isEmpty())
 			{

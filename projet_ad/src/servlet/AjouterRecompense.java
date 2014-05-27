@@ -107,12 +107,6 @@ public class AjouterRecompense extends HttpServlet {
 		
 		try {
 			
-			out.println(titre);	
-			out.println(raison);	
-			out.println(date);
-			out.println(type_recompense);	
-			out.println(id);
-			
 			if(type_recompense.equals("film"))
 			{
 				Film film = daoFilm.get(id);
