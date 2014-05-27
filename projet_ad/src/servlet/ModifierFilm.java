@@ -9,36 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import metier.Acteur;
-import metier.ActeurFilm;
 import metier.Film;
 import metier.Personne;
-import metier.Producteur;
-import metier.ProducteurFilm;
-import metier.Realisateur;
-import metier.RealisateurFilm;
-import dao.DAOActeurFilm;
 import dao.DAOFilm;
 import dao.DAOPersonne;
-import dao.DAOProducteurFilm;
-import dao.DAORealisateurFilm;
-import dao.hbm.DAOActeurFilmHBM;
 import dao.hbm.DAOFilmHBM;
 import dao.hbm.DAOPersonneHBM;
-import dao.hbm.DAOProducteurFilmHBM;
-import dao.hbm.DAORealisateurFilmHBM;
 
 /**
- * Servlet implementation class ModifierPersonne
+ * Servlet implementation class ModifierFilm
  */
-@WebServlet("/ModifierPersonne")
-public class ModifierPersonne extends HttpServlet {
+@WebServlet("/ModifierFilm")
+public class ModifierFilm extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ModifierPersonne() {
+    public ModifierFilm() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -53,24 +41,24 @@ public class ModifierPersonne extends HttpServlet {
 		String Id = request.getParameter("id");
 		int id = Integer.parseInt(Id); 
 		
-		DAOPersonne daoPersonne = new DAOPersonneHBM();
+		DAOFilm daoFilm = new DAOFilmHBM();
 
 		try {
 			
-			Personne personne = daoPersonne.get(id);
+			Film film = daoFilm.get(id);
 			
 			out.println("<HTML><BODY><CENTER>");
 			
-			out.println("<H1>Modifier "+personne.get_nom()+" "+ personne.get_prenom()+"</H1>");
+			out.println("<H1>Modifier "+film.get_titre()+"</H1>");
 			
-			out.println("<FORM METHOD=POST ACTION=/projet_adw/ModifierPersonne>");
+			out.println("<FORM METHOD=POST ACTION=/projet_adw/ModifierFilm>");
 			
-			out.println("Nom");
-			out.println("<INPUT type=text name=nom value="+personne.get_nom()+">");
-			out.println("Prenom");
-			out.println("<INPUT type=text name=prenom value="+personne.get_prenom()+">");
-			out.println("Date de naissance");
-			out.println("<INPUT type=text name=date_naissance value="+personne.get_datenaiss()+">");
+			out.println("Titre");
+			out.println("<INPUT type=text name=titre value="+film.get_titre()+">");
+			out.println("Cout");
+			out.println("<INPUT type=text name=cout value="+film.get_cout()+">");
+			out.println("Année sortie");
+			out.println("<INPUT type=text name=date value="+film.get_anneesortie()+">");
 			out.println("<INPUT type=hidden value="+Id+" name=id>");
 			out.println("<INPUT type=submit value=valider>");
 			
@@ -91,20 +79,22 @@ public class ModifierPersonne extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		String date_naissance = request.getParameter("date_naissance");		
+		String titre = request.getParameter("titre");
+		String Cout = request.getParameter("cout");
+		int cout = Integer.parseInt(Cout);
+		String Date = request.getParameter("date");	
+		int date = Integer.parseInt(Date);
 		String Id = request.getParameter("id");
 		int id = Integer.parseInt(Id);
 		
-		DAOPersonne daoPersonne = new DAOPersonneHBM();
+		DAOFilm daoFilm = new DAOFilmHBM();
 		
 		try {
-			Personne personne = daoPersonne.get(id);
-			personne.set_nom(nom);
-			personne.set_prenom(prenom);
-			personne.set_datenaiss(date_naissance);
-			daoPersonne.update(personne);
+			Film film = daoFilm.get(id);
+			film.set_titre(titre);
+			film.set_cout(cout);
+			film.set_anneesortie(date);
+			daoFilm.update(film);
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

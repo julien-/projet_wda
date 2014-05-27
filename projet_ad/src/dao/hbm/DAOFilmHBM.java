@@ -76,5 +76,14 @@ public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void update(Film film) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = connect();
+		
+		session.update(film);
+		close(session);
+	}
 
 }

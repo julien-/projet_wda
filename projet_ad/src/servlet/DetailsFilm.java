@@ -95,6 +95,7 @@ public class DetailsFilm extends HttpServlet {
 			
 			out.println("<HTML><BODY><CENTER>");
 			out.println("<H1>Fiche Film : "+ film.get_titre() +"</H1>");
+			out.println("<A HREF=/projet_adw/ModifierFilm?id="+film.get_id()+">Modifier</A>");
 			out.println("<H3>Cout : "+ film.get_cout() +"</H3>");
 			out.println("<H3>Date sortie : "+ film.get_anneesortie() +"</H3>");
 			
