@@ -29,8 +29,6 @@ public class ActionAfficherFilms extends Action
 		ArrayList<Film> tabFilms = getDaoFilms().load(formRecherche.getTitre());
 		
 		request.getSession().setAttribute("FILMS", tabFilms);
-		
-		System.out.println("Get Annonce = "+tabFilms.toString());
 
 		
 		return mapping.findForward("AfficherFilms");

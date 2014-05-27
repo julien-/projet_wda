@@ -7,7 +7,7 @@ import org.apache.struts.action.ActionForm;
 public class ActionFormAjoutFilm extends ActionForm
 {
 	String titre;
-	double cout;
+	int cout;
 	int annee;
 
 
@@ -24,11 +24,11 @@ public class ActionFormAjoutFilm extends ActionForm
 		this.titre = titre;
 	}
 
-	public double getCout() {
+	public int getCout() {
 		return cout;
 	}
 
-	public void setCout(double cout) {
+	public void setCout(int cout) {
 		this.cout = cout;
 	}
 

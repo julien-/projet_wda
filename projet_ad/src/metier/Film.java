@@ -6,7 +6,7 @@ import java.util.Set;
 public class Film {
 	String _titre;
 	int _anneesortie;
-	double _cout;
+	int _cout;
 	String _photoaffiche;
 	int _id;
 	int _confirme;
@@ -35,7 +35,7 @@ public class Film {
 		this._notes = _notes;
 	}
 	//Constructeur sans photo
-	public Film(String titre, int anneesortie, double cout) throws Exception {
+	public Film(String titre, int anneesortie, int cout) throws Exception {
 		try{
 			//tests
 			if(titre.isEmpty())
@@ -57,7 +57,7 @@ public class Film {
 		
 	}
 	//Constructeur avec photo
-	public Film(String titre, int anneesortie, double cout, String photoaffiche) throws Exception
+	public Film(String titre, int anneesortie, int cout, String photoaffiche) throws Exception
 	{
 		//Appel du constructeur sans photo
 		this(titre, anneesortie, cout);
@@ -102,10 +102,10 @@ public class Film {
 	public void set_anneesortie(int anneesortie) {
 		this._anneesortie = anneesortie;
 	}
-	public double get_cout() {
+	public int get_cout() {
 		return _cout;
 	}
-	public void set_cout(double cout) {
+	public void set_cout(int cout) {
 		this._cout = cout;
 	}
 	public String get_photoaffiche() {

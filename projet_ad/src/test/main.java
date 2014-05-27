@@ -55,7 +55,7 @@ public class main {
 		try 
 		{
 			Realisateur R1 = new Realisateur("Luc", "Besson", "1991-06-07");
-			Film F1 = new Film("Titanic", 1997, 200000.1);
+			Film F1 = new Film("Titanic", 1997, 200000);
 			Acteur A1 = new Acteur("Ewan", "McGregor", "1966-06-02");
 
 			
