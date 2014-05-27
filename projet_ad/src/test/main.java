@@ -73,8 +73,13 @@ public class main {
 			daoProducteur.save(toPd);
 			*/
 		
+			Personne pers = daoPersonne.get(112);
+			pers.set_nom("Connard");
+			daoPersonne.update(pers);
+			
 			
 			/* Chargement des recompenses */
+			
 			System.out.println(daoRecompense.loadAll().toString());
 			ArrayList<Recompense> tabRecompensesNonConfirmee = new ArrayList<Recompense>();
 			ArrayList<Recompense> tabRecompenses = daoRecompense.loadAll();

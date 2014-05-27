@@ -12,6 +12,7 @@
 		<property name="_datenaiss" column="date_pers" type="string" not-null="true"/>
 		<property name="_photo" column="photo_pers" type="string" not-null="false"/>
 		<property name="_confirme" column="confirme" type="int" not-null="false"/>
+		<property name="_popularite" column="popularite" type="int" not-null="false"/>
 		
 	    <joined-subclass name="metier.Producteur" table="producteur">
         	<key column="id_producteur"/>

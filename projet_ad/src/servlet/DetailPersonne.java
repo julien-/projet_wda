@@ -59,6 +59,9 @@ public class DetailPersonne extends HttpServlet {
 		try {
 			
 			Personne personne = daoPersonne.get(id);
+			personne.set_popularite(personne.get_popularite() + 1);
+			daoPersonne.update(personne);
+			
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecpersonne(id);
 			Set<Film> tabFilm = new HashSet<Film>();
 			

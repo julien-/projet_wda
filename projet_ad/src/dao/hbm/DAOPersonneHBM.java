@@ -59,4 +59,13 @@ public class DAOPersonneHBM extends DAOHBM implements DAOPersonne {
 		
 	}
 
+	@Override
+	public void update(Personne personne) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = connect();
+		
+		session.update(personne);
+		close(session);
+	}
+
 }

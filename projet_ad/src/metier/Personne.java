@@ -9,6 +9,15 @@ public class Personne {
 	String _photo;
 	int _id;
 	int _confirme;
+	int _popularite = 0;
+	public int get_popularite() {
+		return _popularite;
+	}
+
+	public void set_popularite(int _popularite) {
+		this._popularite = _popularite;
+	}
+
 	private Set<Recompense> recompenses;
 	//Constructeur sans photo
 	public Personne(String nom, String prenom, String datenaiss) {
