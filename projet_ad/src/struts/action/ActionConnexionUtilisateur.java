@@ -37,9 +37,9 @@ public class  ActionConnexionUtilisateur extends Action
 		ActionFormConnexionUtilisateur formInscription = (ActionFormConnexionUtilisateur)form;
 		
 		IUtilisateur utilisateur = new Utilisateur(formInscription.getLogin(), formInscription.getPass());
-		Naming.unbind("UTILISATEUR");
-		Naming.bind("UTILISATEUR", utilisateur);
-		
+		System.out.println("bind");
+		Naming.bind("rmi://localhost:1099/UTILISATEUR", utilisateur);
+Naming.list("rmi://localhost:1099/")
 		while(!answerReceived)
 		{
 			try
@@ -57,7 +57,7 @@ public class  ActionConnexionUtilisateur extends Action
 			}
 		}
 
-		
+		Naming.unbind("rmi://localhost:1099/REPONSE");
 		return mapping.findForward(pageDestination);
 	}
 

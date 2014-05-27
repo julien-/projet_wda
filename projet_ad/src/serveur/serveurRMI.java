@@ -13,6 +13,8 @@ public class serveurRMI
 {
 	public static void main(String[] args) 
 	{
+		while(true)
+		{
 		boolean trouve = false;
 		try
 		{
@@ -22,11 +24,12 @@ public class serveurRMI
 				java.rmi.registry.LocateRegistry.createRegistry(1099);
 				
 			}
+			
 			catch (Exception e)
 			{
 				System.out.println("Le registre existe déjà");
 			}
-			
+			System.out.println(("Serveur RMI démarré."));
 			while (!trouve)
 			{
 				try
@@ -39,7 +42,9 @@ public class serveurRMI
 					{
 						utilisateur.setVerifie(1);
 					}
+					Naming.unbind("rmi://localhost:1099/UTILISATEUR");
 					Naming.rebind("rmi://localhost:1099/REPONSE", utilisateur);
+					System.out.println(Naming.list("rmi://localhost:1099/"));
 				}
 				catch(Exception e)
 				{
@@ -51,5 +56,6 @@ public class serveurRMI
 		{
 			System.out.println(e.toString());
 		}
+	}
 	}
 }
