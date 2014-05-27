@@ -53,21 +53,12 @@ public class AjouterRecompense extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();		
 		
-		
-		DAOFilm daoFilm = new DAOFilmHBM();
-		
-		
-		String Id = request.getParameter("id");
-		int id = Integer.parseInt(Id); 
-		
-		String type_recompense = request.getParameter("type_recompense");
-		
+		String id = request.getParameter("id");
+		String type_recompense = request.getParameter("type_recompense");		
 
-		try {
-			
-			
+		try {			
 			out.println("<HTML><BODY><CENTER>");
 			
 			out.println("<H1>Ajouter une Récompense</H1>");

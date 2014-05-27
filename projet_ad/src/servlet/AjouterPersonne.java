@@ -55,17 +55,10 @@ public class AjouterPersonne extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();		
 		
-		
-		DAOFilm daoFilm = new DAOFilmHBM();
-		
-		
-		String id_film = request.getParameter("id_film");
-		int id_film_int = Integer.parseInt(id_film); 
-		
-		String type_pers = request.getParameter("type_pers");
-		
+		String id_film = request.getParameter("id_film");		
+		String type_pers = request.getParameter("type_pers");		
 
 		try {
 			
@@ -124,11 +117,6 @@ public class AjouterPersonne extends HttpServlet {
 		try {
 			
 			Film film = daoFilm.get(id);
-			out.println(nom);	
-			out.println(prenom);	
-			out.println(date_naissance);
-			out.println(type_personne);	
-			out.println(id);
 			
 			if(type_personne.equals("acteur"))
 			{
@@ -155,8 +143,6 @@ public class AjouterPersonne extends HttpServlet {
 				film.getRealisateurs().add(new RealisateurFilm(pers, film));				
 			}
 			
-			
-		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
