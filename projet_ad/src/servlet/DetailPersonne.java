@@ -111,6 +111,7 @@ public class DetailPersonne extends HttpServlet {
 			out.println("<HTML><BODY><CENTER>");
 			out.println("<H1>Fiche "+ typepersonne +" : "+ personne.get_nom() +" "+ personne.get_prenom() +"</H1>");
 			out.println("<H3>Date naissance : "+ personne.get_datenaiss() +"</H3>");
+			out.println("<H3>Popularité : "+ personne.get_popularite() +"</H3>");
 			
 			if(!tabFilm.isEmpty())
 			{
