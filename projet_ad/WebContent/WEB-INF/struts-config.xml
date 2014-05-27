@@ -65,6 +65,10 @@
 			scope="session">
 			<forward name="deconnexion" path="/vues/Bienvenue.jsp"/>
 		</action>
+		
+		<action path="/action_confirmation" type="struts.action.ActionChargementNonConfirme">
+			<forward name="FormulaireConfirmation" path="/vues/FormConfirmerProposition.jsp"/>
+		</action>
 	</action-mappings>
 
 	<!-- ======================================== Message Resources Definitions -->

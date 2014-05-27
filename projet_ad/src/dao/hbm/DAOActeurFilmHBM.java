@@ -30,16 +30,11 @@ public class DAOActeurFilmHBM extends DAOHBM implements DAOActeurFilm{
 	}
 	
 
-	public ArrayList<ActeurFilm> load(String string) throws Exception {
+	public ArrayList<ActeurFilm> loadAll() throws Exception {
 		Session	session = connect();
 		
-		
-		@SuppressWarnings("unchecked")
-		ArrayList<ActeurFilm>	tabNote = (ArrayList<ActeurFilm>) session.createQuery("FROM acteur_film").list();
+		ArrayList<ActeurFilm>	tabNote = (ArrayList<ActeurFilm>) session.createQuery("FROM ActeurFilm").list();
 		close(session);
-
-		System.out.println("Coucou");
-		System.out.println(tabNote);
 
 		return tabNote;
 	}

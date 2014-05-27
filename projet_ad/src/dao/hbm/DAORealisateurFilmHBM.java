@@ -42,17 +42,14 @@ public class DAORealisateurFilmHBM extends DAOHBM implements DAORealisateurFilm{
 	 * @see dao.hbm.DAORealisateur#load(java.lang.String)
 	 */
 	@Override
-	public ArrayList<RealisateurFilm> load(String string) throws Exception {
+	public ArrayList<RealisateurFilm> loadAll() throws Exception {
 		Session	session = connect();
 		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<RealisateurFilm>	tabNote = (ArrayList<RealisateurFilm>) session.createQuery("FROM realisateur_film").list();
+		ArrayList<RealisateurFilm>	tabNote = (ArrayList<RealisateurFilm>) session.createQuery("FROM RealisateurFilm").list();
 		close(session);
-
-		System.out.println("Coucou");
-		System.out.println(tabNote);
-
+		
 		return tabNote;
 	}
 

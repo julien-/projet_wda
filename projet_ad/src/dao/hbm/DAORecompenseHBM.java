@@ -43,9 +43,9 @@ public class DAORecompenseHBM extends DAOHBM implements DAORecompense {
 
 	public ArrayList<Recompense> loadrecfilm(int code) throws Exception {
 		Session	session = connect();		
+		ArrayList<Recompense> tabCodeRec = null;
 		
-		@SuppressWarnings("unchecked")
-		ArrayList<Recompense>	tabCodeRec = (ArrayList<Recompense>) session.createQuery("FROM Recompense WHERE id_film_recfilm LIKE :search").setParameter("search", "%"+code+"%").list();
+		tabCodeRec = (ArrayList<Recompense>) session.createQuery("FROM Recompense WHERE id_film_recfilm LIKE :search").setParameter("search", "%"+code+"%").list();
 		close(session);
 
 		return tabCodeRec;
@@ -64,8 +64,20 @@ public class DAORecompenseHBM extends DAOHBM implements DAORecompense {
 
 	@Override
 	public void saveOrUpdate(Recompense Recompense) throws Exception {
-		// TODO Auto-generated method stub
-		
+
 	}
+
+
+	@Override
+	public ArrayList<Recompense> loadAll() throws Exception {
+		Session	session = connect();		
+		ArrayList<Recompense> tabCodeRec = null;
+		
+		tabCodeRec = (ArrayList<Recompense>) session.createQuery("FROM Recompense").list();
+		close(session);
+
+		return tabCodeRec;
+	}
+
 
 }

@@ -10,5 +10,6 @@ public interface DAORecompense
 	long size() throws Exception;
 	ArrayList<Recompense> loadrecfilm(int code) throws Exception;
 	ArrayList<Recompense> loadrecpersonne(int code) throws Exception;
+	ArrayList<Recompense> loadAll() throws Exception;
 	void saveOrUpdate(Recompense personne) throws Exception;
 }

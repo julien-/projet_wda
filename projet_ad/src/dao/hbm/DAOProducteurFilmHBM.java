@@ -27,22 +27,18 @@ public class DAOProducteurFilmHBM extends DAOHBM implements DAOProducteurFilm{
 		// TODO Auto-generated method stub
 		Session session = connect();
 		
-		long compteur = (long) session.createQuery("select count(*) from prodcuteur_film").uniqueResult();
+		long compteur = (long) session.createQuery("select count(*) from ProducteurFilm").uniqueResult();
 		return compteur;
 	}
 	
 
-	public ArrayList<ProducteurFilm> load(String string) throws Exception {
+	public ArrayList<ProducteurFilm> loadAll() throws Exception {
 		Session	session = connect();
 		
-		
 		@SuppressWarnings("unchecked")
-		ArrayList<ProducteurFilm>	tabNote = (ArrayList<ProducteurFilm>) session.createQuery("FROM producteur_film").list();
+		ArrayList<ProducteurFilm>	tabNote = (ArrayList<ProducteurFilm>) session.createQuery("FROM ProducteurFilm").list();
 		close(session);
-
-		System.out.println("Coucou");
-		System.out.println(tabNote);
-
+		
 		return tabNote;
 	}
 

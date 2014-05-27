@@ -9,6 +9,6 @@ public interface DAOProducteurFilm
 {
 	void save(ProducteurFilm note) throws Exception;
 	long size() throws Exception;
-	ArrayList<ProducteurFilm> load(String nom) throws Exception;
+	ArrayList<ProducteurFilm> loadAll() throws Exception;
 	void saveOrUpdate(ProducteurFilm note) throws Exception;
 }
