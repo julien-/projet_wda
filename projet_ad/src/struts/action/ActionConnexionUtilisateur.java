@@ -39,7 +39,7 @@ public class  ActionConnexionUtilisateur extends Action
 		IUtilisateur utilisateur = new Utilisateur(formInscription.getLogin(), formInscription.getPass());
 		System.out.println("bind");
 		Naming.bind("rmi://localhost:1099/UTILISATEUR", utilisateur);
-Naming.list("rmi://localhost:1099/")
+
 		while(!answerReceived)
 		{
 			try
