@@ -127,6 +127,7 @@ public class AjouterRecompense extends HttpServlet {
 				recompense.set_personne(personne);
 				daoRecompense.save(recompense);
 			}
+			response.sendRedirect("/projet_adw/vues/Success.jsp");
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

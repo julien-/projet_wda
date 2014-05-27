@@ -95,6 +95,7 @@ public class ModifierFilm extends HttpServlet {
 			film.set_cout(cout);
 			film.set_anneesortie(date);
 			daoFilm.update(film);
+			response.sendRedirect("/projet_adw/vues/Success.jsp");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -105,6 +105,7 @@ public class ModifierPersonne extends HttpServlet {
 			personne.set_prenom(prenom);
 			personne.set_datenaiss(date_naissance);
 			daoPersonne.update(personne);
+			response.sendRedirect("/projet_adw/vues/Success.jsp");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
