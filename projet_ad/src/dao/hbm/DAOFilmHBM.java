@@ -42,6 +42,17 @@ public class DAOFilmHBM extends DAOHBM implements DAOFilm {
 		return compteur;
 	}
 	
+	public ArrayList<Film> load() throws Exception {
+		Session	session = connect();
+		
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Film>	tabIdFilm = (ArrayList<Film>) session.createQuery("FROM Film").list();
+		close(session);
+		
+		return tabIdFilm;
+	}
+	
 
 	public ArrayList<Film> load(String string) throws Exception {
 		Session	session = connect();
