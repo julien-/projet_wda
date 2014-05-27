@@ -22,9 +22,11 @@ import metier.ProducteurFilm;
 import metier.Realisateur;
 import metier.RealisateurFilm;
 import metier.Recompense;
+import dao.DAOActeurFilm;
 import dao.DAOFilm;
 import dao.DAOPersonne;
 import dao.DAORecompense;
+import dao.hbm.DAOActeurFilmHBM;
 import dao.hbm.DAOFilmHBM;
 import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAORecompenseHBM;
@@ -53,12 +55,15 @@ public class DetailPersonne extends HttpServlet {
 		
 		DAOPersonne daoPersonne = new DAOPersonneHBM();
 		DAORecompense daoRecompense = new DAORecompenseHBM();
+		//DAOFilm daoFilm = new DAOFilmHBM();
+		//DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
 		
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
 		try {
 			
-			Personne personne = daoPersonne.get(id);
+			Personne personne = daoPersonne.get(id);			
+			
 			personne.set_popularite(personne.get_popularite() + 1);
 			daoPersonne.update(personne);
 			
@@ -126,6 +131,7 @@ public class DetailPersonne extends HttpServlet {
 			{
 				out.println("Aucun Film<BR/><BR/>");
 			}
+			out.println("<A HREF=/projet_adw/LierPersonneFilm?id="+personne.get_id()+">Lier à un autre film</A><BR/><BR/>");
 			
 			if(!tabRecompense.isEmpty())
 			{

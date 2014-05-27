@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import metier.Acteur;
 import metier.ActeurFilm;
 import metier.Film;
+import metier.Note;
 import metier.Personne;
 import metier.Producteur;
 import metier.ProducteurFilm;
@@ -22,9 +23,11 @@ import metier.Realisateur;
 import metier.RealisateurFilm;
 import metier.Recompense;
 import dao.DAOFilm;
+import dao.DAONote;
 import dao.DAOPersonne;
 import dao.DAORecompense;
 import dao.hbm.DAOFilmHBM;
+import dao.hbm.DAONoteHBM;
 import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAORecompenseHBM;
 
@@ -52,12 +55,23 @@ public class DetailsFilm extends HttpServlet {
 		
 		DAORecompense daoRecompense = new DAORecompenseHBM();
 		DAOFilm daoFilm = new DAOFilmHBM();
+		DAONote daoNote = new DAONoteHBM();
 		
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
 		try {
 			
 			Film film = daoFilm.get(id);
+			
+			ArrayList<Note> tabNotes = daoNote.load(id);
+			
+			int addition = 0;
+			for (Note n : tabNotes){
+				addition += n.get_note();
+			}
+			
+			int moyenne = addition + tabNotes.size();
+			
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecfilm(id);
 			
 			ArrayList<Personne> tabActeurs = new ArrayList<Personne>();
@@ -98,6 +112,7 @@ public class DetailsFilm extends HttpServlet {
 			out.println("<A HREF=/projet_adw/ModifierFilm?id="+film.get_id()+">Modifier</A>");
 			out.println("<H3>Cout : "+ film.get_cout() +" $</H3>");
 			out.println("<H3>Date de sortie : "+ film.get_anneesortie() +"</H3>");
+			out.println("<H3>Note : "+ moyenne +"</H3>");
 			
 			if(!tabActeurs.isEmpty())
 			{

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import metier.Acteur;
 import metier.ActeurFilm;
 import metier.Film;
+import metier.Personne;
 import metier.ProducteurFilm;
 import metier.RealisateurFilm;
 import metier.Recompense;
@@ -21,6 +22,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 import struts.actionform.ActionFormAfficherFilms;
+import dao.DAOActeur;
 import dao.DAOActeurFilm;
 import dao.DAOFilm;
 import dao.DAOPersonne;
@@ -28,7 +30,9 @@ import dao.DAOProducteurFilm;
 import dao.DAORealisateurFilm;
 import dao.DAORecompense;
 import dao.hbm.DAOActeurFilmHBM;
+import dao.hbm.DAOActeurHBM;
 import dao.hbm.DAOFilmHBM;
+import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAOProducteurFilmHBM;
 import dao.hbm.DAORealisateurFilmHBM;
 import dao.hbm.DAORecompenseHBM;
@@ -44,14 +48,15 @@ public class ActionChargementNonConfirme extends Action
 		DAORealisateurFilm daoRealisateurFilm = new DAORealisateurFilmHBM();
 		DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
 		daoRecompense = new DAORecompenseHBM();
+		DAOPersonne daoPersonne = new DAOPersonneHBM();
+		DAOFilm daoFilm = new DAOFilmHBM();
+		
 		
 		/* Chargement des recompenses */
 		System.out.println(daoRecompense.loadAll().toString());
 		ArrayList<Recompense> tabRecompensesNonConfirmee = new ArrayList<Recompense>();
 		ArrayList<Recompense> tabRecompenses = daoRecompense.loadAll();
-		
-		
-		
+
 		RecompenseFilm RF;
 		RecompensePersonne RP;
 		Object obj;
@@ -118,6 +123,34 @@ public class ActionChargementNonConfirme extends Action
 		
 		System.out.println(tabRealFilmNonConfirmes.toString());
 		
+		/* Chargement des personnes */
+		Personne P = new Personne();
+		ArrayList<Personne> tabPersonnerNonConfirme = new ArrayList<Personne>();
+		ArrayList<Personne> tabPersonne = daoPersonne.load("");
+		
+		i=tabPersonne.iterator(); // on crée un Iterator pour parcourir notre HashSet
+		while(i.hasNext()) // tant qu'on a un suivant
+		{
+			P = (Personne)(i.next());
+			if (P.get_confirme() == 0)
+				tabPersonnerNonConfirme.add(P);
+		}
+		
+		/* Chargement des films */
+		Film F = new Film();
+		ArrayList<Film> tabFilmNonConfirme = new ArrayList<Film>();
+		ArrayList<Film> tabFilm = daoFilm.load("");
+		
+		i=tabFilm.iterator(); // on crée un Iterator pour parcourir notre HashSet
+		while(i.hasNext()) // tant qu'on a un suivant
+		{
+			F = (Film)(i.next());
+			if (F.get_confirme() == 0)
+				tabFilmNonConfirme.add(F);
+		}
+		
+		request.getSession().setAttribute("PERSONNES", tabPersonnerNonConfirme);
+		request.getSession().setAttribute("FILMS", tabFilmNonConfirme);
 		request.getSession().setAttribute("RECOMPENSES", tabRecompensesNonConfirmee);
 		request.getSession().setAttribute("ACTEURFILM", tabActeurFilmNonConfirmes);
 		request.getSession().setAttribute("PRODUCTEURFILM", tabProdFilmNonConfirmes);

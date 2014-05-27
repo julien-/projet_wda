@@ -33,7 +33,21 @@ public class DAONoteHBM extends DAOHBM implements DAONote {
 		
 		
 		@SuppressWarnings("unchecked")
-		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM note_film").list();
+		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM Note").list();
+		close(session);
+
+		System.out.println("Coucou");
+		System.out.println(tabNote);
+
+		return tabNote;
+	}
+	
+	public ArrayList<Note> load(int id) throws Exception {
+		Session	session = connect();
+		
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Note>	tabNote = (ArrayList<Note>) session.createQuery("FROM note_film WHERE id_film_note LIKE :search").setParameter("search", "%"+id+"%").list();
 		close(session);
 
 		System.out.println("Coucou");
