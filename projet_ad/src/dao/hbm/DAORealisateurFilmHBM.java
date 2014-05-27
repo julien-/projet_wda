@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import metier.ActeurFilm;
 import metier.Note;
+import metier.ProducteurFilm;
 import metier.RealisateurFilm;
 
 import org.hibernate.Session;
@@ -60,6 +61,15 @@ public class DAORealisateurFilmHBM extends DAOHBM implements DAORealisateurFilm{
 	public void saveOrUpdate(RealisateurFilm real_film) throws Exception {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void update(RealisateurFilm realisateurfilm) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = connect();
+		
+		session.update(realisateurfilm);
+		close(session);
 	}
 
 }

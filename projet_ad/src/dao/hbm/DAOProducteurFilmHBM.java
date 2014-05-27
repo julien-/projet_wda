@@ -48,4 +48,12 @@ public class DAOProducteurFilmHBM extends DAOHBM implements DAOProducteurFilm{
 		
 	}
 
+	@Override
+	public void update(ProducteurFilm producteurfilm) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = connect();
+		
+		session.update(producteurfilm);
+		close(session);
+	}
 }

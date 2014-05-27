@@ -3,6 +3,7 @@ package dao.hbm;
 import java.util.ArrayList;
 
 import metier.ActeurFilm;
+import metier.Film;
 import metier.Note;
 
 import org.hibernate.Session;
@@ -45,4 +46,12 @@ public class DAOActeurFilmHBM extends DAOHBM implements DAOActeurFilm{
 		
 	}
 
+	@Override
+	public void update(ActeurFilm acteurfilm) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = connect();
+		
+		session.update(acteurfilm);
+		close(session);
+	}
 }

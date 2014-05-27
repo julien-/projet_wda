@@ -9,7 +9,7 @@ public class ActionFormAjoutFilm extends ActionForm
 	String titre;
 	int cout;
 	int annee;
-
+	String fichier;
 
 	public ActionFormAjoutFilm()
 	{
@@ -38,6 +38,14 @@ public class ActionFormAjoutFilm extends ActionForm
 
 	public void setAnnee(int annee) {
 		this.annee = annee;
+	}
+
+	public String getFichier() {
+		return fichier;
+	}
+
+	public void setFichier(String fichier) {
+		this.fichier = fichier;
 	}
 
 	

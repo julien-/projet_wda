@@ -11,4 +11,5 @@ public interface DAOActeurFilm
 	long size() throws Exception;
 	ArrayList<ActeurFilm> loadAll() throws Exception;
 	void saveOrUpdate(ActeurFilm note) throws Exception;
+	void update(ActeurFilm acteurfilm) throws Exception;
 }

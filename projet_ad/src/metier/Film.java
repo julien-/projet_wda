@@ -49,6 +49,7 @@ public class Film {
 			_confirme = 0;
 			this._cout = cout;
 			
+			
 		}
 		catch(Exception e)
         {
@@ -59,14 +60,17 @@ public class Film {
 	//Constructeur avec photo
 	public Film(String titre, int anneesortie, int cout, String photoaffiche) throws Exception
 	{
-		//Appel du constructeur sans photo
-		this(titre, anneesortie, cout);
+		this._titre = titre;
+		this._anneesortie = anneesortie;
 		_confirme = 0;
+		this._cout = cout;
 		try
 		{
-			//tests
-			if(photoaffiche != null)
+			if (photoaffiche == "")
+				_photoaffiche = null;
+			else
 				_photoaffiche = photoaffiche;
+			System.out.println("PHOTO AFFICHE " + _photoaffiche);
 		}
 		catch(Exception e)
 		{

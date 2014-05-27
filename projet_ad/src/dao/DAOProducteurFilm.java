@@ -11,4 +11,6 @@ public interface DAOProducteurFilm
 	long size() throws Exception;
 	ArrayList<ProducteurFilm> loadAll() throws Exception;
 	void saveOrUpdate(ProducteurFilm note) throws Exception;
+	void update(ProducteurFilm producteurfilm) throws Exception;
+	
 }

@@ -16,4 +16,6 @@ public interface DAORealisateurFilm {
 	public abstract void saveOrUpdate(RealisateurFilm real_film)
 			throws Exception;
 
+	void update(RealisateurFilm realisateurfilm) throws Exception;
+
 }

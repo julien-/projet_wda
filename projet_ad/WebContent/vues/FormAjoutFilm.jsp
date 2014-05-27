@@ -17,6 +17,8 @@
 		<html:text property="cout"></html:text>
 		<label for="annee">Annee</label>
 		<html:text property="annee"></html:text>
+		<label for="fichier">Ajouter une affiche</label>
+		<html:file property="fichier" size="5" />
 		<html:submit>Ajouter</html:submit>
 	</html:form>
 </body>

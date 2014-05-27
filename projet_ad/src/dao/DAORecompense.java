@@ -12,4 +12,5 @@ public interface DAORecompense
 	ArrayList<Recompense> loadrecpersonne(int code) throws Exception;
 	ArrayList<Recompense> loadAll() throws Exception;
 	void saveOrUpdate(Recompense personne) throws Exception;
+	void update (Recompense recompense) throws Exception;
 }

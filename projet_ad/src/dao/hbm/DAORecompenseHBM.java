@@ -79,5 +79,14 @@ public class DAORecompenseHBM extends DAOHBM implements DAORecompense {
 		return tabCodeRec;
 	}
 
+	@Override
+	public void update(Recompense recompense) throws Exception {
+		// TODO Auto-generated method stub
+		Session session = connect();
+		
+		session.update(recompense);
+		close(session);
+	}
+
 
 }
