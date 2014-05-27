@@ -7,16 +7,8 @@ public class ActeurFilm implements Serializable{
 	private Personne _acteur;
 	private Film _film;
 	private int _confirme = 0;
-	private int _idrelation;
+	private String _id;
 	
-	public int get_idrelation() {
-		return _idrelation;
-	}
-
-	public void set_idrelation(int _idrelation) {
-		this._idrelation = _idrelation;
-	}
-
 	public ActeurFilm() {
 		// TODO Auto-generated constructor stub
 	}
@@ -50,6 +42,26 @@ public class ActeurFilm implements Serializable{
 
 	public void set_confirme(int _confirme) {
 		this._confirme = _confirme;
+	}
+	
+	public String get_nom(){
+		return this._acteur.get_nom();
+	}
+	
+	public String get_prenom(){
+		return this._acteur.get_prenom();
+	}
+	
+	public String get_datenaiss(){
+		return this._acteur.get_datenaiss();
+	}
+	
+	public String get_photo(){
+		return this._acteur.get_photo();
+	}
+	
+	public String get_id(){
+		return this._acteur.get_id()+"|"+this._film.get_id();
 	}
 
 	
