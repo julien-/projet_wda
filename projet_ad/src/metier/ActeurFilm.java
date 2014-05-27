@@ -7,7 +7,16 @@ public class ActeurFilm implements Serializable{
 	private Personne _acteur;
 	private Film _film;
 	private int _confirme = 0;
+	private int _idrelation;
 	
+	public int get_idrelation() {
+		return _idrelation;
+	}
+
+	public void set_idrelation(int _idrelation) {
+		this._idrelation = _idrelation;
+	}
+
 	public ActeurFilm() {
 		// TODO Auto-generated constructor stub
 	}
