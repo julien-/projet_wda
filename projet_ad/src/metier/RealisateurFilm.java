@@ -11,6 +11,12 @@ public class RealisateurFilm implements Serializable{
 	public RealisateurFilm() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public RealisateurFilm(Realisateur realisateur, Film film) {
+		// TODO Auto-generated constructor stub
+		this._realisateur = realisateur;
+		this._film = film;
+	}
 
 
 	public Realisateur get_realisateur() {

@@ -12,7 +12,11 @@ public class ProducteurFilm implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-
+	public ProducteurFilm(Producteur producteur, Film film) {
+		// TODO Auto-generated constructor stub
+		this._producteur = producteur;
+		this._film = film;
+	}
 
 
 	public Producteur get_producteur() {

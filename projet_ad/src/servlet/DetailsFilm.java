@@ -110,7 +110,7 @@ public class DetailsFilm extends HttpServlet {
 			{
 				out.println("Aucun Acteur<BR/><BR/>");
 			}
-			
+			out.println("<A HREF=/projet_adw/AjouterPersonne?id_film="+film.get_id()+"&type_pers=acteur>Ajouter Acteur</A><BR/><BR/>");
 			
 			if(!tabRealisateurs.isEmpty())
 			{
@@ -124,6 +124,7 @@ public class DetailsFilm extends HttpServlet {
 			{
 				out.println("Aucun Réalisateur<BR/><BR/>");
 			}
+			out.println("<A HREF=/projet_adw/AjouterPersonne?id_film="+film.get_id()+"&type_pers=realisateur>Ajouter Realisateur</A><BR/><BR/>");
 			
 			if(!tabProducteurs.isEmpty())
 			{
@@ -137,6 +138,7 @@ public class DetailsFilm extends HttpServlet {
 			{
 				out.println("Aucun Producteur<BR/><BR/>");
 			}
+			out.println("<A HREF=/projet_adw/AjouterPersonne?id_film="+film.get_id()+"&type_pers=producteur>Ajouter Producteur</A><BR/><BR/>");
 			
 			if(!tabRecompense.isEmpty())
 			{
