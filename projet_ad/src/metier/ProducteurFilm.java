@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ProducteurFilm implements Serializable{
 
-	private Producteur _producteur;
+	private Personne _producteur;
 	private Film _film;
 	private int _confirme = 0;
 	
@@ -19,14 +19,14 @@ public class ProducteurFilm implements Serializable{
 	}
 
 
-	public Producteur get_producteur() {
+	public Personne get_producteur() {
 		return _producteur;
 	}
 
 
 
 
-	public void set_producteur(Producteur _producteur) {
+	public void set_producteur(Personne _producteur) {
 		this._producteur = _producteur;
 	}
 

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class ActeurFilm implements Serializable{
 
-	private Acteur _acteur;
+	private Personne _acteur;
 	private Film _film;
 	private int _confirme = 0;
 	
@@ -12,17 +12,18 @@ public class ActeurFilm implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 	
-	public ActeurFilm(Acteur acteur, Film film) {
+	public ActeurFilm(Personne acteur, Film film) 
+	{
 		// TODO Auto-generated constructor stub
 		this._acteur = acteur;
 		this._film = film;
 	}
 
-	public Acteur get_acteur() {
+	public Personne get_acteur() {
 		return _acteur;
 	}
 
-	public void set_acteur(Acteur _acteur) {
+	public void set_acteur(Personne _acteur) {
 		this._acteur = _acteur;
 	}
 

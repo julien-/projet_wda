@@ -60,9 +60,9 @@ public class DetailsFilm extends HttpServlet {
 			Film film = daoFilm.get(id);
 			ArrayList<Recompense> tabRecompense= daoRecompense.loadrecfilm(id);
 			
-			ArrayList<Acteur> tabActeurs = new ArrayList<Acteur>();
-			ArrayList<Realisateur> tabRealisateurs = new ArrayList<Realisateur>();
-			ArrayList<Producteur> tabProducteurs = new ArrayList<Producteur>();
+			ArrayList<Personne> tabActeurs = new ArrayList<Personne>();
+			ArrayList<Personne> tabRealisateurs = new ArrayList<Personne>();
+			ArrayList<Personne> tabProducteurs = new ArrayList<Personne>();
 			
 			Iterator ia=film.getActeurs().iterator(); // on crée un Iterator pour parcourir notre HashSet
 			while(ia.hasNext()) // tant qu'on a un suivant
@@ -97,11 +97,11 @@ public class DetailsFilm extends HttpServlet {
 			out.println("<H1>Fiche Film : "+ film.get_titre() +"</H1>");
 			out.println("<A HREF=/projet_adw/ModifierFilm?id="+film.get_id()+">Modifier</A>");
 			out.println("<H3>Cout : "+ film.get_cout() +" $</H3>");
-			out.println("<H3>Date sortie : "+ film.get_anneesortie() +"</H3>");
+			out.println("<H3>Date de sortie : "+ film.get_anneesortie() +"</H3>");
 			
 			if(!tabActeurs.isEmpty())
 			{
-				out.println("<TABLE border=\"1\"><CAPTION> Acteurs </CAPTION><TR><TH>Nom</TH><TH>Prénom</TH><TH>Date Naissance</TH></TR");
+				out.println("<TABLE border=\"1\"><CAPTION> Acteurs </CAPTION>");
 				for (Personne p : tabActeurs){
 					HTMLLigneTableauP(out,p);
 				}
@@ -115,7 +115,7 @@ public class DetailsFilm extends HttpServlet {
 			
 			if(!tabRealisateurs.isEmpty())
 			{
-				out.println("<TABLE border=\"1\"><CAPTION> Réalisateurs </CAPTION><TR><TH>Nom</TH><TH>Prénom</TH><TH>Date Naissance</TH></TR");
+				out.println("<TABLE border=\"1\"><CAPTION> Réalisateurs </CAPTION>");
 				for (Personne p : tabRealisateurs){
 					HTMLLigneTableauP(out,p);
 				}
@@ -129,7 +129,7 @@ public class DetailsFilm extends HttpServlet {
 			
 			if(!tabProducteurs.isEmpty())
 			{
-				out.println("<TABLE border=\"1\"><CAPTION> Producteurs </CAPTION><TR><TH>Nom</TH><TH>Prénom</TH><TH>Date Naissance</TH></TR");
+				out.println("<TABLE border=\"1\"><CAPTION> Producteurs </CAPTION>");
 				for (Personne p : tabProducteurs){
 					HTMLLigneTableauP(out,p);
 				}
@@ -143,7 +143,7 @@ public class DetailsFilm extends HttpServlet {
 			
 			if(!tabRecompense.isEmpty())
 			{
-				out.println("<TABLE border=\"1\"><CAPTION> Recompenses </CAPTION><TR><TH>Titre</TH><TH>Raison</TH><TH>Date</TH></TR");
+				out.println("<TABLE border=\"1\"><CAPTION> Récompenses </CAPTION>");
 				for (Recompense r : tabRecompense){
 					HTMLLigneTableauR(out,r);
 				}
@@ -176,6 +176,6 @@ public class DetailsFilm extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauP(PrintWriter out,Personne p){
-		out.println("<TR><TD>"+p.get_nom()+"</TD><TD>"+p.get_prenom()+"</TD><TD>"+p.get_datenaiss()+"</TD><TD><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">Detail</A></TD></TR>");
+		out.println("<TR><TD><CENTER><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">"+p.get_prenom() + " " + p.get_nom()+"</A></CENTER></TD></TR>");
 	}
 }

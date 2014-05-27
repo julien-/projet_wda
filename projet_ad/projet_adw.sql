@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 27 Mai 2014 à 15:03
+-- Généré le :  Mar 27 Mai 2014 à 15:55
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -31,6 +31,15 @@ CREATE TABLE IF NOT EXISTS `acteur` (
   PRIMARY KEY (`id_acteur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `acteur`
+--
+
+INSERT INTO `acteur` (`id_acteur`) VALUES
+(1),
+(2),
+(3);
+
 -- --------------------------------------------------------
 
 --
@@ -44,6 +53,15 @@ CREATE TABLE IF NOT EXISTS `acteur_film` (
   PRIMARY KEY (`id_acteur_film`,`id_film_film`),
   KEY `id_film_film` (`id_film_film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `acteur_film`
+--
+
+INSERT INTO `acteur_film` (`id_acteur_film`, `id_film_film`, `confirme`) VALUES
+(1, 140, 0),
+(2, 140, 0),
+(3, 140, 0);
 
 -- --------------------------------------------------------
 
@@ -66,8 +84,6 @@ CREATE TABLE IF NOT EXISTS `film` (
 --
 
 INSERT INTO `film` (`id_film`, `titre_film`, `annee_film`, `cout_film`, `photo_film`, `confirme`) VALUES
-(138, 'Million Dollar Baby', 2004, 25, NULL, 0),
-(139, 'Million Dollar Baby', 2004, 100422786, NULL, 0),
 (140, 'Million Dollar Baby', 2004, 100422786, NULL, 0);
 
 -- --------------------------------------------------------
@@ -100,7 +116,16 @@ CREATE TABLE IF NOT EXISTS `personne` (
   `confirme` int(11) NOT NULL,
   `popularite` int(11) NOT NULL,
   PRIMARY KEY (`id_pers`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Contenu de la table `personne`
+--
+
+INSERT INTO `personne` (`id_pers`, `nom_pers`, `prenom_pers`, `date_pers`, `photo_pers`, `confirme`, `popularite`) VALUES
+(1, 'Eastwood', 'Clint', '1930-05-31', NULL, 0, 2),
+(2, 'Swank', 'Hilary', '1974-05-30', NULL, 0, 4),
+(3, 'Freeman', 'Morgan', '1937-06-01', NULL, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -127,6 +152,13 @@ CREATE TABLE IF NOT EXISTS `producteur_film` (
   KEY `id_film_film` (`id_film_film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Contenu de la table `producteur_film`
+--
+
+INSERT INTO `producteur_film` (`id_producteur_film`, `id_film_film`, `confirme`) VALUES
+(1, 140, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -152,6 +184,13 @@ CREATE TABLE IF NOT EXISTS `realisateur_film` (
   KEY `id_realisateur` (`id_realisateur_film`,`id_film_film`),
   KEY `realisateur_film_ibfk_2` (`id_film_film`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `realisateur_film`
+--
+
+INSERT INTO `realisateur_film` (`id_realisateur_film`, `id_film_film`, `confirme`) VALUES
+(1, 140, 0);
 
 -- --------------------------------------------------------
 
@@ -242,7 +281,7 @@ ALTER TABLE `producteur`
 -- Contraintes pour la table `producteur_film`
 --
 ALTER TABLE `producteur_film`
-  ADD CONSTRAINT `producteur_film_ibfk_1` FOREIGN KEY (`id_producteur_film`) REFERENCES `producteur` (`id_producteur`),
+  ADD CONSTRAINT `producteur_film_ibfk_1` FOREIGN KEY (`id_producteur_film`) REFERENCES `personne` (`id_pers`),
   ADD CONSTRAINT `producteur_film_ibfk_2` FOREIGN KEY (`id_film_film`) REFERENCES `film` (`id_film`);
 
 --

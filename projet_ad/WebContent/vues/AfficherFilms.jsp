@@ -17,19 +17,14 @@
 	<thead>
 		<tr>
 			<th>Titre</th>
-			<th>Annee</th>
-			<th>Cout</th>
 		</tr>
 	</thead>
 	<logic:iterate id="film" name="FILMS">
 		<tr>
-			<td><bean:write name="film" property="_titre" /></td>
-			<td><bean:write name="film" property="_anneesortie" /></td>
-			<td><bean:write name="film" property="_cout" /></td>
 			<td>
 				<bean:define id="id" name="film" property="_id" /><br>
 				<html:link  page ="/DetailsFilm?id=${id}">
-    				Detail
+    				<bean:write name="film" property="_titre" />
 				</html:link>
 			</td>
 			<%-- <td>
