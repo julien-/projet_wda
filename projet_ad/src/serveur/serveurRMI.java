@@ -2,6 +2,7 @@ package serveur;
 
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
+import java.rmi.NotBoundException;
 
 import dao.DAOUtilisateur;
 import dao.hbm.DAOUtilisateurHBM;
@@ -44,12 +45,19 @@ public class serveurRMI
 						}
 						else
 							System.out.println("Authentification échouée");
-						Naming.unbind("rmi://localhost:1099/UTILISATEUR");
+						System.out.println("Noms RMI avant unbind: " + Naming.list("rmi://localhost:1099/UTILISATEUR")[0]);
+						Naming.unbind("//localhost:1099/UTILISATEUR");
+						System.out.println("Unbind done");
 						Naming.rebind("rmi://localhost:1099/REPONSE", utilisateur);
+						
+					}
+					catch(NotBoundException e)
+					{
+
 					}
 					catch(Exception e)
 					{
-						
+						e.printStackTrace();
 					}
 				}	
 			}
