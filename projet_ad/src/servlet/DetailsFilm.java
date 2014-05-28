@@ -170,7 +170,7 @@ public class DetailsFilm extends HttpServlet {
 			
 			if(!tabRecompense.isEmpty())
 			{
-				out.println("<TABLE border=\"1\"><CAPTION> Récompenses </CAPTION>");
+				out.println("<TABLE border=\"1\"><CAPTION> Récompenses </CAPTION><TR><TH>Titre</TH><TH>Raison</TH><TH>Année</TH>");
 				for (Recompense r : tabRecompense){
 					HTMLLigneTableauR(out,r);
 				}
