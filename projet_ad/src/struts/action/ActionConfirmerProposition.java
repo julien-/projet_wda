@@ -41,7 +41,9 @@ public class ActionConfirmerProposition extends Action {
 		//Personne
 		daoPersonne = new DAOPersonneHBM();
 		Personne personne = daoPersonne.get(idPersonne);
-		personne.set_confirme(1);		
+		personne.set_confirme(1);	
+		
+		daoPersonne.update(personne);
 		//ActeurFilm
 		ActeurFilm acteurfilm = new ActeurFilm();
 		acteurfilm.set_film(film);
