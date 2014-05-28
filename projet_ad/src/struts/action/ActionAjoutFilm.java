@@ -27,9 +27,15 @@ public class ActionAjoutFilm extends Action
 		daoFilms = new DAOFilmHBM();
 		ActionFormAjoutFilm formAjout = (ActionFormAjoutFilm)form;
 		
-		getDaoFilms().save(new Film(formAjout.getTitre(), formAjout.getAnnee(), formAjout.getCout(), formAjout.getFichier()));
-
-		return mapping.findForward("success");
+		
+		if (Outils.Outils.validateJavaDate(Integer.toString(formAjout.getAnnee()), "yyyy") && formAjout.getTitre() != "" && formAjout.getCout() > 0)
+		{
+			getDaoFilms().save(new Film(formAjout.getTitre(), formAjout.getAnnee(), formAjout.getCout(), formAjout.getFichier()));
+		
+			return mapping.findForward("success");
+		}
+		else
+			return mapping.findForward("fail");
 	}
 
 	public DAOFilm getDaoFilms() {

@@ -61,6 +61,7 @@
 		<action path="/ajout_films" type="struts.action.ActionAjoutFilm"
 			name="beanAjoutFilms">
 			<forward name="success" path="/vues/Success.jsp"/>
+			<forward name="fail" path="/vues/FailFilm.jsp"/>
 		</action>		
 		
 		<action path="/deconnexion_utilisateur" type="struts.action.ActionDeconnexionUtilisateur"

@@ -48,7 +48,7 @@ public class main {
 		Film F1 = new Film("Titanic", 1997, 200000);
 		Utilisateur U1 = new Utilisateur("zerock", "zerock");
 		
-		
+		/*
 		F1 = daoFilm.get(154);
 		U1 = daoUtilisateur.get(5);
 		
@@ -57,6 +57,7 @@ public class main {
 		note.set_utilisateur(U1);
 		
 		daoNote.saveOrUpdate(note);
+		*/
 		
 //		DAOPersonne daoPersonne = new DAOPersonneHBM();
 //		DAOFilm daoFilm = new DAOFilmHBM();
