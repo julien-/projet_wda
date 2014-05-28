@@ -45,8 +45,7 @@
 		<!-- INDEX -->
 		<action path="/inscription_utilisateur" type="struts.action.ActionInscriptionUtilisateur"
 			name="beanInscriptionUtilisateur">
-			<forward name="success" path="/vues/AccueilPro.jsp"/>
-			<forward name="fail" path="/vues/Bienvenue.jsp"/>
+			<forward name="success" path="/vues/Success.jsp"/>
 		</action>
 		<action path="/connexion_utilisateur" type="struts.action.ActionConnexionUtilisateur"
 			name="beanConnexionUtilisateur" scope="session">
@@ -57,13 +56,11 @@
 		<action path="/recherche_films" type="struts.action.ActionAfficherFilms"
 			name="beanRechercheFilms">
 			<forward name="AfficherFilms" path="/vues/AfficherFilms.jsp"/>
-			<forward name="AucunResultat" path="/vues/AucunResultat.jsp"/>
 		</action>
 
 		<action path="/ajout_films" type="struts.action.ActionAjoutFilm"
 			name="beanAjoutFilms">
 			<forward name="success" path="/vues/Success.jsp"/>
-			<forward name="fail" path="/vues/FailFilm.jsp"/>
 		</action>		
 		
 		<action path="/deconnexion_utilisateur" type="struts.action.ActionDeconnexionUtilisateur"
@@ -81,8 +78,15 @@
 			<forward name="confirm" path="/action_confirmation.do" />
 		</action>
 		
-
+<!-- 		PRODUCTEUR FILM -->
+		<action path="/action_confirm_prod_film" type="struts.action.ActionChargementNonConfirme">
+			<forward name="FormulaireConfirmationProducteurFilm" path="/vues/FormConfirmerProducteurFilm.jsp"/>
+		</action>
 		
+		<action path="/confirmer_propos_prod_film" type="struts.action.ActionConfirmerProducteurFilm"
+			name="beanConfirmerProducteurFilm">
+			<forward name="confirm" path="/action_confirmation_prod_film.do" />
+		</action>
 		
 	</action-mappings>
 
