@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import metier.Acteur;
 import metier.ActeurFilm;
@@ -60,6 +61,8 @@ public class DetailsFilm extends HttpServlet {
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
 		try {
+			
+			HttpSession session = request.getSession();
 			
 			Film film = daoFilm.get(id);
 			
@@ -117,7 +120,11 @@ public class DetailsFilm extends HttpServlet {
 			out.println("<H3>Date de sortie : "+ film.get_anneesortie() +"</H3>");
 			out.println("<H3>Note : "+ moyenne +"</H3>");
 			out.println("<IMG src=\""+ film.get_photoaffiche() +"\"/>");
-			out.println("<BR/><A HREF=/projet_adw/AjouterNote?id="+film.get_id()+">Noter</A><BR/><BR/>");
+			
+			if(null != session.getAttribute("login"))
+			{
+				out.println("<BR/><A HREF=/projet_adw/AjouterNote?id="+film.get_id()+">Noter</A><BR/><BR/>");
+			}
 			
 			if(!tabActeurs.isEmpty())
 			{
@@ -163,7 +170,7 @@ public class DetailsFilm extends HttpServlet {
 			
 			if(!tabRecompense.isEmpty())
 			{
-				out.println("<TABLE border=\"1\"><CAPTION> Récompenses </CAPTION>");
+				out.println("<TABLE border=\"1\"><CAPTION> Récompenses </CAPTION><TR><TH>Titre</TH><TH>Raison</TH><TH>Année</TH>");
 				for (Recompense r : tabRecompense){
 					HTMLLigneTableauR(out,r);
 				}
@@ -192,10 +199,11 @@ public class DetailsFilm extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauR(PrintWriter out,Recompense r){
-		out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
+			out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
 	}
 	
 	private void HTMLLigneTableauP(PrintWriter out,Personne p){
-		out.println("<TR><TD><CENTER><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">"+p.get_prenom() + " " + p.get_nom()+"</A></CENTER></TD></TR>");
+		if(p.get_confirme() == 1)
+			out.println("<TR><TD><CENTER><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">"+p.get_prenom() + " " + p.get_nom()+"</A></CENTER></TD></TR>");
 	}
 }

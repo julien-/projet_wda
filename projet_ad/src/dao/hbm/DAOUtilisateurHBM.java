@@ -11,25 +11,43 @@ import metier.Utilisateur;
 public class DAOUtilisateurHBM extends DAOHBM implements DAOUtilisateur {
 
 	@Override
-	public IUtilisateur get(int int_utilisateur) throws Exception {
+	public Utilisateur get(int int_utilisateur) throws Exception {
 		// TODO Auto-generated method stub
-		IUtilisateur utilisateur = null;
+		Utilisateur utilisateur = null;
 		Session session = connect();
 		
-		utilisateur = (IUtilisateur)session.get(Utilisateur.class, int_utilisateur);
+		utilisateur = (Utilisateur)session.get(Utilisateur.class, int_utilisateur);
 		
 		close(session);
 		return utilisateur;
 	}
 	
-	public boolean get(String login, String pass) throws Exception {
+	public int get(String login, String pass) throws Exception {
 		Session	session = connect();
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Utilisateur>	tabIdUser = (ArrayList<Utilisateur>) session.createQuery("FROM Utilisateur WHERE login_util ='" + login + "' AND pass_util='" + pass + "'").list();
+
 		close(session);
 		
-		return (tabIdUser.size() > 0);
+		if (tabIdUser.size() > 0)
+			return tabIdUser.get(0).get_id();
+		else
+			return -1;
+	}
+	
+	public boolean get(String login) throws Exception {
+		Session	session = connect();
+		
+		@SuppressWarnings("unchecked")
+		ArrayList<Utilisateur>	tabIdUser = (ArrayList<Utilisateur>) session.createQuery("FROM Utilisateur WHERE login_util ='" + login + "'").list();
+
+		close(session);
+		
+		if (tabIdUser.size() > 0)
+			return true;
+		else
+			return false;
 	}
 
 	@Override

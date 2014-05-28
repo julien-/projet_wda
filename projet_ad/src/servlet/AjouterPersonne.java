@@ -77,8 +77,10 @@ public class AjouterPersonne extends HttpServlet {
 			out.println("<INPUT type=text name=prenom>");
 			out.println("Date de naissance");
 			out.println("<INPUT type=text name=date_naissance>");
+			out.println("Format : JJ-MM-AAAA");
 			out.println("<INPUT type=hidden value="+type_pers+" name=type_personne >");
 			out.println("<INPUT type=hidden value="+id_film+" name=id_film >");
+			out.println("Photo: <INPUT type=file name=photo >");
 			out.println("<INPUT type=submit value=valider>");
 			
 			out.println("</FORM>");			
@@ -106,6 +108,7 @@ public class AjouterPersonne extends HttpServlet {
 		String date_naissance = request.getParameter("date_naissance");
 		String type_personne = request.getParameter("type_personne");
 		String id_film = request.getParameter("id_film");
+		String photo = request.getParameter("photo");
 		int id = Integer.parseInt(id_film);
 		
 		DAOPersonne daoPersonne = new DAOPersonneHBM();
@@ -118,33 +121,46 @@ public class AjouterPersonne extends HttpServlet {
 		
 		try {
 			
-			Film film = daoFilm.get(id);
+			if (Outils.Outils.validateJavaDate(date_naissance, "dd-MM-yyyy") && nom != "" && prenom != "")
+			{
 			
-			if(type_personne.equals("acteur"))
-			{
-				Acteur pers = new Acteur(nom,prenom,date_naissance);
-				daoPersonne.save(pers);
-				ActeurFilm act = new ActeurFilm(pers, film);
-				daoActeurFilm.save(act);	
-				film.getActeurs().add(new ActeurFilm(pers, film));							
+				Film film = daoFilm.get(id);
+				
+				
+				if(type_personne.equals("acteur"))
+				{
+					Acteur pers = new Acteur(nom,prenom,date_naissance, photo);
+					if (request.getSession().getAttribute("login") != null)
+						pers.set_confirme(1);					
+					daoPersonne.save(pers);
+					ActeurFilm act = new ActeurFilm(pers, film);
+					daoActeurFilm.save(act);	
+					film.getActeurs().add(new ActeurFilm(pers, film));							
+				}
+				else if(type_personne.equals("producteur"))
+				{
+					Producteur pers = new Producteur(nom,prenom,date_naissance, photo);
+					if (request.getSession().getAttribute("login") != null)
+						pers.set_confirme(1);
+					daoPersonne.save(pers);
+					ProducteurFilm prod = new ProducteurFilm(pers, film);
+					daoProducteurFilm.save(prod);
+					film.getProducteurs().add(new ProducteurFilm(pers, film));				
+				}
+				else if(type_personne.equals("realisateur"))
+				{
+					Realisateur pers = new Realisateur(nom,prenom,date_naissance, photo);
+					if (request.getSession().getAttribute("login") != null)
+						pers.set_confirme(1);
+					daoPersonne.save(pers);
+					RealisateurFilm rea= new RealisateurFilm(pers, film);
+					daoRealisateurFilm.save(rea);
+					film.getRealisateurs().add(new RealisateurFilm(pers, film));				
+				}
+				response.sendRedirect("/projet_adw/vues/Success.jsp");
 			}
-			else if(type_personne.equals("producteur"))
-			{
-				Producteur pers = new Producteur(nom,prenom,date_naissance); 
-				daoPersonne.save(pers);
-				ProducteurFilm prod = new ProducteurFilm(pers, film);
-				daoProducteurFilm.save(prod);
-				film.getProducteurs().add(new ProducteurFilm(pers, film));				
-			}
-			else if(type_personne.equals("realisateur"))
-			{
-				Realisateur pers = new Realisateur(nom,prenom,date_naissance);
-				daoPersonne.save(pers);
-				RealisateurFilm rea= new RealisateurFilm(pers, film);
-				daoRealisateurFilm.save(rea);
-				film.getRealisateurs().add(new RealisateurFilm(pers, film));				
-			}
-			response.sendRedirect("/projet_adw/vues/Success.jsp");
+			else
+				out.println("Erreur");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

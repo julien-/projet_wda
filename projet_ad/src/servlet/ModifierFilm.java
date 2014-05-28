@@ -81,21 +81,27 @@ public class ModifierFilm extends HttpServlet {
 		
 		String titre = request.getParameter("titre");
 		String Cout = request.getParameter("cout");
-		int cout = Integer.parseInt(Cout);
 		String Date = request.getParameter("date");	
-		int date = Integer.parseInt(Date);
 		String Id = request.getParameter("id");
 		int id = Integer.parseInt(Id);
 		
 		DAOFilm daoFilm = new DAOFilmHBM();
 		
 		try {
-			Film film = daoFilm.get(id);
-			film.set_titre(titre);
-			film.set_cout(cout);
-			film.set_anneesortie(date);
-			daoFilm.update(film);
-			response.sendRedirect("/projet_adw/vues/Success.jsp");
+			
+			if (Outils.Outils.validateJavaDate(Date, "yyyy") && titre != "" && Cout != "" && Outils.Outils.IsInteger(Cout))
+			{
+				int cout = Integer.parseInt(Cout);
+				int date = Integer.parseInt(Date);
+				Film film = daoFilm.get(id);
+				film.set_titre(titre);
+				film.set_cout(cout);
+				film.set_anneesortie(date);
+				daoFilm.update(film);
+				response.sendRedirect("/projet_adw/vues/Success.jsp");
+			}
+			else
+				out.println("erreur");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

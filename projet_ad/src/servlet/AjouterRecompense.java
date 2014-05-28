@@ -71,6 +71,7 @@ public class AjouterRecompense extends HttpServlet {
 			out.println("<INPUT type=text name=raison>");
 			out.println("Date");
 			out.println("<INPUT type=text name=date>");
+			out.println("Format AAAA");
 			out.println("<INPUT type=hidden value="+type_recompense+" name=type_recompense >");
 			out.println("<INPUT type=hidden value="+id+" name=id >");
 			out.println("<INPUT type=submit value=valider>");
@@ -107,21 +108,31 @@ public class AjouterRecompense extends HttpServlet {
 		
 		try {
 			
-			if(type_recompense.equals("film"))
+			if (Outils.Outils.validateJavaDate(date, "yyyy") && titre != "" && raison != "")
 			{
-				Film film = daoFilm.get(id);
-				RecompenseFilm recompense = new RecompenseFilm(titre, raison, date);
-				recompense.set_film(film);
-				daoRecompense.save(recompense);				
+			
+				if(type_recompense.equals("film"))
+				{
+					Film film = daoFilm.get(id);
+					RecompenseFilm recompense = new RecompenseFilm(titre, raison, date);
+					if (request.getSession().getAttribute("login") != null)
+						recompense.set_confirme(1);
+					recompense.set_film(film);
+					daoRecompense.save(recompense);				
+				}
+				else if(type_recompense.equals("personne"))
+				{
+					Personne personne = daoPersonne.get(id);
+					RecompensePersonne recompense = new RecompensePersonne(titre, raison, date);
+					if (request.getSession().getAttribute("login") != null)
+						recompense.set_confirme(1);
+					recompense.set_personne(personne);
+					daoRecompense.save(recompense);
+				}
+				response.sendRedirect("/projet_adw/vues/Success.jsp");
 			}
-			else if(type_recompense.equals("personne"))
-			{
-				Personne personne = daoPersonne.get(id);
-				RecompensePersonne recompense = new RecompensePersonne(titre, raison, date);
-				recompense.set_personne(personne);
-				daoRecompense.save(recompense);
-			}
-			response.sendRedirect("/projet_adw/vues/Success.jsp");
+			else
+				out.println("Erreur");
 		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

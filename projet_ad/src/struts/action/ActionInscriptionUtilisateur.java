@@ -25,11 +25,22 @@ public class  ActionInscriptionUtilisateur extends Action
 		daoUtilisateur = new DAOUtilisateurHBM();
 		ActionFormInscriptionUtilisateur formInscription = (ActionFormInscriptionUtilisateur)form;
 		
-		utilisateur = new Utilisateur(formInscription.getLogin(), formInscription.getPass());
-		
-		getDaoUtilisateur().save(utilisateur);
+		if (formInscription.getLogin() != "" && formInscription.getPass() != "" && daoUtilisateur.get(formInscription.getLogin()) == false)
+		{
+			utilisateur = new Utilisateur(formInscription.getLogin(), formInscription.getPass());
+			getDaoUtilisateur().save(utilisateur);
+			request.getSession().setAttribute("loginexistant", 0);
+			request.getSession().setAttribute("login", formInscription.getLogin());
+			request.getSession().setAttribute("id", getDaoUtilisateur().get(formInscription.getLogin(), formInscription.getPass()));
+			return mapping.findForward("success");
+		}
+		else
+		{
+			request.getSession().setAttribute("loginexistant", 1);
+			return mapping.findForward("fail");
+		}
 	
-		return mapping.findForward("success");
+		
 	}
 
 	public DAOUtilisateur getDaoUtilisateur() {

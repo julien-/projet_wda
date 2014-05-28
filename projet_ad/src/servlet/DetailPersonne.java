@@ -22,6 +22,7 @@ import metier.ProducteurFilm;
 import metier.Realisateur;
 import metier.RealisateurFilm;
 import metier.Recompense;
+import metier.RecompenseFilm;
 import dao.DAOActeurFilm;
 import dao.DAOFilm;
 import dao.DAOPersonne;
@@ -55,8 +56,6 @@ public class DetailPersonne extends HttpServlet {
 		
 		DAOPersonne daoPersonne = new DAOPersonneHBM();
 		DAORecompense daoRecompense = new DAORecompenseHBM();
-		//DAOFilm daoFilm = new DAOFilmHBM();
-		//DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
 		
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
@@ -114,7 +113,8 @@ public class DetailPersonne extends HttpServlet {
 			}
 			
 			out.println("<HTML><BODY><CENTER>");
-			out.println("<H1>Fiche "+ typepersonne +" : "+ personne.get_nom() +" "+ personne.get_prenom() +"</H1>");
+			out.println("<H1>Fiche "+ typepersonne +" : "+ personne.get_prenom() +" "+ personne.get_nom() +"</H1>");
+			out.println("<IMG src=\""+ personne.get_photo() +"\"/><BR/>");
 			out.println("<A HREF=/projet_adw/ModifierPersonne?id="+personne.get_id()+">Modifier</A>");
 			out.println("<H3>Date naissance : "+ personne.get_datenaiss() +"</H3>");
 			out.println("<H3>Popularité : "+ personne.get_popularite() +"</H3>");
@@ -167,7 +167,8 @@ public class DetailPersonne extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauF(PrintWriter out,Film f){
-		out.println("<TR><TD>"+f.get_titre()+"</TD><TD>"+f.get_cout()+"</TD><TD>"+f.get_anneesortie()+"</TD><TD><A HREF=/projet_adw/DetailsFilm?id="+f.get_id()+">Detail</A></TD></TR>");
+		if(f.get_confirme() == 1)
+			out.println("<TR><TD>"+f.get_titre()+"</TD><TD>"+f.get_cout()+"</TD><TD>"+f.get_anneesortie()+"</TD><TD><A HREF=/projet_adw/DetailsFilm?id="+f.get_id()+">Detail</A></TD></TR>");
 	}
 
 }

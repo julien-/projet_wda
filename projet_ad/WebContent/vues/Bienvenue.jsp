@@ -55,7 +55,13 @@
 		<html:submit>Se connecter</html:submit>
 		</html:form>
 	</div>
-	
+		<% if (session.getAttribute("erreur") != null && Integer.parseInt(session.getAttribute("erreur").toString()) == 0)
+			out.print("Login ou mot de passe incorrect");
+		
+		if (session.getAttribute("loginexistant") != null && Integer.parseInt(session.getAttribute("loginexistant").toString()) == 1)
+			out.print("<BR/>Paramètres incorrects ou pseudo déjà utilisé !");
+		%>
+		
 </body>
 
 </html:html>
