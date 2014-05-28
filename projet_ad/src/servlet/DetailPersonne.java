@@ -163,7 +163,8 @@ public class DetailPersonne extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauR(PrintWriter out,Recompense r){
-		out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
+		if(r.get_confirme() == 1)
+			out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
 	}
 	
 	private void HTMLLigneTableauF(PrintWriter out,Film f){

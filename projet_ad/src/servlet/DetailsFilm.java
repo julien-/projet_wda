@@ -199,6 +199,7 @@ public class DetailsFilm extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauR(PrintWriter out,Recompense r){
+		if(r.get_confirme() == 1)
 			out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
 	}
 	

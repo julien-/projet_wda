@@ -8,6 +8,7 @@ public class Recompense {
 	String _annee;
 	Personne _personne;
 	Film _film;
+	int _confirme = 0;
 	
 	public Recompense(String _titre, String _raison, String _annee) {
 		super();
@@ -19,6 +20,15 @@ public class Recompense {
 	public Recompense() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	public int get_confirme() {
+		return _confirme;
+	}
+
+	public void set_confirme(int _confirme) {
+		this._confirme = _confirme;
+	}
+
 	
 	public Personne get_personne() {
 		return _personne;
