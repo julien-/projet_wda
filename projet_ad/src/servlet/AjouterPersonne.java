@@ -79,6 +79,7 @@ public class AjouterPersonne extends HttpServlet {
 			out.println("<INPUT type=text name=date_naissance>");
 			out.println("<INPUT type=hidden value="+type_pers+" name=type_personne >");
 			out.println("<INPUT type=hidden value="+id_film+" name=id_film >");
+			out.println("<INPUT type=file name=photo >");
 			out.println("<INPUT type=submit value=valider>");
 			
 			out.println("</FORM>");			
@@ -106,6 +107,7 @@ public class AjouterPersonne extends HttpServlet {
 		String date_naissance = request.getParameter("date_naissance");
 		String type_personne = request.getParameter("type_personne");
 		String id_film = request.getParameter("id_film");
+		String photo = request.getParameter("photo");
 		int id = Integer.parseInt(id_film);
 		
 		DAOPersonne daoPersonne = new DAOPersonneHBM();
@@ -122,7 +124,7 @@ public class AjouterPersonne extends HttpServlet {
 			
 			if(type_personne.equals("acteur"))
 			{
-				Acteur pers = new Acteur(nom,prenom,date_naissance);
+				Acteur pers = new Acteur(nom,prenom,date_naissance, photo);
 				daoPersonne.save(pers);
 				ActeurFilm act = new ActeurFilm(pers, film);
 				daoActeurFilm.save(act);	
@@ -130,7 +132,7 @@ public class AjouterPersonne extends HttpServlet {
 			}
 			else if(type_personne.equals("producteur"))
 			{
-				Producteur pers = new Producteur(nom,prenom,date_naissance); 
+				Producteur pers = new Producteur(nom,prenom,date_naissance, photo); 
 				daoPersonne.save(pers);
 				ProducteurFilm prod = new ProducteurFilm(pers, film);
 				daoProducteurFilm.save(prod);
@@ -138,7 +140,7 @@ public class AjouterPersonne extends HttpServlet {
 			}
 			else if(type_personne.equals("realisateur"))
 			{
-				Realisateur pers = new Realisateur(nom,prenom,date_naissance);
+				Realisateur pers = new Realisateur(nom,prenom,date_naissance, photo);
 				daoPersonne.save(pers);
 				RealisateurFilm rea= new RealisateurFilm(pers, film);
 				daoRealisateurFilm.save(rea);

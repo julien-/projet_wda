@@ -47,7 +47,9 @@ public class Personne {
 		_confirme = 0;
 		try{
 			//tests
-			if(photo != null)
+			if (photo == "")
+				_photo = null;
+			else
 				this._photo = photo;
 		}
 		catch(Exception e)

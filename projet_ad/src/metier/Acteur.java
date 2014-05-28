@@ -6,9 +6,9 @@ import java.util.Set;
 public class Acteur extends Personne
 {
 	private Set<ActeurFilm> films = new HashSet<ActeurFilm>();
-	public Acteur(String nom, String prenom, String datenaiss) 
+	public Acteur(String nom, String prenom, String datenaiss, String photo) 
 	{
-		super(nom, prenom, datenaiss);
+		super(nom, prenom, datenaiss, photo);
 	}
 
 	public Acteur()
