@@ -42,11 +42,27 @@ public class main {
 	public static void main(String[] args) throws Exception
 	{
 		Film film = new Film("lol", 1254, 146, "C:\\Users\\Nicolas\\Desktop\\Million.jpg");
+		DAONote daoNote = new DAONoteHBM();
+		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
+		DAOFilm daoFilm = new DAOFilmHBM();
+		Film F1 = new Film("Titanic", 1997, 200000);
+		Utilisateur U1 = new Utilisateur("zerock", "zerock");
+		
+		
+		F1 = daoFilm.get(154);
+		U1 = daoUtilisateur.get(5);
+		
+		Note note = new Note(18);
+		note.set_film(F1);
+		note.set_utilisateur(U1);
+		
+		daoNote.saveOrUpdate(note);
+		
 //		DAOPersonne daoPersonne = new DAOPersonneHBM();
 //		DAOFilm daoFilm = new DAOFilmHBM();
 //		DAORecompense daoRecompense = new DAORecompenseHBM();
 //		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
-//		DAONote daoNote = new DAONoteHBM();
+//		
 //		DAOActeurFilm daoAF = new DAOActeurFilmHBM();
 //
 //		DAOProducteur daoProducteur = new DAOProducteurHBM();

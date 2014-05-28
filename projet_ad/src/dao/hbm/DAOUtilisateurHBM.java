@@ -11,12 +11,12 @@ import metier.Utilisateur;
 public class DAOUtilisateurHBM extends DAOHBM implements DAOUtilisateur {
 
 	@Override
-	public IUtilisateur get(int int_utilisateur) throws Exception {
+	public Utilisateur get(int int_utilisateur) throws Exception {
 		// TODO Auto-generated method stub
-		IUtilisateur utilisateur = null;
+		Utilisateur utilisateur = null;
 		Session session = connect();
 		
-		utilisateur = (IUtilisateur)session.get(Utilisateur.class, int_utilisateur);
+		utilisateur = (Utilisateur)session.get(Utilisateur.class, int_utilisateur);
 		
 		close(session);
 		return utilisateur;
