@@ -45,7 +45,8 @@
 		<!-- INDEX -->
 		<action path="/inscription_utilisateur" type="struts.action.ActionInscriptionUtilisateur"
 			name="beanInscriptionUtilisateur">
-			<forward name="success" path="/vues/Success.jsp"/>
+			<forward name="success" path="/vues/AccueilPro.jsp"/>
+			<forward name="fail" path="/vues/Bienvenue.jsp"/>
 		</action>
 		<action path="/connexion_utilisateur" type="struts.action.ActionConnexionUtilisateur"
 			name="beanConnexionUtilisateur" scope="session">

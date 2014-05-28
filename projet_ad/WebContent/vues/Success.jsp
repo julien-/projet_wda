@@ -1,7 +1,7 @@
 <%@ taglib prefix="html" uri="http://struts.apache.org/tags-html" %>
 <%@ taglib prefix="bean" uri="http://struts.apache.org/tags-bean" %>
 <%@ taglib prefix="logic" uri="http://struts.apache.org/tags-logic" %>
-
+<%@page language="java" session="true" %>
 
 <html:html>
 
@@ -11,8 +11,14 @@
 
 <body>
 	<h1>Requête effectuée avec succès !</h1>
+	<% if (session.getAttribute("login") == null) 
+	{%>
 	<a href="http://localhost:8080/projet_adw/vues/Bienvenue.jsp">Retour à l'accueil</a>
-
+<%} 
+else
+{%>
+	<a href="http://localhost:8080/projet_adw/vues/AccueilPro.jsp">Retour à l'accueil</a>
+<%} %>
 </body>
 
 </html:html>

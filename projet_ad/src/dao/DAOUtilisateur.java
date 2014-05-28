@@ -13,4 +13,5 @@ public interface DAOUtilisateur
 	long size() throws Exception;
 	ArrayList<Utilisateur> load(String nom) throws Exception;
 	void saveOrUpdate(IUtilisateur utilisateur) throws Exception;
+	boolean get(String login) throws Exception;
 }
