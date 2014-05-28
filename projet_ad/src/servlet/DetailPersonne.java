@@ -22,6 +22,7 @@ import metier.ProducteurFilm;
 import metier.Realisateur;
 import metier.RealisateurFilm;
 import metier.Recompense;
+import metier.RecompenseFilm;
 import dao.DAOActeurFilm;
 import dao.DAOFilm;
 import dao.DAOPersonne;
@@ -55,8 +56,6 @@ public class DetailPersonne extends HttpServlet {
 		
 		DAOPersonne daoPersonne = new DAOPersonneHBM();
 		DAORecompense daoRecompense = new DAORecompenseHBM();
-		//DAOFilm daoFilm = new DAOFilmHBM();
-		//DAOActeurFilm daoActeurFilm = new DAOActeurFilmHBM();
 		
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
@@ -168,7 +167,8 @@ public class DetailPersonne extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauF(PrintWriter out,Film f){
-		out.println("<TR><TD>"+f.get_titre()+"</TD><TD>"+f.get_cout()+"</TD><TD>"+f.get_anneesortie()+"</TD><TD><A HREF=/projet_adw/DetailsFilm?id="+f.get_id()+">Detail</A></TD></TR>");
+		if(f.get_confirme() == 1)
+			out.println("<TR><TD>"+f.get_titre()+"</TD><TD>"+f.get_cout()+"</TD><TD>"+f.get_anneesortie()+"</TD><TD><A HREF=/projet_adw/DetailsFilm?id="+f.get_id()+">Detail</A></TD></TR>");
 	}
 
 }

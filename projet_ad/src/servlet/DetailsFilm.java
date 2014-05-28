@@ -199,10 +199,11 @@ public class DetailsFilm extends HttpServlet {
 	}
 	
 	private void HTMLLigneTableauR(PrintWriter out,Recompense r){
-		out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
+			out.println("<TR><TD>"+r.get_titre()+"</TD><TD>"+r.get_raison()+"</TD><TD>"+r.get_annee()+"</TD></TR>");
 	}
 	
 	private void HTMLLigneTableauP(PrintWriter out,Personne p){
-		out.println("<TR><TD><CENTER><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">"+p.get_prenom() + " " + p.get_nom()+"</A></CENTER></TD></TR>");
+		if(p.get_confirme() == 1)
+			out.println("<TR><TD><CENTER><A HREF=/projet_adw/DetailPersonne?id="+p.get_id()+">"+p.get_prenom() + " " + p.get_nom()+"</A></CENTER></TD></TR>");
 	}
 }
