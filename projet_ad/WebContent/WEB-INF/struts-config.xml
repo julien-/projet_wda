@@ -56,6 +56,7 @@
 		<action path="/recherche_films" type="struts.action.ActionAfficherFilms"
 			name="beanRechercheFilms">
 			<forward name="AfficherFilms" path="/vues/AfficherFilms.jsp"/>
+			<forward name="AucunResultat" path="/vues/AucunResultat.jsp"/>
 		</action>
 
 		<action path="/ajout_films" type="struts.action.ActionAjoutFilm"
