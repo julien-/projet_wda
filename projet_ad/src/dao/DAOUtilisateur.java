@@ -8,7 +8,7 @@ import metier.Utilisateur;
 public interface DAOUtilisateur 
 {
 	Utilisateur get(int id_utilisateur) throws Exception;
-	boolean get(String login, String pass) throws Exception;
+	int get(String login, String pass) throws Exception;
 	void save(IUtilisateur utilisateur) throws Exception;
 	long size() throws Exception;
 	ArrayList<Utilisateur> load(String nom) throws Exception;

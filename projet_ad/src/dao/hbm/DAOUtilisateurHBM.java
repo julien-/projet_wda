@@ -22,14 +22,17 @@ public class DAOUtilisateurHBM extends DAOHBM implements DAOUtilisateur {
 		return utilisateur;
 	}
 	
-	public boolean get(String login, String pass) throws Exception {
+	public int get(String login, String pass) throws Exception {
 		Session	session = connect();
 		
 		@SuppressWarnings("unchecked")
 		ArrayList<Utilisateur>	tabIdUser = (ArrayList<Utilisateur>) session.createQuery("FROM Utilisateur WHERE login_util ='" + login + "' AND pass_util='" + pass + "'").list();
 		close(session);
 		
-		return (tabIdUser.size() > 0);
+		if (tabIdUser.size() > 0)
+			return tabIdUser.get(0).get_id();
+		else
+			return -1;
 	}
 
 	@Override

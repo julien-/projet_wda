@@ -7,7 +7,7 @@
 <head>
 	<title><bean:message key="bienvenue.title"/></title>
 </head>
-	<% out.print(session.getAttribute("login"));%>
+	<% out.print(session.getAttribute("login")); out.print(session.getAttribute("id"));%>
 <body>
 	<html:form action="/recherche_films.do">
 		<h2>Recherche de films</h2>

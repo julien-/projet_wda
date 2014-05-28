@@ -38,8 +38,9 @@ public class serveurRMI
 						trouve = true;
 						System.out.println("Login reçu: " + utilisateur.get_pseudo());
 						System.out.println("Mot de passe reçu: " + utilisateur.get_mdp());
-						if (dao.get(utilisateur.get_pseudo(), utilisateur.get_mdp()) == true)
+						if (dao.get(utilisateur.get_pseudo(), utilisateur.get_mdp()) != -1)
 						{
+							utilisateur.set_id(dao.get(utilisateur.get_pseudo(), utilisateur.get_mdp()));
 							utilisateur.setVerifie(1);
 							System.out.println("Authentification réussie");
 						}
