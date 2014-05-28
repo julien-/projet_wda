@@ -157,7 +157,7 @@ public class AjouterPersonne extends HttpServlet {
 					daoRealisateurFilm.save(rea);
 					film.getRealisateurs().add(new RealisateurFilm(pers, film));				
 				}
-				response.sendRedirect("/projet_adw/vues/Success.jsp");
+				response.sendRedirect("/projet_adw/DetailsFilm?id=" + id);
 			}
 			else
 				out.println("Erreur");

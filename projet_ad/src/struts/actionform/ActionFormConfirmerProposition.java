@@ -8,7 +8,7 @@ public class ActionFormConfirmerProposition extends ActionForm
 	String prenom;
 	String date_naiss;
 	String photo;
-	Boolean checkboxValue;
+	int checkboxValue;
 	String _id;
 
 	public ActionFormConfirmerProposition()
@@ -48,11 +48,11 @@ public class ActionFormConfirmerProposition extends ActionForm
 		this.photo = photo;
 	}
 	
-	public Boolean getCheckboxValue() {
+	public int getCheckboxValue() {
 		return checkboxValue;
 	}
 
-	public void setCheckboxValue(Boolean checkboxValue) {
+	public void setCheckboxValue(int checkboxValue) {
 		this.checkboxValue = checkboxValue;
 	}
 	
