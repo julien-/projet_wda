@@ -114,7 +114,7 @@ public class DetailPersonne extends HttpServlet {
 			}
 			
 			out.println("<HTML><BODY><CENTER>");
-			out.println("<H1>Fiche "+ typepersonne +" : "+ personne.get_nom() +" "+ personne.get_prenom() +"</H1>");
+			out.println("<H1>Fiche "+ typepersonne +" : "+ personne.get_prenom() +" "+ personne.get_nom() +"</H1>");
 			out.println("<IMG src=\""+ personne.get_photo() +"\"/><BR/>");
 			out.println("<A HREF=/projet_adw/ModifierPersonne?id="+personne.get_id()+">Modifier</A>");
 			out.println("<H3>Date naissance : "+ personne.get_datenaiss() +"</H3>");

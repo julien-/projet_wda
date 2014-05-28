@@ -13,7 +13,7 @@
 <body>
 
 <center>
-<h1>Resulats recherche</h1>
+<h1>Resultats recherche</h1>
 <p />
 	<logic:empty name="FILMS">
 		<h3>Aucun résultats de film</h3>
