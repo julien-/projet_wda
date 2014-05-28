@@ -15,6 +15,10 @@
 <center>
 <h1>Resulats recherche</h1>
 <p />
+	<logic:empty name="FILMS">
+		<h3>Aucun résultats de film</h3>
+	</logic:empty>
+	<logic:notEmpty name="FILMS">
 <table border="1">
 	<thead>
 		<tr>
@@ -32,12 +36,18 @@
 		</tr>
 	</logic:iterate>
 	</table>
+	</logic:notEmpty>
 	<%
 	 
 if(null != session.getAttribute("login"))
 {  
 	
 	%>
+	<logic:empty name="PERSONNES">
+		<h3>Aucun résultats de personnes</h3>
+	</logic:empty>
+	
+	<logic:notEmpty name="PERSONNES">
 	<table border="1">
 		<thead>
 			<tr>
@@ -56,8 +66,10 @@ if(null != session.getAttribute("login"))
 			</td>
 		</tr>
 	</logic:iterate>
-	<%} %>
+
 </table>
+</logic:notEmpty>
+	<%} %>
 </FORM>
 <p />
 </center>

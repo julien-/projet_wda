@@ -60,6 +60,7 @@ public class  ActionConnexionUtilisateur extends Action
 		HttpSession session = request.getSession();
 		session.setAttribute("id", utilisateur.get_id());
 		session.setAttribute("login", utilisateur.get_pseudo());
+		session.setAttribute("erreur", utilisateur.getVerifie());
 		Naming.unbind("rmi://localhost:1099/REPONSE");
 		return mapping.findForward(pageDestination);
 	}

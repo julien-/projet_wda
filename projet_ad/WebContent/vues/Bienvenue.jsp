@@ -55,7 +55,9 @@
 		<html:submit>Se connecter</html:submit>
 		</html:form>
 	</div>
-	
+		<% if (session.getAttribute("erreur") != null && Integer.parseInt(session.getAttribute("erreur").toString()) == 0)
+			out.print("Login ou mot de passe incorrect");
+		%>
 </body>
 
 </html:html>
