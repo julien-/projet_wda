@@ -34,21 +34,16 @@ public class ActionAfficherFilms extends Action
 		
 		ArrayList<Film> tabFilms = getDaoFilms().load(formRecherche.getTitre());
 		
-		if(!tabFilms.isEmpty())
+		request.getSession().setAttribute("FILMS", tabFilms);
+		HttpSession session = request.getSession();
+		ArrayList<Personne> tabPers = new ArrayList<Personne>();
+		if (session.getAttribute("login") != null)
 		{
-			request.getSession().setAttribute("FILMS", tabFilms);
-			HttpSession session = request.getSession();
-			ArrayList<Personne> tabPers = new ArrayList<Personne>();
-			if (session.getAttribute("login") != null)
-			{
-				tabPers = daoPersonne.load(formRecherche.getTitre());
-				request.getSession().setAttribute("PERSONNES", tabPers);
-			}
-			
-			return mapping.findForward("AfficherFilms");
+			tabPers = daoPersonne.load(formRecherche.getTitre());
+			request.getSession().setAttribute("PERSONNES", tabPers);
 		}
-		else
-			return mapping.findForward("AucunResultat");
+		
+		return mapping.findForward("AfficherFilms");
 	}
 
 	public DAOFilm getDaoFilms() {

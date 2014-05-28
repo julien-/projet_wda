@@ -44,4 +44,15 @@ public class Outils {
 	        return true;
 	    }
 	} // end ValidateJavaDate
+	
+	public static boolean IsInteger(String chaine)
+	{
+		char [] s =chaine.toCharArray(); 
+		boolean testerreurfrappe= true; 
+		for (int i=0; i<s.length;i++)
+			if(!Character.isDigit(s[i])) 
+				testerreurfrappe= false; 
+ 
+		return testerreurfrappe; 
+	}
 }

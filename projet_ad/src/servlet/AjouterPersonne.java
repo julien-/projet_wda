@@ -77,6 +77,7 @@ public class AjouterPersonne extends HttpServlet {
 			out.println("<INPUT type=text name=prenom>");
 			out.println("Date de naissance");
 			out.println("<INPUT type=text name=date_naissance>");
+			out.println("Format : JJ/MM/AAAA");
 			out.println("<INPUT type=hidden value="+type_pers+" name=type_personne >");
 			out.println("<INPUT type=hidden value="+id_film+" name=id_film >");
 			out.println("<INPUT type=file name=photo >");
@@ -120,33 +121,39 @@ public class AjouterPersonne extends HttpServlet {
 		
 		try {
 			
-			Film film = daoFilm.get(id);
+			if (Outils.Outils.validateJavaDate(date_naissance, "dd/MM/yyyy") && nom != "" && prenom != "")
+			{
 			
-			if(type_personne.equals("acteur"))
-			{
-				Acteur pers = new Acteur(nom,prenom,date_naissance, photo);
-				daoPersonne.save(pers);
-				ActeurFilm act = new ActeurFilm(pers, film);
-				daoActeurFilm.save(act);	
-				film.getActeurs().add(new ActeurFilm(pers, film));							
+				Film film = daoFilm.get(id);
+				
+				if(type_personne.equals("acteur"))
+				{
+					Acteur pers = new Acteur(nom,prenom,date_naissance, photo);
+					daoPersonne.save(pers);
+					ActeurFilm act = new ActeurFilm(pers, film);
+					daoActeurFilm.save(act);	
+					film.getActeurs().add(new ActeurFilm(pers, film));							
+				}
+				else if(type_personne.equals("producteur"))
+				{
+					Producteur pers = new Producteur(nom,prenom,date_naissance, photo); 
+					daoPersonne.save(pers);
+					ProducteurFilm prod = new ProducteurFilm(pers, film);
+					daoProducteurFilm.save(prod);
+					film.getProducteurs().add(new ProducteurFilm(pers, film));				
+				}
+				else if(type_personne.equals("realisateur"))
+				{
+					Realisateur pers = new Realisateur(nom,prenom,date_naissance, photo);
+					daoPersonne.save(pers);
+					RealisateurFilm rea= new RealisateurFilm(pers, film);
+					daoRealisateurFilm.save(rea);
+					film.getRealisateurs().add(new RealisateurFilm(pers, film));				
+				}
+				response.sendRedirect("/projet_adw/vues/Success.jsp");
 			}
-			else if(type_personne.equals("producteur"))
-			{
-				Producteur pers = new Producteur(nom,prenom,date_naissance, photo); 
-				daoPersonne.save(pers);
-				ProducteurFilm prod = new ProducteurFilm(pers, film);
-				daoProducteurFilm.save(prod);
-				film.getProducteurs().add(new ProducteurFilm(pers, film));				
-			}
-			else if(type_personne.equals("realisateur"))
-			{
-				Realisateur pers = new Realisateur(nom,prenom,date_naissance, photo);
-				daoPersonne.save(pers);
-				RealisateurFilm rea= new RealisateurFilm(pers, film);
-				daoRealisateurFilm.save(rea);
-				film.getRealisateurs().add(new RealisateurFilm(pers, film));				
-			}
-			response.sendRedirect("/projet_adw/vues/Success.jsp");
+			else
+				out.println("Erreur");
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
