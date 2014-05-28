@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import metier.Acteur;
 import metier.ActeurFilm;
@@ -60,6 +61,8 @@ public class DetailsFilm extends HttpServlet {
 		String recherche=request.getParameter("id");
 		int id = Integer.parseInt(recherche); 
 		try {
+			
+			HttpSession session = request.getSession();
 			
 			Film film = daoFilm.get(id);
 			
@@ -117,7 +120,11 @@ public class DetailsFilm extends HttpServlet {
 			out.println("<H3>Date de sortie : "+ film.get_anneesortie() +"</H3>");
 			out.println("<H3>Note : "+ moyenne +"</H3>");
 			out.println("<IMG src=\""+ film.get_photoaffiche() +"\"/>");
-			out.println("<BR/><A HREF=/projet_adw/AjouterNote?id="+film.get_id()+">Noter</A><BR/><BR/>");
+			
+			if(null != session.getAttribute("login"))
+			{
+				out.println("<BR/><A HREF=/projet_adw/AjouterNote?id="+film.get_id()+">Noter</A><BR/><BR/>");
+			}
 			
 			if(!tabActeurs.isEmpty())
 			{
