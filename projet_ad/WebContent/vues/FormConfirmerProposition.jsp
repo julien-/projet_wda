@@ -10,36 +10,37 @@
 
 <body>
 	<h2>Confirmer des ACTEURS</h2>
-	<html:form action="/confirmer_propos.do">
-		<table border="1">
-			<thead>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Nom acteur</th>
+				<th>Prenom acteur</th>
+				<th>a joué dans</th>
+				<th>Titre film</th>
+				<th></th>
+			</tr>
+		</thead>
+		<logic:iterate id="_acteurfilm" name="ACTEURFILM">
+			<logic:equal name="_acteurfilm" property="_confirme" value="0">
 				<tr>
-					<th>Nom</th>
-					<th>Prenom</th>
-					<th>Date de naissance</th>
-					<th>Photo</th>
-					<th>Confirmer ?</th>
+					<td><bean:write name="_acteurfilm" property="_nom" /></td>
+					<td><bean:write name="_acteurfilm" property="_prenom" /></td>
+					<td>------------</td>
+					<td><bean:write name="_acteurfilm" property="_titrefilm" /></td>
+					<td><bean:define id="ida" name="_acteurfilm"
+							property="_idacteur" /> <bean:define id="idf" name="_acteurfilm"
+							property="_idfilm" /> <%
+ 	java.util.HashMap params = new java.util.HashMap();
+ 				params.put("ida", ida);
+ 				params.put("idf", idf);
+ 				pageContext.setAttribute("paramsName", params);
+ %> <html:link action="/confirmer_propos.do" name="paramsName">
+								Confirmer
+							</html:link></td>
 				</tr>
-			</thead>
-			<logic:iterate id="_acteur" name="ACTEURFILM">
-				<logic:equal name="_acteur" property="_confirme" value="0">
-					<tr>
-						<td><bean:write name="_acteur" property="_nom" /></td>
-						<td><bean:write name="_acteur" property="_prenom" /></td>
-						<td><bean:write name="_acteur" property="_datenaiss" /></td>
-						<td><img alt="Photo"
-							src="<bean:write name="_acteur" property="_photo"/>" /></td>
-						<td><html:checkbox property="_id" /><bean:write name="_acteur" property="_id"/></td>
-					</tr>
-				</logic:equal>
-			</logic:iterate>
-		</table>
-		<html:submit>Ajouter</html:submit>
-	</html:form>
-
-	
-
-
+			</logic:equal>
+		</logic:iterate>
+	</table>
 
 </body>
 

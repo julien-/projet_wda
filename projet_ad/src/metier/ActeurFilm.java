@@ -7,7 +7,8 @@ public class ActeurFilm implements Serializable{
 	private Personne _acteur;
 	private Film _film;
 	private int _confirme = 0;
-	private String _id;
+
+
 	
 	public ActeurFilm() {
 		// TODO Auto-generated constructor stub
@@ -60,9 +61,15 @@ public class ActeurFilm implements Serializable{
 		return this._acteur.get_photo();
 	}
 	
-	public String get_id(){
-		return this._acteur.get_id()+"|"+this._film.get_id();
+	public int get_idacteur(){
+		return this._acteur.get_id();
 	}
-
 	
+	public int get_idfilm(){
+		return this._film.get_id();
+	}
+	
+	public String get_titrefilm(){
+		return this._film.get_titre();
+	}
 }

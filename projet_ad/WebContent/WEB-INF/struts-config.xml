@@ -68,14 +68,18 @@
 			<forward name="deconnexion" path="/vues/Bienvenue.jsp"/>
 		</action>
 		
+<!-- 		ACTEUR/FILM -->
 		<action path="/action_confirmation" type="struts.action.ActionChargementNonConfirme">
 			<forward name="FormulaireConfirmation" path="/vues/FormConfirmerProposition.jsp"/>
 		</action>
 		
 		<action path="/confirmer_propos" type="struts.action.ActionConfirmerProposition"
 			name="beanConfirmerProposition">
-			<forward name="success" path="/vues/Success.jsp" />
+			<forward name="confirm" path="/action_confirmation.do" />
 		</action>
+		
+
+		
 		
 	</action-mappings>
 
