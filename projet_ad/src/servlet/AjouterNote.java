@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import metier.Acteur;
 import metier.ActeurFilm;
@@ -17,18 +18,21 @@ import metier.Producteur;
 import metier.ProducteurFilm;
 import metier.Realisateur;
 import metier.RealisateurFilm;
+import metier.Utilisateur;
 import dao.DAOActeurFilm;
 import dao.DAOFilm;
 import dao.DAONote;
 import dao.DAOPersonne;
 import dao.DAOProducteurFilm;
 import dao.DAORealisateurFilm;
+import dao.DAOUtilisateur;
 import dao.hbm.DAOActeurFilmHBM;
 import dao.hbm.DAOFilmHBM;
 import dao.hbm.DAONoteHBM;
 import dao.hbm.DAOPersonneHBM;
 import dao.hbm.DAOProducteurFilmHBM;
 import dao.hbm.DAORealisateurFilmHBM;
+import dao.hbm.DAOUtilisateurHBM;
 
 /**
  * Servlet implementation class AjouterNote
@@ -107,16 +111,21 @@ public class AjouterNote extends HttpServlet {
 		
 		DAOFilm daoFilm = new DAOFilmHBM();
 		DAONote daoNote = new DAONoteHBM();
+		DAOUtilisateur daoUtilisateur = new DAOUtilisateurHBM();
 		
 		try {
+			HttpSession session = request.getSession();
 			
 			Film film = daoFilm.get(id);
-			Note notee = new Note();
-			notee.set_note(note);
+			Note _note = new Note(note);
+			Utilisateur user = daoUtilisateur.get((int) session.getAttribute("id"));
 			
-			daoNote.save(notee);
+			_note.set_film(film);
+			_note.set_utilisateur(user);
 			
-			film.get_notes().add(notee);
+			daoNote.saveOrUpdate(_note);
+			
+			film.get_notes().add(_note);
 			
 			response.sendRedirect("/projet_adw/vues/Success.jsp");
 			
