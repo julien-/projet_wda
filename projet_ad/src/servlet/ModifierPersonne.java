@@ -71,7 +71,7 @@ public class ModifierPersonne extends HttpServlet {
 			out.println("<INPUT type=text name=prenom value="+personne.get_prenom()+">");
 			out.println("Date de naissance");
 			out.println("<INPUT type=text name=date_naissance value="+personne.get_datenaiss()+">");
-			out.println("Format : JJ/MM/AAAA");
+			out.println("Format : JJ-MM-AAAA");
 			out.println("<INPUT type=hidden value="+Id+" name=id>");
 			out.println("<INPUT type=submit value=valider>");
 			
@@ -102,7 +102,7 @@ public class ModifierPersonne extends HttpServlet {
 		
 		try {
 			
-			if (Outils.Outils.validateJavaDate(date_naissance, "dd/MM/yyyy") && nom != "" && prenom != "")
+			if (Outils.Outils.validateJavaDate(date_naissance, "dd-MM-yyyy") && nom != "" && prenom != "")
 			{
 				Personne personne = daoPersonne.get(id);
 				personne.set_nom(nom);

@@ -77,10 +77,10 @@ public class AjouterPersonne extends HttpServlet {
 			out.println("<INPUT type=text name=prenom>");
 			out.println("Date de naissance");
 			out.println("<INPUT type=text name=date_naissance>");
-			out.println("Format : JJ/MM/AAAA");
+			out.println("Format : JJ-MM-AAAA");
 			out.println("<INPUT type=hidden value="+type_pers+" name=type_personne >");
 			out.println("<INPUT type=hidden value="+id_film+" name=id_film >");
-			out.println("<INPUT type=file name=photo >");
+			out.println("Photo: <INPUT type=file name=photo >");
 			out.println("<INPUT type=submit value=valider>");
 			
 			out.println("</FORM>");			
@@ -121,7 +121,7 @@ public class AjouterPersonne extends HttpServlet {
 		
 		try {
 			
-			if (Outils.Outils.validateJavaDate(date_naissance, "dd/MM/yyyy") && nom != "" && prenom != "")
+			if (Outils.Outils.validateJavaDate(date_naissance, "dd-MM-yyyy") && nom != "" && prenom != "")
 			{
 			
 				Film film = daoFilm.get(id);

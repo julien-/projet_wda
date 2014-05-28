@@ -13,7 +13,7 @@
 		<bean:message key="bienvenue.pro.title" />
 	</h3>
 	<p>
-		<bean:message key="bienvenue.message" /><%=session.getAttribute("login")%>
+		<bean:message key="bienvenue.message" /> <%=session.getAttribute("login")%>
 	</p>
 
 	<a href="http://localhost:8080/projet_adw/vues/FormRechercheFilms.jsp">Rechercher
