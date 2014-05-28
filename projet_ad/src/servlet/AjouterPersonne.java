@@ -126,9 +126,12 @@ public class AjouterPersonne extends HttpServlet {
 			
 				Film film = daoFilm.get(id);
 				
+				
 				if(type_personne.equals("acteur"))
 				{
 					Acteur pers = new Acteur(nom,prenom,date_naissance, photo);
+					if (request.getSession().getAttribute("login") != null)
+						pers.set_confirme(1);					
 					daoPersonne.save(pers);
 					ActeurFilm act = new ActeurFilm(pers, film);
 					daoActeurFilm.save(act);	
@@ -136,7 +139,9 @@ public class AjouterPersonne extends HttpServlet {
 				}
 				else if(type_personne.equals("producteur"))
 				{
-					Producteur pers = new Producteur(nom,prenom,date_naissance, photo); 
+					Producteur pers = new Producteur(nom,prenom,date_naissance, photo);
+					if (request.getSession().getAttribute("login") != null)
+						pers.set_confirme(1);
 					daoPersonne.save(pers);
 					ProducteurFilm prod = new ProducteurFilm(pers, film);
 					daoProducteurFilm.save(prod);
@@ -145,6 +150,8 @@ public class AjouterPersonne extends HttpServlet {
 				else if(type_personne.equals("realisateur"))
 				{
 					Realisateur pers = new Realisateur(nom,prenom,date_naissance, photo);
+					if (request.getSession().getAttribute("login") != null)
+						pers.set_confirme(1);
 					daoPersonne.save(pers);
 					RealisateurFilm rea= new RealisateurFilm(pers, film);
 					daoRealisateurFilm.save(rea);

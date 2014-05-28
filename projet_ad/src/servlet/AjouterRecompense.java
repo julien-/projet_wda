@@ -115,6 +115,8 @@ public class AjouterRecompense extends HttpServlet {
 				{
 					Film film = daoFilm.get(id);
 					RecompenseFilm recompense = new RecompenseFilm(titre, raison, date);
+					if (request.getSession().getAttribute("login") != null)
+						recompense.set_confirme(1);
 					recompense.set_film(film);
 					daoRecompense.save(recompense);				
 				}
@@ -122,6 +124,8 @@ public class AjouterRecompense extends HttpServlet {
 				{
 					Personne personne = daoPersonne.get(id);
 					RecompensePersonne recompense = new RecompensePersonne(titre, raison, date);
+					if (request.getSession().getAttribute("login") != null)
+						recompense.set_confirme(1);
 					recompense.set_personne(personne);
 					daoRecompense.save(recompense);
 				}
